@@ -1,0 +1,70 @@
+<center>
+	<h1 style="margin-bottom: 0;">GR8CPU: the project that came to be</h1>
+	<h3 style="margin-top: 0;">on the design of my most abitious project yet</h3>
+</center>
+<p>
+	In the first and second class of high school, i was bored pretty much consistantly.<br>
+	Why? Because i was 1 or even 2 levels lower than i should have been.<br>
+	Insufficient thought of special education comes to mind.<br>
+	In the times here i was bored, my friend and i were using calculators to play Tic-Tac-Toe.<br>
+	I suppose one must know the game, how else would you have a childhood?<br>
+	Eventually, i wanted to actually make a breadboard CPU.<br>
+	It didn't take us long to realise that this would be awesome if it played Tic-Tac-Toe.<br>
+	So, i had only just started making the clock (sets the pace of the CPU) and now, i had a design goal.<br>
+	Don't make a mistake, because playing this little game properly was literally the main design decision while designing and building it!<br>
+</p>
+<h2>initial designing</h2>
+<p>
+	In the end, i'm already working on the third revision, but the initial design is most certainly significant.<br>
+	The fundamental architecture of the initial design will live on for as long as the project will.<br>
+	The rules were as follows:
+</p>
+<ul>
+	<li>It must have absolutely the simpelest control unit possible.</li>
+	<li>It will have four main registers, A, B, C and D, which are responsible for calculation and storage.</li>
+	<li>It must be able to access the entire memory the program resides in fully.</li>
+	<li>
+		In designing, you must under no circomstance throw out the more logical solution in favor of something you worked hard on.<br>
+		This is not a set rule, but more a philosophy to prevent the sunken cost fallacy from getting to me.
+	</li>
+	<li>The design must make sense to build on breadboards.</li>
+	<li>As little help from modern electronics as possible should be used for operating the CPU.</li>
+</ul>
+<p>
+	Then, the initial design can be seen here:<br>
+	<img title="Click to enlarge." class="fit-inline may-big" style="width: 50%; height: 50%;" src="/data/projects/images/gr8cpu_design_rev1.png"><br><br>
+	It has a button to load the program from a ROM into RAM, but this is not significant in operation.<br>
+	It is an 8-bit RISC CPU with up to 64 instructions.<br>
+	The initial design has more than 32 control wires. I'll get back to that.<br>
+	It has the ability to set the ALU operation basedon on any byte of data.<br>
+	It has 4 flags (details about the ALU output, used for comparisons).<br>
+	The D registre is treated specially, it acts as I/O instead of storing data.<br>
+	It also has conditional branching (if-then-else).<br>
+	It does not have a stack (think to do one task you need to do another).<br>
+	I was again incredibly happy when this design proved to work.
+</p>
+<h2>optimising</h2>
+<p>
+	As i went about chatting with other people who have designed CPUs, i learned more over time.<br>
+	I learned quite quickly that two of my flags were redundant, and therefor should be removed.<br>
+	I was still thinking of how to build this on breadboards, and what i thought of pretty quicky is that i can't have too many control signals.<br>
+	This is because you need to store your control signals somewhere and i wasn't about to get 6 8-bit ROMs just for control signals.<br>
+	So i set to remove unnecesary control signals.<br>
+	What resulted from these changes is GR8CPU Rev2:<br>
+	<img title="Click to enlarge." class="fit-inline may-big" style="width: 50%; height: 50%;" src="/data/projects/images/gr8cpu_design_rev2.png"><br><br>
+	This is mostly the final design, but not completely.<br>
+	There is one more design, with only one change.<br>
+	There is now an explicit reset signal for the B register.<br>
+	This is because it is not used for data storage, but more for computation.<br>
+	Certain instruction did not work when implemented on breadboard, so this is the fix that i made.<br>
+	The reason they didn't work has to do with input hold times on memory and istructions acting directly on memory.<br>
+	The final design can be seen here:<br>
+	<img title="Click to enlarge." class="fit-inline may-big" style="width: 50%; height: 50%;" src="/data/projects/images/gr8cpu_design_rev2_1.png"><br><br>
+	The majority of the work done on Rev2 is optimising the CPU enough to be built on breadboards and play <nobr>Tic-Tac-Toe.</nobr><br>
+	Speaking of, the Tic-Tac-Toe program currently uses a whopping 98% of the 256 bytes of memory available.<br>
+	Many instructions were added just to make programs smaller.
+</p>
+<h2>let's get technical</h2>
+<p>
+	This is an extra, where i'll be speaking in detail about many design decisions.
+</p>

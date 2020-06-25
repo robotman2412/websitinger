@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This page is also the template page. -->
+	<?php require "incl/utils.php"; require "incl/project.php"; ?>
+	<title>RobotMan2412's website</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet" type="text/css" href="project.css">
+	<script src="/index.js"></script>
+</head>
+<body onload="loaded();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h2>Welcome to RobotMan2412's website!</h2>
+				</center>
+				<p>
+					This is mainly a hobby, a because why not thing.<br>
+					Here, you'll find things like my breadboard CPU,<br>
+					The making of this very website, and more.<br><br><br><br>
+					Featured projects:<br>
+				</p>
+				<?php previewProjectByID("br_cpu"); previewProjectByID("website"); ?>
+				<br><br>
+				<p>
+					I like all things technical.<br>
+					That means CPU design, programming and this website!<br>
+					I'm excited for MCH2021, a hackercamp in the netherlands.<br>
+					I want to bring my CPU there.<br><br>
+					<a href="https://mch2021.org/"><img src="https://wiki.ifcat.org/images/thumb/6/6f/MHC2021_warningStickerV2.svg/630px-MHC2021_warningStickerV2.svg.png"></a>
+				</p>
+				<?php footer(); ?>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

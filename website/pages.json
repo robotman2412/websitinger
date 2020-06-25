@@ -1,0 +1,24 @@
+{
+	"pages": [
+		{
+			"href": "/",
+			"short": "home",
+			"name": "Homepage."
+		},
+		{
+			"href": "/motm.php",
+			"short": "M.O.T.M.",
+			"name": "Message of the millisecond."
+		},
+		{
+			"href": "/project.php",
+			"short": "projects",
+			"name": "All the projects!"
+		},
+		{
+			"href": "/about.php",
+			"short": "about",
+			"name": "About this website."
+		}
+	]
+}
