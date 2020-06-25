@@ -20,7 +20,7 @@ div.proj-h-entry {
 div.proj-prev-o {
 	position: relative;
 	width: 100%;
-	height: 150px;
+	height: 175px;
 }
 
 div.proj-prev-i {
@@ -31,18 +31,7 @@ div.proj-prev-i {
 	right: 5px;
 	border-radius: 5px;
 	background-color: #f0f0f0;
-	transition: 0.5s;
 	overflow: hidden;
-}
-
-div.proj-prev-i:hover {
-	position: absolute;
-	top: 2px;
-	bottom: 2px;
-	left: 2px;
-	right: 2px;
-	border-radius: 5px;
-	background-color: #f0f0f0;
 }
 
 div.proj-prev-img-o {
@@ -52,11 +41,6 @@ div.proj-prev-img-o {
 	bottom: -200%;
 	width: 300px;
 	overflow: hidden;
-	transition: 0.5s;
-}
-
-div.proj-prev-i:hover div.proj-prev-img-o {
-	width: 350px;
 }
 
 img.proj-prev-img-i {
@@ -70,18 +54,12 @@ img.proj-prev-img-i {
 	left: 0;
 	right: 0;
 	margin: auto;
-	transition: 0.5s;
-}
-
-div.proj-prev-i:hover img.proj-prev-img-i {
-	filter: blur(5px);
 }
 
 p.proj-prev-read {
 	position: absolute;
-	left: -100px;
+	left: -200px;
 	bottom: 0;
-	transition: 0.3s ease-in-out;
 	color: white;
 }
 
@@ -90,11 +68,6 @@ p.proj-prev-status {
 	left: 0px;
 	bottom: 7px;
 	margin: 0;
-}
-
-div.proj-prev-i:hover p.proj-prev-read {
-	left: 10px;
-	z-index: 2;
 }
 
 div.proj-prev-desc-o {
@@ -107,23 +80,12 @@ div.proj-prev-desc-o {
 	transition: 0.5s;
 }
 
-div.proj-prev-i:hover div.proj-prev-desc-o {
-	right: 3px;
-	top: 3px;
-	bottom: 3px;
-}
-
 div.proj-prev-desc-i {
 	position: absolute;
 	left: 0;
 	top: 0;
 	bottom: 0;
 	width: 100%;
-	transition: 0.5s;
-}
-
-div.proj-prev-i:hover div.proj-prev-desc-i {
-	left: 50px;
 }
 
 div.proj-prev-desc-f {
@@ -144,7 +106,6 @@ h3.proj-prev-title {
 p.proj-prev-desc {
 	margin: 0;
 }
-
 
 
 

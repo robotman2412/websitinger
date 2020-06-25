@@ -1,9 +1,9 @@
 <center>
 	<h1 style="margin-bottom: 0;">GR8CPU: the project that came to be</h1>
-	<h3 style="margin-top: 0;">on the design of my most abitious project yet</h3>
+	<h3 style="margin-top: 0;">on the design of my most ambitious project yet</h3>
 </center>
 <p>
-	In the first and second class of high school, i was bored pretty much consistantly.<br>
+	In the first and second class of high school, i was bored pretty much consistently.<br>
 	Why? Because i was 1 or even 2 levels lower than i should have been.<br>
 	Insufficient thought of special education comes to mind.<br>
 	In the times here i was bored, my friend and i were using calculators to play Tic-Tac-Toe.<br>
@@ -20,11 +20,11 @@
 	The rules were as follows:
 </p>
 <ul>
-	<li>It must have absolutely the simpelest control unit possible.</li>
+	<li>It must have absolutely the simplest control unit possible.</li>
 	<li>It will have four main registers, A, B, C and D, which are responsible for calculation and storage.</li>
 	<li>It must be able to access the entire memory the program resides in fully.</li>
 	<li>
-		In designing, you must under no circomstance throw out the more logical solution in favor of something you worked hard on.<br>
+		In designing, you must under no circumstance throw out the more logical solution in favor of something you worked hard on.<br>
 		This is not a set rule, but more a philosophy to prevent the sunken cost fallacy from getting to me.
 	</li>
 	<li>The design must make sense to build on breadboards.</li>
@@ -36,9 +36,9 @@
 	It has a button to load the program from a ROM into RAM, but this is not significant in operation.<br>
 	It is an 8-bit RISC CPU with up to 64 instructions.<br>
 	The initial design has more than 32 control wires. I'll get back to that.<br>
-	It has the ability to set the ALU operation basedon on any byte of data.<br>
+	It has the ability to set the ALU operation based on on any byte of data.<br>
 	It has 4 flags (details about the ALU output, used for comparisons).<br>
-	The D registre is treated specially, it acts as I/O instead of storing data.<br>
+	The D register is treated specially, it acts as I/O instead of storing data.<br>
 	It also has conditional branching (if-then-else).<br>
 	It does not have a stack (think to do one task you need to do another).<br>
 	I was again incredibly happy when this design proved to work.
@@ -47,9 +47,9 @@
 <p>
 	As i went about chatting with other people who have designed CPUs, i learned more over time.<br>
 	I learned quite quickly that two of my flags were redundant, and therefor should be removed.<br>
-	I was still thinking of how to build this on breadboards, and what i thought of pretty quicky is that i can't have too many control signals.<br>
+	I was still thinking of how to build this on breadboards, and what i thought of pretty quickly is that i can't have too many control signals.<br>
 	This is because you need to store your control signals somewhere and i wasn't about to get 6 8-bit ROMs just for control signals.<br>
-	So i set to remove unnecesary control signals.<br>
+	So i set to remove unnecessary control signals.<br>
 	What resulted from these changes is GR8CPU Rev2:<br>
 	<img title="Click to enlarge." class="fit-inline may-big" style="width: 50%; height: 50%;" src="/data/projects/images/gr8cpu_design_rev2.png"><br><br>
 	This is mostly the final design, but not completely.<br>
@@ -57,14 +57,35 @@
 	There is now an explicit reset signal for the B register.<br>
 	This is because it is not used for data storage, but more for computation.<br>
 	Certain instruction did not work when implemented on breadboard, so this is the fix that i made.<br>
-	The reason they didn't work has to do with input hold times on memory and istructions acting directly on memory.<br>
+	The reason they didn't work has to do with input hold times on memory and instructions acting directly on memory.<br>
 	The final design can be seen here:<br>
 	<img title="Click to enlarge." class="fit-inline may-big" style="width: 50%; height: 50%;" src="/data/projects/images/gr8cpu_design_rev2_1.png"><br><br>
 	The majority of the work done on Rev2 is optimising the CPU enough to be built on breadboards and play <nobr>Tic-Tac-Toe.</nobr><br>
 	Speaking of, the Tic-Tac-Toe program currently uses a whopping 98% of the 256 bytes of memory available.<br>
-	Many instructions were added just to make programs smaller.
+	Many instructions were added just to make programs smaller in order to fit everything i want.
 </p>
 <h2>let's get technical</h2>
 <p>
-	This is an extra, where i'll be speaking in detail about many design decisions.
+	This is an extra, where i'll be speaking in detail about many design decisions.<br><br>
+	At most 32 control wires:<br>
+	I want at most 32 control wires, because i don't want to have to use multiple ROMs.<br>
+	To achieve this, i have re-used control wires for mechanisms that cannot both operate at the same time.<br>
+	In revision 3, more ROMs will be used, but still with at most 32 control wires.<br><br>
+	No more giving the ALU arbitrary operations via a special mechanism:<br>
+	Unused, unneeded. Increased complexity unnecessarily.<br><br>
+	Using the D register as an I/O register:<br>
+	I had as a goal to play Tic-Tac-Toe on this computer, and of course you will need an interface.<br>
+	The reason i chose the D register is convenience, you don't need special instructions or control wires to use it, just use it as a normal register.<br><br>
+	Tic-Tac-Toe as a design goal:<br>
+	I did start working on this project before i got the idea of Tic-Tac-Toe, and the main thing i tested was fibonacci.<br>
+	Fibonacci being the big test of CPUs it is, it made sense to me.<br>
+	But i knew that couldn't test my CPU entirely.<br>
+	I did mention that we played Tic-Tac-Toe in my class and the only reason it was the main design goal is that i could not think of any other.<br><br>
+	Arguments do not reside in the same byte as the instruction:<br>
+	Multiple reasons, one of them being the assembler.<br>
+	I have experience programming and i knew i was going to make an assembler eventually, but i also knew that doing in-instruction data would be more complex to do with an assembler.<br>
+	Also, for CPU complexity.<br>
+	The CPU must be able to do a lot, and constricting myself this way would have meant that an upgrade like that is revision 3 would not be possible.<br>
+	Finally, it is simply more effort than the little space it saves is worth. Instructions would be constricted in number, assemblers more complex, i just didn't think it was a good idea.<br><br>
+	Many of these design decisions were hard to make, but easy to explain.
 </p>

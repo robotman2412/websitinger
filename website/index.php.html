@@ -2,10 +2,8 @@
 <html>
 <head>
 	<!-- This page is also the template page. -->
-	<?php require "incl/utils.php"; require "incl/project.php"; ?>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
 	<title>RobotMan2412's website</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<link rel="stylesheet" type="text/css" href="project.css">
 	<script src="/index.js"></script>
 </head>
 <body onload="loaded();">
@@ -40,8 +38,8 @@
 					I want to bring my CPU there.<br><br>
 					<a href="https://mch2021.org/"><img src="https://wiki.ifcat.org/images/thumb/6/6f/MHC2021_warningStickerV2.svg/630px-MHC2021_warningStickerV2.svg.png"></a>
 				</p>
-				<?php footer(); ?>
 			</div>
+			<?php footer(); ?>
 		</div>
 	</div>
 </body>

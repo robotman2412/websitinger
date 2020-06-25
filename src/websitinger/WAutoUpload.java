@@ -21,7 +21,7 @@ public class WAutoUpload {
 	
 	public static void main(String[] args) throws JSchException {
 		extensionAliasses.put("php.html", "php");
-		localToSiteDirs.put("D:/!intellij/websitinger/website/", "/var/www/html/");
+		localToSiteDirs.put("D:/intellij/websitinger/website/", "/var/www/html/");
 		
 		ssh = new JSch();
 		String passwd;

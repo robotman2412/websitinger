@@ -20,6 +20,24 @@ function loaded() {
 	rightInnerContent = document.getElementById("right_inner_content");
 	
 	setInterval(function() {
+		var altfooter;
+		if (isUserMobile) {
+			altfooter = innerContent.getBoundingClientRect().height < window.innerHeight - 280;
+		}
+		else
+		{
+			altfooter = innerContent.getBoundingClientRect().height < window.innerHeight - 260;
+		}
+		var footer = document.getElementById("footer_outer");
+		if (altfooter) {
+			footer.setAttribute("class", "footer-o alt");
+			footer.style.top = "";
+		}
+		else
+		{
+			footer.setAttribute("class", "footer-o");
+			footer.style.top = innerContent.getBoundingClientRect().height + 75 + "px";
+		}
 		var space = Math.max(0, window.innerWidth - maxPXWidth);
 		if (space == 0) {
 			leftOuterContent.style.visibility = "hidden";
@@ -27,6 +45,7 @@ function loaded() {
 			outerContent.style.right = 0;
 			contentBackground.style.left = 0;
 			contentBackground.style.right = 0;
+			footer.style.left = "0";
 		}
 		else if (space > sidebarPXRequired && leftEnabled) {
 			leftOuterContent.style.visibility = "visible";
@@ -35,6 +54,13 @@ function loaded() {
 			outerContent.style.right = space / 2 - offs + "px";
 			contentBackground.style.left = space / 2 + offs + "px";
 			contentBackground.style.right = space / 2 - offs + "px";
+			if (altfooter) {
+				footer.style.left = sidebarPXWidth + "px";
+			}
+			else
+			{
+				footer.style.left = "0";
+			}
 		}
 		else
 		{
@@ -43,10 +69,18 @@ function loaded() {
 			outerContent.style.right = space / 2 + "px";
 			contentBackground.style.left = space / 2 + "px";
 			contentBackground.style.right = space / 2 + "px";
+			footer.style.left = "0";
 		}
 		var large = document.getElementById("enlarge_image");
 		if (large) {
-			var toobig = large.width >= window.innerWidth * 0.79 || large.height >= window.innerHeight * 0.79;
+			var toobig;
+			if (isUserMobile) {
+				toobig = large.width >= window.innerWidth || large.height >= window.innerHeight * 0.79;
+			}
+			else
+			{
+				toobig = large.width >= window.innerWidth * 0.79 || large.height >= window.innerHeight * 0.79;
+			}
 			if (toobig) {
 				large.setAttribute("class", "img-large-toolarge");
 			}
@@ -91,6 +125,6 @@ function clearEnlarge() {
 		setTimeout(function() {
 			var remove = document.getElementById("enlarge_outer");
 			remove.parentNode.removeChild(remove);
-		}, 1000);
+		}, 500);
 	}
 }

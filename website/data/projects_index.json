@@ -41,6 +41,15 @@
 					"href": "/project.php?proj=br_cpu.breadboardians",
 					"image_url": "/data/projects/images/gr8cpur2_finished.jpg",
 					"content_name": "/data/projects/gr8cpu_build.html"
+				},
+				"screening_cpus": {
+					"is_category": false,
+					"is_ongoing": true,
+					"name": "screening CPUs... wait...",
+					"quickdesc": "Making the screen required to play Tic-Tac-Toe and to use some other programs.",
+					"href": "/project.php?proj=br_cpu.screening_cpus",
+					"image_url": "/data/projects/images/ttyscreen_early.jpg",
+					"content_name": "/data/projects/ttyscreen.html"
 				}
 			}
 		},

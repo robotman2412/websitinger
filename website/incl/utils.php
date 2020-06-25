@@ -1,5 +1,11 @@
 <?php
 
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+
+require_once "libs/Mobile_Detect.php";
+$detect = new Mobile_Detect;
+$isusermobile = $detect->isMobile();
+
 function addImageScrolling($images) {
 	static $scrollID = -1;
 	$scrollID ++;
@@ -27,6 +33,19 @@ function imageSizeAtr($imagname) {
 
 function footer() {
 	echo file_get_contents("/var/www/html/footer.html");
+}
+
+function head() {
+	global $isusermobile;
+	if ($isusermobile) {
+		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = true;</script>";
+		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index_mobile.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project_mobile.css\">";
+	}
+	else
+	{
+		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = false;</script>";
+		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project.css\">";
+	}
 }
 
 ?>

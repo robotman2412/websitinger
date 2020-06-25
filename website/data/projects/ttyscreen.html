@@ -1,0 +1,32 @@
+<center>
+    <h1 style="margin-bottom: 0;">screening CPUs</h1>
+    <h3 style="margin-top: 0;">is not the right term</h3>
+</center>
+<p>
+    The CPU itself is currently finished.<br>
+    But it's peripherals are most certainly not.<br>
+    Because we need a screen!<br>
+    And a controller.<br><br>
+    The screen is a bit of a challenge, but it should be do-able.<br>
+    It emulates 800x600 VGA, but the output signal is actually less then 200x150.<br>
+    Why? Well, because the pixel clock otherwise needed would be 40MHz, wayyy too fast to be reliable on a breadboard.<br>
+    Since it is a text display, i should tell you the resolution in characters also. It is 18 rows by 22 colomns.<br>
+    Here you can see the current state of the TTY screen:<br>
+</p>
+<center>
+    <img title="Click to enlarge." class="fit-inline may-big" style="width: 60%; height: 60%;" src="/data/projects/images/ttyscreen_early.jpg">
+</center><br><br>
+<p>
+    Right now, i'm working on actual display output.
+    I have already made a screen recognise it, but i have not added character displaying yet.<br><br>
+    Roadmap:
+</p>
+<ol>
+    <li>display characters</li>
+    <li>display characters from RAM</li>
+    <li>character writing triggers</li>
+    <li>write characters in the current column</li>
+    <li>write newline on \n or line overflow</li>
+    <li>clear the new line</li>
+    <li>test with GR8CPU</li>
+</ol>

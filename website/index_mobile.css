@@ -4,7 +4,7 @@ body {
 }
 
 p, form, ul, li, div, body {
-	font-size: 14px;
+	font-size: 22px;
 }
 
 a.w {
@@ -17,7 +17,7 @@ div.top-o {
 	left: 0;
 	right: 0;
 	top: 0;
-	height: 50px;
+	height: 75px;
 	background-color: #f6f6f6;
 	border-bottom: 2px solid #fbfbfb;
 	z-index: 8;
@@ -27,7 +27,7 @@ div.page-w-split {
 	position: relative;
 	top: 3px;
 	float: left;
-	height: 44px;
+	height: 69px;
 	width: 1px;
 	background-color: #e0e0e0;
 	margin: 0;
@@ -35,7 +35,7 @@ div.page-w-split {
 
 div.page-w {
 	float: left;
-	height: 50px;
+	height: 75px;
 	width: 125px;
 	background-color: #f6f6f6;
 	transition: ease-in-out 0.25s;
@@ -51,15 +51,15 @@ center.page-w-text {
 	position: relative;
 	text-decoration: none;
 	margin: 0;
-	top: 13px;
-	font-size: 16px;
+	top: 27px;
+	font-size: 24px;
 }
 
 div.content-o-h {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 52px;
+	top: 77px;
 	bottom: 0;
 	overflow: auto;
 }
@@ -84,7 +84,7 @@ div.content-l-o {
 	position: absolute;
 	left: 2px;
 	width: 300px;
-	top: 52px;
+	top: 77px;
 	bottom: 0;
 	background-color: #ffffff;
 	overflow: auto;
@@ -169,11 +169,11 @@ div.img-large-inner {
 	position: absolute;
 	top: 10%;
 	bottom: 10%;
-	left: 10%;
-	right: 10%;
+	left: 0;
+	right: 0;
 }
 
-div.footer-o a.w, div.footer-o-alt a.w {
+div.footer-o a.w {
 	color: #7f7f7f;
 }
 
@@ -198,7 +198,7 @@ div.footer-i {
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 25px;
+	top: 35px;
 	bottom: 50px;
 }
 

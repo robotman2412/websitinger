@@ -68,7 +68,7 @@ function previewProject($proj) {
 	echo "<a class=\"w\" href=\"", $projhref, "\"><div class=\"proj-prev-o\"><div class=\"proj-prev-i\">";
 	echo "<div class=\"proj-prev-img-o\"><div class=\"proj-prev-img-h\"></div><img class=\"proj-prev-img-i\" src=\"", $imageurl, "\"></div>";
 	echo "<div class=\"proj-prev-desc-o\"><div class=\"proj-prev-desc-i\">";
-	echo "<h3 style=\"margin-top:5px;\">", $projname, "</h3><p>", $projdesc, "</p><p class=\"proj-prev-status\">", $status, "</p>";
+	echo "<h3 class=\"proj-prev-title\">", $projname, "</h3><p class=\"proj-prev-desc\">", $projdesc, "</p><p class=\"proj-prev-status\">", $status, "</p>";
 	echo "</div><div class=\"proj-prev-desc-f\"></div></div>";
 	echo "<p class=\"proj-prev-read\">Read more...</p></div></div></a>";
 }
