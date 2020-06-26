@@ -7,9 +7,8 @@ p, form, ul, li, div, body {
 	font-size: 22px;
 }
 
-a.w {
+a.w, div.all-w a {
 	color: black;
-	text-decoration: none;
 }
 
 div.top-o {

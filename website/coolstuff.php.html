@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+    <title>RobotMan2412's website</title>
+    <script src="/index.js"></script>
+</head>
+<body onload="leftEnabled = true; loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div class="top-o">
+    <?php require "incl/pages.php"; ?>
+</div>
+<div id="left_outer_content" class="content-l-o">
+    <div id="left_inner_content" class="content-l-i">
+        <center><h3>overview</h3></center>
+        <div class="all-w">
+        </div>
+    </div>
+</div>
+<div id="outer_content_holder" class="content-o-h">
+    <div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+    <div id="outer_content" class="content-o">
+        <div id="inner_content" class="content-i">
+            <center>
+                <h2>cool stuff i'd like you to see</h2>
+            </center>
+            <p>
+                I'm going to just plop down some cool stuff i want you to see here.<br>
+                Enjoy!<br><br><br><br>
+            </p>
+            <!--<a name="example-jump"></a>!-->
+            <a name="binary-clock">
+                <h3>binary clock</h3>
+                I did it!<br>
+                It didn't take long to make, but it was fun.<br>
+                <a class="w" href="/binclock.php">It's on its own little page.</a>
+            </a>
+        </div>
+        <?php footer(); ?>
+    </div>
+</div>
+</body>
+</html>

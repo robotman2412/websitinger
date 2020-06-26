@@ -1,0 +1,7 @@
+<div {{copy(id)%_outer}} class="checkbox-o" onclick="clickCheckbox('{{id}}')">
+    <input type="checkbox" {{copy(id)}} {{copy(name)}}>
+    <div {{copy(id)%_inner}} class="checkbox-i">
+        <div {{copy(id)%_dot}} class="checkbox-dot"></div>
+    </div>
+    <p>{{innerHTML}}</p>
+</div>

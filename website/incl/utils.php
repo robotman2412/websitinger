@@ -37,6 +37,20 @@ function footer() {
 
 function head() {
 	global $isusermobile;
+	echo "<script id=\"server_side_template_loader\">var templates = {};";
+	$templates = json_decode(file_get_contents("/var/www/html/data/templates/index.json"), true);
+	foreach ($templates as $idw => $templatew) {
+		echo "templates[\"$idw\"] = \"";
+		if ($isusermobile) {
+			echo str_replace(array("\\", "\t", "\r\n", "\n", "\n", "\"", "\'"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'"), file_get_contents("/var/www/html/data/templates/".$templatew["mobile"]));
+		}
+		else
+		{
+			echo str_replace(array("\\", "\t", "\r\n", "\r", "\n", "\"", "\'"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'"), file_get_contents("/var/www/html/data/templates/".$templatew["desktop"]));
+		}
+		echo "\";";
+	}
+	echo "Object.freeze(templates);</script>";
 	if ($isusermobile) {
 		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = true;</script>";
 		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index_mobile.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project_mobile.css\">";
