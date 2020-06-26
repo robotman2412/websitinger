@@ -16,6 +16,11 @@
 			"name": "All the projects!"
 		},
 		{
+			"href": "/coolstuff.php",
+			"short": "coolstuff",
+			"name": "Cool stuff, whether made by me or not."
+		},
+		{
 			"href": "/about.php",
 			"short": "about",
 			"name": "About this website."

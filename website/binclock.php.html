@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; head(); ?>
+	<title>Binary clock - RobotMan2412's website</title>
+	<link rel="stylesheet" type="text/css" href="/special/binclock/binclock.css">
+	<script src="/index.js"></script>
+	<script src="/special/binclock/binclock.js"></script>
+</head>
+<body onload="loaded(); binStart();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+		</div>
+	</div>
+	<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+	<div id="outer_content_holder" class="content-o-h">
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h1>the clock that does a binary</h1>
+				</center>
+				<div class="bin-w">
+					<h1>hours <span id="bin_hour"></span></h1>
+					<div class="bin-d-o s">
+						<div id="bin_hour_4" class="bin-d-i"></div>
+						<div id="bin_hour_3" class="bin-d-i"></div>
+						<div id="bin_hour_2" class="bin-d-i"></div>
+						<div id="bin_hour_1" class="bin-d-i"></div>
+						<div id="bin_hour_0" class="bin-d-i"></div>
+					</div>
+					<h1>minutes <span id="bin_min"></span></h1>
+					<div class="bin-d-o">
+						<div id="bin_min_5" class="bin-d-i"></div>
+						<div id="bin_min_4" class="bin-d-i"></div>
+						<div id="bin_min_3" class="bin-d-i"></div>
+						<div id="bin_min_2" class="bin-d-i"></div>
+						<div id="bin_min_1" class="bin-d-i"></div>
+						<div id="bin_min_0" class="bin-d-i"></div>
+					</div>
+					<h1>seconds <span id="bin_sec"></span></h1>
+					<div class="bin-d-o">
+						<div id="bin_sec_5" class="bin-d-i"></div>
+						<div id="bin_sec_4" class="bin-d-i"></div>
+						<div id="bin_sec_3" class="bin-d-i"></div>
+						<div id="bin_sec_2" class="bin-d-i"></div>
+						<div id="bin_sec_1" class="bin-d-i"></div>
+						<div id="bin_sec_0" class="bin-d-i"></div>
+					</div>
+				</div>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>
