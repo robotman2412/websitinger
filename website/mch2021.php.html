@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="/special/mch2021/mch2021.js"></script>
+</head>
+<body onload="loaded(); mchStart();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="mch_letter_holder" style="height:0;overflow:hidden;">
+		<img id="sticker_nameless" src="/data/mch2021/promo_sticker_nameless.png">
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h2>WARNING: MAY CONTAIN HACKERS</h2>
+					<a class="w" href="https://mch2021.org/"><h3>2021</h3></a>
+				</center>
+				<a name="name"></a>
+				<h3>MCH2021 name sticker maker</h3>
+				<input id="mch_name" type="text" class="wide" value="hackers">
+				<canvas style="box-sizing:border-box;border:1px solid #c0c0c0;border-radius:4px;margin-top:20px;"
+				        class="fit-inline" id="mch_name_canvas" width="1492" height="660"></canvas>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

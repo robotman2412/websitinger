@@ -1,6 +1,7 @@
 <?php
 
 $useragent=$_SERVER['HTTP_USER_AGENT'];
+$logStats = true;
 
 require_once "libs/Mobile_Detect.php";
 $detect = new Mobile_Detect;
@@ -37,6 +38,7 @@ function footer() {
 
 function head() {
 	global $isusermobile;
+	global $logStats;
 	echo "<script id=\"server_side_template_loader\">var templates = {};";
 	$templates = json_decode(file_get_contents("/var/www/html/data/templates/index.json"), true);
 	foreach ($templates as $idw => $templatew) {
@@ -59,6 +61,17 @@ function head() {
 	{
 		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = false;</script>";
 		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project.css\">";
+	}
+	if ($logStats) {
+		$stats = json_decode(file_get_contents("/home/pi/stats.json"), true);
+		if (!array_key_exists($_SERVER["PHP_SELF"], $stats)) {
+			$stats[$_SERVER["PHP_SELF"]] = 1;
+		}
+		else
+		{
+			$stats[$_SERVER["PHP_SELF"]] = $stats[$_SERVER["PHP_SELF"]] + 1;
+		}
+		file_put_contents("/home/pi/stats.json", json_encode($stats) . "\n");
 	}
 }
 

@@ -98,7 +98,7 @@ div.content-l-i {
 	bottom: 5px;
 }
 
-img.fit-inline, image.fit-inline {
+.fit-inline {
 	width: auto;
 	height: auto;
 	left: 0;
@@ -141,7 +141,7 @@ div.img-large-backgnd-away {
 	100% {opacity: 0; }
 }
 
-img.img-large, image.img-large {
+.img-large {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -150,7 +150,7 @@ img.img-large, image.img-large {
 	z-index: 11;
 }
 
-img.img-large-toolarge, image.img-large-toolarge {
+.img-large-toolarge {
 	position: absolute;
 	width: auto;
 	height: auto;
@@ -205,4 +205,22 @@ div.footer-section {
 	width: 200px;
 	display: inline-block;
 	vertical-align: top;
+}
+
+div.narrow-inline {
+	position: relative;
+	left: 15%;
+	width: 60%;
+}
+
+.may-big {
+	cursor: pointer;
+}
+
+input.wide {
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 5px;
+	border: 2px solid #c0c0c0;
+	font-size: 24px;
 }
