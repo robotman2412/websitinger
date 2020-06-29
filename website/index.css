@@ -184,7 +184,7 @@ div.footer-o {
 }
 
 div.footer-o.alt {
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -211,16 +211,33 @@ div.narrow-inline {
 	position: relative;
 	left: 15%;
 	width: 60%;
+	margin: 20px;
 }
 
-.may-big {
+.may-big, button {
 	cursor: pointer;
 }
 
-input.wide {
+input.wide, button.wide {
 	width: 100%;
 	box-sizing: border-box;
 	border-radius: 5px;
 	border: 2px solid #c0c0c0;
 	font-size: 24px;
+	outline: none;
+	transition: 0.1s ease-in-out;
+}
+
+input.wide:focus {
+	border: 2px solid #ffbf00;
+}
+
+button.wide:active {
+	border: 2px solid #ffbf00;
+	background-color: #fff09e;
+}
+
+.note {
+	color: #7f7f7f;
+	font-size: 14px;
 }

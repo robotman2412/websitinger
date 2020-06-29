@@ -61,6 +61,9 @@ public class WAutoUpload {
 	}
 	
 	private static void checkUpload(File file, String remoteDir, String passwd, JSch ssh, boolean ignoreDir) {
+		if (file.getAbsolutePath().endsWith("~")) {
+			return; //ignore file because of reasons
+		}
 		if (file.isDirectory()) {
 			if (ignoreDir) {
 				for (File sub : file.listFiles()) {

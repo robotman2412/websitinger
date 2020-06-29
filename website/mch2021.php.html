@@ -6,32 +6,68 @@
 	<script src="/index.js"></script>
 	<script src="/special/mch2021/mch2021.js"></script>
 </head>
-<body onload="loaded(); mchStart();">
+<body onload="leftEnabled = true; loaded(); mchStart();">
 	<div id="template_builder" style="display:none;"></div>
 	<div class="top-o">
 		<?php require "incl/pages.php"; ?>
 	</div>
 	<div id="left_outer_content" class="content-l-o">
 		<div id="left_inner_content" class="content-l-i">
-			<center><h3>Sup.</h3></center>
+			<center><h3>overview</h3></center>
+			<div class="all-w">
+				<a href="#cpu">bringing the CPU to MCH2021</a><br>
+				<a href="#name">MCH2021 name sticker maker</a><br>
+				<a href="#promo">MCH2021 promotional artwork</a><br>
+			</div>
 		</div>
 	</div>
-	<div id="mch_letter_holder" style="height:0;overflow:hidden;">
+	<div style="height:0;overflow:hidden;">
 		<img id="sticker_nameless" src="/data/mch2021/promo_sticker_nameless.png">
+		<img id="name_font" src="/data/mch2021/promo_namefont.png">
 	</div>
 	<div id="outer_content_holder" class="content-o-h">
 		<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
 		<div id="outer_content" class="content-o">
 			<div id="inner_content" class="content-i">
 				<center>
-					<h2>WARNING: MAY CONTAIN HACKERS</h2>
-					<a class="w" href="https://mch2021.org/"><h3>2021</h3></a>
+					<h2 style="margin-bottom:0;">WARNING: MAY CONTAIN HACKERS</h2>
+					<a class="w" href="https://mch2021.org/"><h3 style="margin-top:0;">2021</h3></a>
 				</center>
-				<a name="name"></a>
+				<p>
+					As of June 2020, i've begun to appreciate hacker camps more.<br>
+					The last one i had been to is SHA2017, and the next one we're going to will be MCH2021.<br>
+					I'm very excited about MCH2021, even tough it's still going to take a while.<br>
+					Many ideas were made.<br>
+					This page includes some ideas related to MCH2021 and some promotional items <i>for</i> MCH2021.
+				</p>
+				<a name="cpu" />
+				<h3>bring home the <span style="text-decoration:line-through;">bacon</span> CPU!</h3>
+				<p>
+					Somewhere along the way with the <a class="w" href="/project.php?proj=br_cpu">CPU project</a>,
+					i realised it was a good idea to take it to a certain <a href="https://mch2021.org/">hacker camp</a>.<br>
+					I was originally fantizing over talks about CPU design, but i know i couldn't handle the stage fright.<br>
+					It was an idea in the back of my head for a long time, mostly forgetting about it.<br>
+					And now, it's come up again!<br>
+					This has made me think of many things, but most importantly, How do i get it there and how do i keep it safe?
+					I'd be lieing if i said i hadn't come up with an idea that might be over the top.
+				</p>
+				<a name="name" />
 				<h3>MCH2021 name sticker maker</h3>
 				<input id="mch_name" type="text" class="wide" value="hackers">
-				<canvas style="box-sizing:border-box;border:1px solid #c0c0c0;border-radius:4px;margin-top:20px;"
-				        class="fit-inline" id="mch_name_canvas" width="1492" height="660"></canvas>
+				<canvas style="box-sizing:border-box;border:1px solid #c0c0c0;margin-top:20px;"
+				        class="fit-inline may-big" id="mch_name_canvas" width="1492" height="660"></canvas>
+				<button class="wide" onclick="mchNameDownload();">download as PNG</button>
+				<a name="promo" />
+				<h3>MCH2021 promotional artwork.</h3>
+				Some promotional artwork by me, for MCH2021.<br><br>
+				<img src="/data/mch2021/promo_1080p.png" class="fit-inline"><br>
+				<span class="note">original 1080P promotional image made by me</span><br><br>
+				<img src="/data/mch2021/promo_namefont.png" class="fit-inline"><br>
+				<span class="note">font for the name sticker maker</span><br><br>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker.png" class="fit-inline"><br></div>
+				<span class="note">only the sticker of the promotional image</span><br><br>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker_nameless.png" class="fit-inline"><br></div>
+				<span class="note">nasmeless sticker, used for the name maker</span><br><br>
 			</div>
 			<?php footer(); ?>
 		</div>

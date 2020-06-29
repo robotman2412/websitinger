@@ -42,37 +42,36 @@ function loaded() {
 			footer.style.top = innerContent.getBoundingClientRect().height + 75 + "px";
 		}
 		var space = Math.max(0, window.innerWidth - maxPXWidth);
+		var altOffs = altfooter ? 0 : 20;
 		if (space == 0) {
 			leftOuterContent.style.visibility = "hidden";
 			outerContent.style.left = 0;
-			outerContent.style.right = 0;
+			outerContent.style.right = -altOffs;
 			contentBackground.style.left = 0;
 			contentBackground.style.right = 0;
-			footer.style.left = "0";
 		}
-		else if (space > sidebarPXRequired && leftEnabled) {
+		else if (space >= sidebarPXRequired && leftEnabled) {
 			leftOuterContent.style.visibility = "visible";
-			var offs = sidebarPXWidth / 2;
-			outerContent.style.left = space / 2 + offs + "px";
-			outerContent.style.right = space / 2 - offs + "px";
-			contentBackground.style.left = space / 2 + offs + "px";
-			contentBackground.style.right = space / 2 - offs + "px";
-			if (altfooter) {
-				footer.style.left = sidebarPXWidth + "px";
+			var offs;
+			if (space >= sidebarPXRequired * 2) {
+				offs = 0;
 			}
 			else
 			{
-				footer.style.left = "0";
+				offs = sidebarPXWidth / 2 - (space - sidebarPXRequired) / 2;
 			}
+			outerContent.style.left = space / 2 + offs + "px";
+			outerContent.style.right = space / 2 - offs - altOffs + "px";
+			contentBackground.style.left = space / 2 + offs + "px";
+			contentBackground.style.right = space / 2 - offs + "px";
 		}
 		else
 		{
 			leftOuterContent.style.visibility = "hidden";
 			outerContent.style.left = space / 2 + "px";
-			outerContent.style.right = space / 2 + "px";
+			outerContent.style.right = space / 2 - altOffs + "px";
 			contentBackground.style.left = space / 2 + "px";
 			contentBackground.style.right = space / 2 + "px";
-			footer.style.left = "0";
 		}
 		var large = document.getElementById("enlarge_image");
 		if (large) {
@@ -106,6 +105,14 @@ function loaded() {
 			for (i = 0; i < elem.classList.length; i++) {
 				if (elem.classList[i] === "may-big") {
 					enlargeImage(elem.getAttribute("src"));
+					break;
+				}
+			}
+		}
+		else if (elem.nodeName === "CANVAS") {
+			for (i = 0; i < elem.classList.length; i++) {
+				if (elem.classList[i] === "may-big") {
+					enlargeImage(elem.toDataURL("image/png", 1.0));
 					break;
 				}
 			}

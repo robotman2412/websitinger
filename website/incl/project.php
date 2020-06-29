@@ -1,6 +1,6 @@
 <?php
 
-$projectsIndex = json_decode(file_get_contents("/var/www/html/data/projects_index.json"), true, 65536);
+$projectsIndex = addHref(json_decode(file_get_contents("/var/www/html/data/projects_index.json"), true, 65536));
 $projID = getProjID();
 $proj = getProjectFromName($projID);
 
@@ -10,12 +10,27 @@ function getProjID() {
 	return $arr0['proj'];
 }
 
+function addHref($proj) {
+	$proj['href'] = "/project";
+	$proj = addHref0($proj, "");
+	return $proj;
+}
+
+function addHref0($proj, $idst) {
+	foreach ($proj['content'] as $idw => &$projw) {
+		if ($projw['is_category']) {
+			$projw = addHref0($projw, $idst . $idw . ".");
+		}
+		$projw['href'] = "/project.php?proj=" . $idst . $idw;
+	}
+	return $proj;
+}
+
 function getProjectFromName($projName) {
 	global $projectsIndex;
 	if (strlen($projName) < 1) {
 		return $projectsIndex;
 	}
-		
 	$names = explode(".", $projName);
 	$current = $projectsIndex;
 	foreach ($names as $namew) {
@@ -124,6 +139,7 @@ function projHierarchy0($proj, $top, $depth) {
 function projContent() {
 	global $proj;
 	global $projectsIndex;
+	global $projID;
 	if ($proj == false) {
 		$id0 = $_SERVER['QUERY_STRING'];
 		echo "<p>This project is missing!<br>If a link on this website led you here, please contact RobotMan2412 and tell him:<br>missing project, query: $id0</p>";

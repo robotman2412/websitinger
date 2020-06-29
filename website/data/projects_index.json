@@ -4,7 +4,7 @@
 	"name": "all my projects",
 	"quickdesc": "All of my projects.",
 	"description_name": "/data/project_index.html",
-	"href": "/project.php",
+	"href": "/project",
 	"content": {
 		"br_cpu": {
 			"is_category": true,
@@ -12,7 +12,6 @@
 			"name": "the breadboard CPU project",
 			"quickdesc": "The project where i design and build my own computer, from scratch, on breadboards.",
 			"description_name": "/data/projects/br_cpu.html",
-			"href": "/project.php?proj=br_cpu",
 			"image_url": "/data/projects/images/gr8cpur2_finished.jpg",
 			"content": {
 				"design_first": {
