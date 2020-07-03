@@ -1,5 +1,52 @@
 <p>
 	Here, i write about my ongoing breadboard CPU project.<br>
-	From design to building, from finishing to upgrades, you'll find my passion for CPUs here.
+	From design to building, from finishing to upgrades, you'll find my passion for CPUs here.<br><br>
+	Current roadmap: <span class="note">(as of 3 july 2020)</span>
 </p>
+<ol>
+	Near future:
+	<li>Finish making the TTY screen.
+		<ol>
+			<li>&#x2713; get HSync working</li>
+			<li>&#x2713; get VSync working</li>
+			<li>&#x2713; ad-hoc stability improvements</li>
+			<li>(30%) display characters</li>
+			<li>display characters from RAM</li>
+			<li>character writing triggers</li>
+			<li>write characters in the current column</li>
+			<li>write newline on \n or line overflow</li>
+			<li>clear the new line</li>
+			<li>test with GR8CPU</li>
+		</ol>
+	</li>
+	<li>Make the controller.</li><br>
+	further future:
+	<li>(90%) Finish designing most aspects of Rev3.</li>
+	<li>Start building Rev3.<br>
+		Originally planned as an upgrade, i decided to keep both CPUs.
+		<ul>
+			<li>make another ALU</li>
+			<li>make more registers, C (will be X) may be wihtout decimal this time</li>
+			<li>16-bit program counter</li>
+			<li>stack pointer</li>
+			<li>16-bit address register</li>
+			<li>16-bit address postprocessor</li>
+		</ul>
+	</li><br>
+	Far future:
+	<li>Design revision 4.</li>
+	<li>Start upgrading Rev3 by adding Rev4 components.<br>
+		Wanted features / components:
+		<ul>
+			<li>error handling where all states can be recovered</li>
+			<li>interrupts (required)</li>
+			<li>convert D register from I/O to Y register as index register</li>
+			<li>flag manipulation instructions (get, set, push, pull, on, off)</li>
+			<li>interrupt enable as flag</li>
+		</ul>
+	</li><br>
+	Further future, in a year:
+	<li>Build MCH2021-safe enclosure.</li>
+	<li>Go to MCH2021!</li>
+</ol>
 <h2>Projects in this category:</h2>

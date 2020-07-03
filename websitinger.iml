@@ -14,6 +14,7 @@
         </CLASSES>
         <JAVADOC>
           <root url="https://epaul.github.io/jsch-documentation/javadoc/" />
+          <root url="https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/" />
         </JAVADOC>
         <SOURCES />
       </library>

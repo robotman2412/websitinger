@@ -1,7 +1,7 @@
 <?php
 
 $useragent=$_SERVER['HTTP_USER_AGENT'];
-$logStats = true;
+$logStats = !isset($_COOKIE["no_stats"]);
 
 require_once "libs/Mobile_Detect.php";
 $detect = new Mobile_Detect;

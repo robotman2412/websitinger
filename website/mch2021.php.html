@@ -5,6 +5,7 @@
 	<title>RobotMan2412's website</title>
 	<script src="/index.js"></script>
 	<script src="/special/mch2021/mch2021.js"></script>
+	<link rel="stylesheet" href="/special/mch2021/mch2021.css" type="text/css">
 </head>
 <body onload="leftEnabled = true; loaded(); mchStart();">
 	<div id="template_builder" style="display:none;"></div>
@@ -49,8 +50,37 @@
 					It was an idea in the back of my head for a long time, mostly forgetting about it.<br>
 					And now, it's come up again!<br>
 					This has made me think of many things, but most importantly, How do i get it there and how do i keep it safe?
-					I'd be lieing if i said i hadn't come up with an idea that might be over the top.
+					The idea might be a little over the top...<br>
+					You can see it down here, and you can
+					<?php if ($isusermobile) {echo "tap on a part";} else {echo "hover over a part";} ?>
+					a part for more info.
 				</p>
+				<div style="position: relative;">
+					<img class="fit-inline hint-img" src="/data/mch2021/cpu_box_design0.jpg">
+					<div class="hint-i">
+						<div class="hint control-enable">
+							<p style="left:5px;top:0;">
+								control enable<br>
+								If i do actually add control, i don't want everyone to be able to control it.
+								I'm unsure how i will implement this.
+							</p>
+						</div>
+						<div class="hint control-connect">
+							<p style="left:5px;top:0;">
+								connection to CPU<br>
+								Serial connection to a microcontroller in the CPU box which monitors the registers.
+								Writing to registers will likely be done with instruction injection.
+							</p>
+						</div>
+						<div class="hint info-status">
+							<p style="left:0;top:0;">
+								program / CPU status<br>
+								Information about the currently running instruction and
+								things like how long the program has been running.
+							</p>
+						</div>
+					</div>
+				</div>
 				<a name="name" />
 				<h3>MCH2021 name sticker maker</h3>
 				<input id="mch_name" type="text" class="wide" value="hackers">
@@ -60,13 +90,53 @@
 				<a name="promo" />
 				<h3>MCH2021 promotional artwork.</h3>
 				Some promotional artwork by me, for MCH2021.<br><br>
-				<img src="/data/mch2021/promo_1080p.png" class="fit-inline"><br>
+				<!--<div class="narrow-inline cloud-bkg" style="background:linear-gradient(#8df3c2,#b5f1d3,#cbf4e0);">
+					<center style="font-size: 20px;color:white;position:relative;top:20px;">BACK IT UP TO THE CLOUD</center>
+					<div class="cloud-i cloud1">
+						<div class="gear5">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:18px;"></center>
+						</div>
+						<div class="gear6">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:18px;"></center>
+						</div>
+						<div class="gear7">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:18px;"></center>
+						</div>
+					</div>
+					<div class="cloud-i cloud0">
+						<div class="gear0">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:18px;"></center>
+						</div>
+						<div class="gear1">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:18px;">M</center>
+						</div>
+						<div class="gear2">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+						</div>
+						<div class="gear3">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+							<center style="font-size:30px;">C</center>
+						</div>
+						<div class="gear2">
+							<center style="font-size:35px;">H</center>
+						</div>
+						<div class="gear4">
+							<img src="/data/mch2021/tooth_simple.png" width="1024" height="1024" class="fit-inline">
+						</div>
+					</div>
+				</div>!-->
+				<img src="/data/mch2021/promo_1080p.png" class="fit-inline may-big"><br>
 				<span class="note">original 1080P promotional image made by me</span><br><br>
-				<img src="/data/mch2021/promo_namefont.png" class="fit-inline"><br>
+				<img src="/data/mch2021/promo_namefont.png" class="fit-inline may-big"><br>
 				<span class="note">font for the name sticker maker</span><br><br>
-				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker.png" class="fit-inline"><br></div>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker.png" class="fit-inline may-big"><br></div>
 				<span class="note">only the sticker of the promotional image</span><br><br>
-				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker_nameless.png" class="fit-inline"><br></div>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker_nameless.png" class="fit-inline may-big"><br></div>
 				<span class="note">nasmeless sticker, used for the name maker</span><br><br>
 			</div>
 			<?php footer(); ?>
