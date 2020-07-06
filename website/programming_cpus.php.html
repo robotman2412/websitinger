@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>so you want to program my CPUs - RobotMan2412's website</title>
+	<script src="/index.js"></script>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div class="top-o">
+	<?php require "incl/pages.php"; ?>
+</div>
+<div id="left_outer_content" class="content-l-o">
+	<div id="left_inner_content" class="content-l-i">
+		<center><h3>Sup.</h3></center>
+	</div>
+</div>
+<div id="outer_content_holder" class="content-o-h">
+	<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+	<div id="outer_content" class="content-o">
+		<div id="inner_content" class="content-i">
+			<center>
+				<h2>so you want to program my CPUs</h2>
+			</center>
+			<p class="note">
+				This page and the pages related to programming my CPUs are all Work-In-Progress.<br>
+				I expect it to take at least until July 10th to get most of this done.
+			</p>
+			<p>
+				This is where you get started.<br>
+				As GR8CPU Rev3.1 is not done, you can currently only program GR8CPU Rev2.1 in assembly.<br>
+				I am most certainly planning on letting you program GR8CPU Rev3.1 in C/C++ when it's done.
+			</p>
+			<h3>programming GR8CPU Rev2.1 in assembly</h3>
+			<p>
+				First, you must read the <a class="w" href="/techdesc_gr8cpur2">technical description of GR8CPU Rev2.1</a>.<br>
+				This is by far the most important information, because you need to know a bit of behind-the-scenes to program assembly.<br><br>
+				Next, may want to read read the <a class="w" href="/guide_assembler">guide to using my assembler</a>.<br>
+				This shows the general structure of an assembly program, and is also very helpful. You may also skip this, but i recommend reading it.<br><br>
+				Finally, i advise you to go to my <a class="w" href="/cpu_control">online CPU control</a>,
+				as you can easily test all sorts of programs here without installing anything.<br>
+				Simply click on the "hello world" example and program away.<br><br>
+				If you do want to install software, you need to go to my <a href="/cpu_resources" class="w">CPU resources page</a>.<br>
+				It will contain all the resources needed to try this on your own (not yet done).<br>
+			</p>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>

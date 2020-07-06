@@ -1,0 +1,7 @@
+val:[#$%0-9][^ ]*[^0-9a-z_]
+insn:(load|copy|add|sub|jump|or|and|xor|shift|store|halt|inc|dec|rot|with|if|unless)[^0-9a-z_]
+insa:(to)[^0-9a-z_]
+data:(data|byte|bytes|reserve)[^0-9a-z_]
+reg:(A|B|C|D|L|R|carry)[^0-9a-z_]
+meta:(@include|@no_padding)[^0-9a-z_]
+comment:;.*

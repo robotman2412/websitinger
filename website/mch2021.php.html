@@ -57,7 +57,10 @@
 				</p>
 				<div style="position: relative;">
 					<img class="fit-inline hint-img" src="/data/mch2021/cpu_box_design0.jpg">
-					<div class="hint-i">
+					<div class="hint-i noselect">
+						<div class="hint enlarge" onclick="enlargeImage('/data/mch2021/cpu_box_design0.jpg')">
+							<p>enlarge image</p>
+						</div>
 						<div class="hint control-enable">
 							<p style="left:5px;top:0;">
 								control enable<br>
@@ -79,8 +82,89 @@
 								things like how long the program has been running.
 							</p>
 						</div>
+						<div class="hint adapt5v">
+							<p style="left:0;top:0;">
+								5V adapter directly connected<br>
+								Applying wrong voltage can easily fry my CPU, and i don't want that.
+								So i will directly connect the 5V adapter as such you cannot mess it up.
+							</p>
+						</div>
+						<div class="hint regdisp">
+							<p style="left:0;top:0;">
+								register display<br>
+								Shows the bits of the registers, with either lights,
+								or "toggle bit" buttons in case i do implement control.
+							</p>
+						</div>
+						<div class="hint hexdisp">
+							<p style="left:0;top:0;">
+								register hex display<br>
+								I may want to also make a hexadecimal display of the register values.
+							</p>
+						</div>
+						<div class="hint more8">
+							<p style="left:0;top:0;">
+								more 8- and 16-bit registers
+							</p>
+						</div>
+						<div class="hint control-opt">
+							<p style="left:0;top:0;">
+								I want to implement control, but i might not.
+							</p>
+						</div>
+						<div class="hint control-info">
+							<p style="top:0;left:0;">
+								control / info<br>
+								About the current state of the CPU.
+							</p>
+						</div>
+						<div class="hint ctl-ifo-top">
+							<p style="top:0;left:0;">
+								control / info<br>
+								top aspect
+							</p>
+						</div>
+						<div class="hint ctl-ifo-left">
+							<p style="top:0;left:10%;">
+								control / info<br>
+								left aspect
+							</p>
+						</div>
+						<div class="hint gr8cpur3-dim">
+							<p style="top:0;left:0;">
+								dimensions expected for GR8CPU Rev3.1:<br>
+								<nobr>24cm x 62cm<sup>+</sup></nobr><br><nobr>9.5" x 24.4"<sup>+</sup></nobr>
+							</p>
+						</div>
+						<div class="hint cpu-tty-box">
+							<p style="top:0;left:0;">
+								Box that will house the CPU and "graphics" card.
+							</p>
+						</div>
+						<div class="hint layout">
+							<p style="top:5px;left:5px;">
+								General layout of everything.
+							</p>
+						</div>
+						<div class="hint longwire">
+							<p style="top:0px;left:0px;">
+								Long wire so you can stand back with the controller.
+							</p>
+						</div>
 					</div>
 				</div>
+				<p>
+					MCH2021 being a hacker camp and this CPU being what it is, i start wondering...
+					You see, at <a href="https://sha2017.org/">SHA2017</a>, many things were "hacked", or as i like to call it, pwned.
+					The thing i was wondering was exactly that.
+					If i make everything envolved public info, will someone pwn it?
+					Good question! I certainly hope they do, even if it's very superficial.
+					So i made <a class="w" href="/isa_gr8cpur2">the GR8CPU Rev2 instruction set listing</a>.
+					It contains the entire instruction set and exactly how each instruction acts for GR8CPU Rev2.1.
+					Also, i made <a class="w" href="/techdesc_gr8cpur2">the GR8CPU Rev2 technical description</a> and
+					<a class="w" href="/guide_assembler">the guide to using my assembler</a>.
+					<span class="note">Some pages coming soon, i will also add appropriate pages on Rev3.1 when possible.</span>
+				</p>
 				<a name="name" />
 				<h3>MCH2021 name sticker maker</h3>
 				<input id="mch_name" type="text" class="wide" value="hackers">

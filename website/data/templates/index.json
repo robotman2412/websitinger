@@ -2,5 +2,9 @@
   "checkbox": {
     "mobile": "checkbox.html",
     "desktop": "checkbox.html"
+  },
+  "asm": {
+    "mobile": "asm.html",
+    "desktop": "asm.html"
   }
 }

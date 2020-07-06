@@ -44,11 +44,11 @@ function head() {
 	foreach ($templates as $idw => $templatew) {
 		echo "templates[\"$idw\"] = \"";
 		if ($isusermobile) {
-			echo str_replace(array("\\", "\t", "\r\n", "\n", "\n", "\"", "\'"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'"), file_get_contents("/var/www/html/data/templates/".$templatew["mobile"]));
+			echo str_replace(array("\\", "\t", "\r\n", "\n", "\n", "\"", "\'", "</script>"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'", "</\" + \"script\" + \">"), file_get_contents("/var/www/html/data/templates/".$templatew["mobile"]));
 		}
 		else
 		{
-			echo str_replace(array("\\", "\t", "\r\n", "\r", "\n", "\"", "\'"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'"), file_get_contents("/var/www/html/data/templates/".$templatew["desktop"]));
+			echo str_replace(array("\\", "\t", "\r\n", "\r", "\n", "\"", "\'", "</script>"), array("\\\\", " ", " ", " ", " ", "\\\"", "\\\'", "</\" + \"script\" + \">"), file_get_contents("/var/www/html/data/templates/".$templatew["desktop"]));
 		}
 		echo "\";";
 	}

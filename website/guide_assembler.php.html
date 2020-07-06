@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This page is also the template page. -->
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>buide to my assembler - RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="/special/gr8cpu/asm.js"></script>
+	<link rel="stylesheet" href="/special/gr8cpu/gr8asm.css" type="text/css">
+</head>
+<body onload="leftEnabled = true; loaded();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>overview</h3></center>
+			<a class="w" href="#install">installing</a><br>
+			<a class="w" href="#starting">getting started: app</a><br>
+			<a class="w" href="#programming">understanding how to program</a><br>
+			<a class="w" href="#advanced">advanced: metadata</a><br>
+			<a class="w" href="#debug">debugging: finding "your" errors</a><br>
+			<a class="w" href="#glance">if you want to do everything at a glance</a><br>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h2>guide to using my assembler</h2>
+				</center>
+				<p>
+					My assembler is currently the only tool to program my CPUs.<br>
+					Here, i make a guide to using the assembler.<br><br>
+					See also:<br>
+					<a class="w" href="/techdesc_gr8cpur2">technical description for GR8CPU Rev2.1</a><br>
+					<a class="w" href="/isa_gr8cpur2">instruction set for GR8CPU Rev2.1</a><br>
+					<a class="w" href="/cpu_resources">resources related to my CPUs</a><br>
+					<a class="w" href="/cpu_control">online CPU control</a><br>
+				</p>
+				<h2>in case of online CPU control</h2>
+				<p>
+					Go <a class="w" href="#programming">understanding how to program in assembly</a>,
+					as the assembler is not used for online CPU control.
+				</p><br><br><br><br><br><br>
+				<a name="install"></a><h3>1. installing the assembler</h3>
+				<p>
+					The assembler is a small java program, you can download it and put it anywhere.<br>
+					<a href="https://www.java.com/download/">You need Java&trade; installed tu run it.</a><br>
+					There will be command line support in the future, working on this now in fact.<br>
+					It creates a folder named "data" and it stores the paths of your last assembled file in there.<br>
+					If it continually crashes, you may try to remove this folder, as it stores no critical data.<br>
+					You can download it <a class="w" href="/resource/Assembler.jar">via this link</a>.<br>
+					Your browser and/or operating system may warn you about viruses if you download this.<br>
+					Then just put it where you want (i put it in my projects folder) and run it by double-clicking.<br>
+				</p>
+				<a name="starting"></a><h3>2. getting started: as application</h3>
+				<p>
+					Double click on the Assembler.jar you downloaded.<br>
+					The screen you see will look similar to this:<br>
+					<img class="fit-inline may-big" src="/data/assembler_start.png" title="Click to enlarge."><br>
+					You will need two things: An assembly guide and a source file.<br>
+					The assembly guide tells my assembler exactly how to compile a program for a certain CPU.<br>
+					The assembly guides can be found in my <a class="w" href="/cpu_resources">CPU resources page (coming soon)</a>.<br>
+					You will need to download the assembly guide for the CPU you want to make a program for.<br>
+					As one may know, press the select button per input or output file to select which file you want.<br>
+					My <a class="w" href="/cpu_resources">CPU resources page (coming soon)</a>
+					will also have some of the programs i made for my CPUs and the files needed to emulate my CPUs.<br>
+				</p>
+				<a name="commandline"></a>
+				<a name="programming"></a><h3>3. making your own programs</h3>
+				<p>
+					This will not go over each CPU individually, for that you will need to look at
+					<a href="/programming_cpus" class="w">so you want to program my CPUs</a>.<br>
+					This also assumes you have experience with a modern programming language.<br>
+					However, this will contain important information as to how the assembler functions.<br><br>
+					First, i need you to understand what comes first in the file will come first in the program.<br>
+					If you put data first, the CPU <i>will</i> try to run it, as it doesn't tell the difference.
+					This is why an instruction always comes before data.<br><br>
+					Here you see an assembly program:<br>
+				</p>
+				<x-incl id="asmfragment_example" type="asm" src="/special/gr8cpu/asmexample.asm" style="gr8cpur2_1"></x-incl><br>
+				<p>
+					"load", "store" and "halt" halt here are what is called instructions.
+					<br><br>
+					You can see that both start and someplace are labels.
+					A label can be used to set a constant value, or to resolve an address.
+					Where you would otherwise put a value, you can also place a label.<br>
+					You can perform simple calculation to set a label.
+					<nobr>With * / + - and</nobr> braces.<br>
+					Labels are always placed at the very start of a line.<br><br>
+					The data keyword is not highlighted here and i don't know why,
+					But the keywords data, byte and bytes serve the same function.
+					They signify data, whether that is a single byte or an entire string.<br><br>
+					About data types--<br>
+					There is 5 types which you can put in your program:
+				</p>
+				<ul>
+					<li>Hexadecimal, prefixed with $, but not 0x</li>
+					<li>Decimal (positive or negative), just put it without prefix or suffix.</li>
+					<li>Octal, for my old assembly fans, suffixed with either 'o' or 'q'</li>
+					<li>Character, one long string</li>
+					<li>String, either in " or in '</li>
+				</ul>
+				<p>
+					If you know C/C++, you know a c-string is terminated with \0. Here you need to do that explicitly.
+					Also, character constant is simply any string with a length of 1,
+					it may be used as any other byte where strings may not.<br><br>
+					The reserve keyword reserves a number of bytes, sets them all to 0 and is typically used with a label.
+					I have not had a good use for it so far, but later on i might, which is why i added it.<br><br>
+					On the general format of how values are included in a program.<br>
+					Here you see another assembly program:
+				</p>
+				<x-incl type="asm" id="asmfragment_valueincl" src="/special/gr8cpu/asmvalueincl.asm" style="gr8cpur2_1"></x-incl><br>
+				<p>
+					Here comes a trend in instruction definitions.<br>
+					Any instruction which deals with an absolute value rather than an address, prefixes the value with #.
+					This is not something that defines your value, but rather something that defines which instruction to use,
+					as otherwise there are sometimes two instructions which would look completely identical.<br><br>
+					You see here the "load #'.'" loads the character '.',
+					where as the "load $00" would load the value at address $00 (0) in memory.<br>
+					Similarly, there is no "store #", because you don't store to a value, you store to an address.<br><br>
+					This is consistent in all my instruction set definitions.<br><br>
+					To continue with simple things, look at my example programs found in the
+					<a class="w" href="/cpu_resources">CPU resources page (coming soon)</a>.
+				</p>
+				<a name="debug"></a>
+				<h3>debugging: finding "your" errors</h3>
+				<p>
+					As with a lot of programs, nothing is guaranteed to immediately work.<br>
+					Especially at this low level.<br>
+					That is why i have an assembly dump system.<br><br>
+					In case you're using the assembler software, simple press the "open dump file" button.<br>
+					In case of online CPU control, you should already be seeing an assembly dump.<br><br>
+					The assembly dump differs slightly per platform, but is a useful tool that lets you see what goes where.<br>
+					It is slightly complex to do, but you look up the program counter's value in the assembly dump so
+					you can see where it's currently running code, and you will quickly start to recognise the instructions by hexadecimal value.<br><br>
+					Unfortunately, i cannot find a way to describe it other than a way to look up what your CPU is running and what it will run.<br>
+					You can contact me on twitter (link in the footer below) if you are having trouble.
+				</p>
+				<a name="advanced"></a>
+				<h3>advanced programming: metadata</h3>
+				<p>
+					As of right now, there is four types of metadata.<br>
+					You place these at the beginning of the line:
+				</p>
+				<ul>
+					<li>@include "path/tosomefile.asm"</li>
+					<li>@no_padding</li>
+					<li>@charset "path/tosomecharset.wchs"</li>
+					<li>* = (some calculation or value)</li>
+				</ul>
+				<p>
+					The @include metadata literally includes said file into your program as more program.<br>
+					The path may be relative to the program directory, or an absolute path.<br>
+					Such an included program cannot have most types of metadata, it will be ignored.<br><br>
+					The @charset tells the assembler what characters in a string or character correspond to what
+					bytes in the final program, the path works like the one of @include.<br>
+					Charactersets are also included in my <a class="w" href="/cpu_resources">CPU resources page (coming soon)</a>.<br><br>
+					The @no_padding metadata must be placed before even the starting address definition,
+					as it changes how it works.<br>
+					<span class="note">Good practice, functionally not required.</span>
+					You see, the starting address is usually "padded out" with words of value 0,
+					from actual address 0 until it gets to where you put your program.<br>
+					The @no_padding removes this and makes the assembler simply assume you will place it there.<br><br>
+					The "* = ..." metadata can actually be used multiple times,
+					and can be used in included files.<br>
+					The @no_padding part will only remove the padding from address 0 to the starting address.<br>
+					It is only the starting address if there is no instructions before it, because of the next behaviour.<br>
+					If not used as the starting address, it will still set the address to the place (from that point in the file on),
+					allowing you to divide the program into pieces living in specific parts of memory.
+				</p>
+				<a name="glance" />
+				<h3>if you want to do everything at a glance</h3>
+				<p>
+					I would not recommend it, but this is where to start.<br>
+					Highlighting is not perfect, but it might help just a little bit.<br>
+					You must <a class="w" href="#install">install everything first</a>, you can't do that at a glance.<br>
+					If you read it, i advise to play around with example programs provided in the
+					<a class="w" href="/cpu_resources">CPU resources page (coming soon)</a>.<br><br>
+					Here comes the airplane!
+				</p>
+				<x-incl type="asm" src="/special/gr8cpu/glance.asm" id="ataglance_asm" style="gr8cpur2_1"></x-incl>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

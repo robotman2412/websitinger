@@ -135,6 +135,14 @@ div.hint-i {
 	right: 0;
 }
 
+div.hint.enlarge {
+	top: 0;
+	right: 0;
+	min-width: 10%;
+	min-height: 10%;
+	cursor: pointer;
+}
+
 div.hint.control-enable {
 	left: 0;
 	top: 50%;
@@ -153,7 +161,91 @@ div.hint.info-status {
 	right: 0;
 	bottom: 3%;
 	min-width: 25%;
-	min-height: 20%;
+	min-height: 30%;
+}
+
+div.hint.adapt5v {
+	top: 0;
+	left: 47%;
+	min-width: 25%;
+	min-height: 10%;
+}
+
+div.hint.regdisp {
+	top: 46%;
+	left: 58%;
+	min-width: 30%;
+	min-height: 10%;
+}
+
+div.hint.hexdisp {
+	right: 0;
+	min-width: 20%;
+	min-height: 10%;
+	top: 46%;
+}
+
+div.hint.more8 {
+	top: 62%;
+	left: 43%;
+	min-width: 20%;
+	min-height: 7.5%;
+}
+
+div.hint.control-opt {
+	top: 40%;
+	left: 25%;
+	min-width: 20%;
+	min-height: 10%;
+}
+
+div.hint.control-info {
+	top: 40%;
+	left: 7.5%;
+	min-width: 20%;
+	min-height: 15%;
+}
+
+div.hint.ctl-ifo-top {
+	top: 70%;
+	left: 40%;
+	min-width: 25%;
+	min-height: 10%;
+}
+
+div.hint.ctl-ifo-left {
+	top: 62%;
+	left: 0%;
+	min-width: 25%;
+	min-height: 10%;
+}
+
+div.hint.gr8cpur3-dim {
+	top: 9%;
+	left: 27%;
+	min-width: 23%;
+	min-height: 21%;
+}
+
+div.hint.cpu-tty-box {
+	top: 0;
+	left: 27%;
+	min-width: 23%;
+	min-height: 7%;
+}
+
+div.hint.layout {
+	left: 0;
+	top: 0;
+	min-height: 33%;
+	min-width: 25%;
+}
+
+div.hint.longwire {
+	left: 10%;
+	top: 19%;
+	min-width: 20%;
+	min-height: 10%;
 }
 
 

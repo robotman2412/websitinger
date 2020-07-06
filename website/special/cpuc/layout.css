@@ -1,0 +1,135 @@
+.pan, .panel {
+	position: absolute;
+}
+
+.select-bar {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50px;
+}
+
+.select-desc {
+	float: left;
+	display: inline-block;
+	vertical-align: middle;
+	width: 250px;
+	height: 50px;
+	font-size: 16px;
+	text-align: center;
+	margin: 0;
+}
+
+.select-optn {
+	float: left;
+	vertical-align: middle;
+	width: 150px;
+	height: 50px;
+	font-size: 16px;
+	text-align: center;
+	margin: 0;
+}
+
+.select-desc span, .select-optn span {
+	display: inline-block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+}
+
+.signin-o {
+	position: relative;
+	float: right;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.signin-o span.w {
+	position: absolute;
+	right: 100px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 200px;
+	cursor: pointer;
+}
+
+.panel-holder {
+	position: absolute;
+	top: 52px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.debugger {
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 25%;
+	box-sizing: border-box;
+}
+
+.editor {
+	top: 50%;
+	right: 25%;
+	left: 0;
+	bottom: 0;
+}
+
+.cpuview {
+	left: 0;
+	top: 0;
+	right: 25%;
+	height: 50%;
+}
+
+.open-tab {
+	overflow-x: auto;
+	overflow-y: scroll;
+	top: 25px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 10px;
+}
+
+.tab-handle-o {
+	top: 2px;
+	left: 0;
+	right: 0;
+	z-index: 3;
+}
+
+.tab-handle, .tab-handle-active {
+	position: relative;
+	float: left;
+	vertical-align: top;
+	padding-left: 8px;
+	padding-right: 8px;
+	height: 22px;
+	background-color: #44444a;
+	overflow-y: hidden;
+	padding-top: 1px;
+}
+
+.tab-handle-close {
+	position: relative;
+	left: 2px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 12px;
+	height: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+

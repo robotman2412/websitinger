@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>soon! - CPU control - RobotMan2412's website</title>
+	<script src="/special/cpuc/cpu_control.js"></script>
+	<link rel="stylesheet" href="/special/cpuc/layout.css">
+	<link rel="stylesheet" href="/special/cpuc/theme_dark.css">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="207658472325-t0sr7q2b6l5uqkqem1ncfdhplkrrd0pd.apps.googleusercontent.com">
+</head>
+<body onload="cpuc_start();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		<div class="pan select-bar">
+			<div class="select-desc"><span>SELECT CPU TO CONTROL</span></div>
+			<div id="sel_real_r2" value="real_r2" onclick="cpuc_sel(this)" class="select-optn on noselect"><span>GR8CPU Rev2.1 (real)</span></div>
+			<div id="sel_emu_r2" value="emu_r2" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev2.1 (emulated)</span></div>
+			<!--<div id="sel_real_r3" value="real_r3" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev3.1 (real)</span></div>
+			<div id="sel_emu_r3" value="emu_r3" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev3.1 (emulated)</span></div>!-->
+			<div class="select-desc"><span>GR8CPU Rev3.1 is in the pipeline</span></div>
+			<div class="signin-o">
+				<span class="w" onclick="loginInfo();">sign in for the queue <sup>info</sup> (login disabled for now)</span>
+				<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>!-->
+			</div>
+		</div>
+		<div class="panel-holder">
+			<div class="pan debugger">
+				<center><h3>DEBUGGER</h3></center>
+			</div>
+			<div class="pan cpuview">
+				<h3>CPU view is not available yet</h3>
+			</div>
+			<div class="pan editor">
+				<div id="tab_handle_holder" class="pan tab-handle-o noselect">
+					<div id="tab_0_handle" class="tab-handle-active" onclick="focusTab(0, event)" oncontextmenu="tabContext(0, event)">
+						Nothing here yet!
+						<img onclick="closeTab(0, event)" class="tab-handle-close" src="/data/close_simple.png">
+					</div>
+				</div>
+				<div style="display:none;" id="tab_holder"><div id="tab_0"></div></div>
+				<div id="open_tab" class="pan open-tab asm" contenteditable="true" spellcheck="false">
+					Editor goes here.<br><br>
+					This page is W.I.P.<br>
+					I'm actively working on that you can control my 8-bit breadboard CPU from here.<br>
+					However, it is going to take at least a few weeks if not longer to get a lot of this set up,
+					not even documented fully.
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
