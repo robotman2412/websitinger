@@ -24,4 +24,5 @@
 .asm .data {
 	color: #0000ff;
 	font-style: italic;
+	font-weight: bold;
 }

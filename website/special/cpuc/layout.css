@@ -86,8 +86,7 @@
 }
 
 .open-tab {
-	overflow-x: auto;
-	overflow-y: scroll;
+	overflow: auto;
 	top: 25px;
 	left: 0;
 	right: 0;
@@ -96,15 +95,33 @@
 }
 
 .tab-handle-o {
-	top: 2px;
+	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 3;
+	overflow: hidden;
+}
+
+.tab-handle-w {
+	left: 0;
+	top: 0;
+	right: 22px;
+	min-height: 24px;
+	top: 2px;
+}
+
+.tab-menu {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 5px;
+	right: 3px;
+	cursor: pointer;
 }
 
 .tab-handle, .tab-handle-active {
+	display: inline-block;
 	position: relative;
-	float: left;
 	vertical-align: top;
 	padding-left: 8px;
 	padding-right: 8px;
@@ -123,6 +140,17 @@
 	height: 12px;
 }
 
+.contextmenu {
+	display: inline-block;
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.contextmenu span {
+	cursor: pointer;
+	font-size: 13px;
+}
 
 
 

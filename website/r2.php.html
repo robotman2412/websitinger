@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>GR8CPU Rev2 - RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<link rel="stylesheet" href="/special/gr8cpu/gr8asm.css" type="text/css">
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div class="top-o">
+	<?php require "incl/pages.php"; ?>
+</div>
+<div id="left_outer_content" class="content-l-o">
+	<div id="left_inner_content" class="content-l-i">
+		<center><h3>Sup.</h3></center>
+	</div>
+</div>
+<div id="outer_content_holder" class="content-o-h">
+	<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+	<div id="outer_content" class="content-o">
+		<div id="inner_content" class="content-i">
+			<center>
+				<h1>GR8CPU Rev2 breadboard CPU</h1>
+			</center>
+			<p>
+				GR8CPU revision 2.1 is an 8-bit CPU made out of TTL logic on a series of breadboards.<br>
+				It features a small screen to which letters and decorative characters can be written. It also has a controller used for interacting.<br>
+				This CPU will be present at MCH2021, and if i finish it in time then so will be <a class="w" href="/r3">revision three</a>.
+			</p>
+			<div class="narrow-inline">
+				<img class="fit-inline may-big" title="Click to enlarge." src="/data/projects/images/gr8_build_finished.jpg">
+			</div>
+			<p>
+				<a class="w" href="#programming-intro">Click here if you're familiar with programming and the concept of a CPU.</a><br><br>
+				But what <i>is</i> a CPU (Central Processing Unit)?<br>
+				Many things in our daily lives contain a CPU by now, the primary example being of course you computer.
+				If you edit documents often, it determines where and how to place text based on your interaction.
+				If you visit websites often, it tells the GPU (Graphical Processing Unit) how to display the website.
+				Think of a CPU as an automatic calculator. It can do all of the things your pocket calculator can do.
+				And even better, it does it automatically and based on results it can do more complex things like move around data.<br>
+				To set straight a common misconception: A CPU will never make mistakes, it will only follow it's programming.
+				If it looks like a mistake, it was most likely a mistake or oversight of the person(s) that made the program in question.<br>
+				A well made CPU is an incredibly powerful tool and as such, many things may suddenly contain a CPU of some sort.
+				There is a whole list, and thing like fridges (to keep the temperature in check), ovens (temp. again and also timers), cars (safety) and even some lights (remote control)
+				can have CPUs in them, just to name a few.<br><br>
+				If you want to play with one of my CPUs, you will need to go to my online CPU control.
+				Note that the "emulated" variants are not real and are there to help programmers work on their programs.
+				Therefor, pick one of the <i>real</i> variants, you can interact with it or reserve a spot in the queue for interacting in case there if other people that wish to play.<br><br>
+				<a class="w" href="/cpu_control">Click here to go to online CPU control</a>.
+			</p>
+			<h3>the breadboard CPU project</h3>
+			<p>
+				This contains the building of GR8CPU Rev2 in detail for those interested.
+			</p>
+			<?php previewProjectByID("br_cpu"); ?>
+			<a name="programming-intro"><h3>programming for GR8CPU revision 2</h3></a>
+			<p>
+				Note: <a class="w" href="/r3#programming-intro">Programming for GR8CPU revision 3</a> will be much easier if you are not familiar with assembly.<br><br>
+				If you want to program for GR8CPU Rev2, you will need to be familiar with the concept of assembly first.<br>
+				Assembly is a simple programming language structure used for programming at pretty much the lowest possible level.<br><br>
+				When programming in assembly, there is one most important thing to keep in mind:<br>
+				The assembler will directly translate everything into the program in order.
+				This means that putting data before instructions is guaranteed to lead to unwanted behaviour, as GR8CPU Rev2 starts running programs at address 0.<br><br>
+				This gets us to the next point. What is an address in the context of assembly?<br>
+				An address represents a place in the CPU's memory, for GR8CPU Rev2 there is no way to tell what kind of data will be found at the address.
+				This means that there can be either (a part of) an instruction or data put there by the programmer.<br>
+				An assembler takes away the need to manually find these addresses and as such, using an assembler is much easier than directly writing a runnable program.<br><br>
+				Below, you will see an example of part of an assembly program:
+			</p>
+			<div class="asm">
+				<span class="comment">; this is a comment, anything from the ';' on is ignored by the assembler</span><br><br>
+				label1 &nbsp; <span class="insn">load</span> some_place_in_memory <span class="comment">; some_place_in_memory is defined elsewhere</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">store</span> label2 <span class="comment">; we store this so another part of the program may use it</span>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+				<br><br>
+				label2 &nbsp; <span class="data">data</span> <span class="val">$00</span> <span class="comment">; "data" will be described later</span>
+			</div>
+			<p>
+				First, a label is defined by putting a name at the start of the line.
+				Doing this will make the assembler associate that name with an address.
+				It is important to note that nothing is ever <i>assigned</i> to a label, rather something is assigned to the <i>place</i>
+				in memory that the label represents.<br>
+				This is why the data $00 works. It is not a constant, but rather the line is used to reserve a byte in memory.
+				"Writing" to the label replaces the value we put there.<br><br>
+				Next, you must understand how instructions behave for GR8CPU Rev2.
+				It is important you remember this applies only to GR8CPU Rev2.<br>
+				GR8CPU Rev2 has three registers you can programmatically use: The A, C and D registers.<br>
+				The B register <i>does</i> exist, but is hidden from the programmer.<br>
+				Each register is one byte in size, meaning they can count from 0 to 255, or -128 to 127, depending if you interpret numbers as being negative.<br><br>
+				The A register is used by almost all instructions. When you load, a value is placed into A and storing does the reverse.<br>
+				The A register is also used for all calculations without exception.
+				Instructions that imply they don't use the A register but still do a calculation <i>will always</i> overwrite A and then store back to where it needs to go.
+				This has the side effect that you can directly increment a place in memory and yet still have that also be written to A.<br><br>
+				The C register is used for data storage. You may put anything in it and no instruction will mess with it trough side effects.<br><br>
+				The D register is special for GR8CPU Rev2. It does not <i>actually</i> store data, and instead it is used for interacting with the outside world.
+				Writing <i>to</i> the D register will write that, as a character, to the screen.<br>
+				Reading <i>from</i> the D register will make GR8CPU Rev2 wait for controller input and then continue.<br><br>
+				No follows another example:
+			</p>
+			<div class="asm">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">load</span> <span class="val">#'H'</span><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">copy</span> <span class="insa">A to D</span><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">load</span> <span class="val">#'i'</span><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">copy</span> <span class="insa">A to D</span><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">load</span> <span class="val">#'!'</span><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="insn">copy</span> <span class="insa">A to D</span>
+			</div>
+			<p>
+				This shows two things.<br>First, the '#' followed by a character.<br>
+				The '#' means that whatever is loaded is not loaded from memory, but instead as a constant.<br>
+				You may put a character after it, but any other number will also work, even labels.
+				This is consistent for many instructions: Almost every instruction has a memory referencing variant (without '#') and a constant variant (with '#').<br>
+				Note that not every instruction actually has an argument.<br><br>
+				Next, this implies that "Hi!" is shown somewhere, and in fact it is.<br>
+				Each time we do "<span class="asm"><span class="insn">copy</span> <span class="insa">A to D</span></span>" we print the character we just loaded.<br>
+				Especially copying between registers makes it important you know that many instructions reference the A register.<br><br>
+				For now, this leaves only one thing to do.<br>
+				Go now to <a class="w" href="/cpu_control#example">my online CPU control</a> and play around with the examples and their challenges.<br>
+				Doing this, you will also need <a class="w" href="/isa_gr8cpur2">the instruction set reference for GR8CPU Rev2</a>.
+			</p>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>

@@ -4,11 +4,14 @@ import java.util.UUID;
 
 public class ClientInfo {
     
-    String sessionID;
-    String googleUserID;
-    boolean isGoogleUser;
-
-    public ClientInfo() {
+    public String sessionID;
+    public String googleUserID;
+    public String notaficationEmail;
+    public String ipAddress;
+    public boolean isGoogleUser;
+	public PrivilegeLevel privilege;
+	
+	public ClientInfo() {
         sessionID = UUID.randomUUID().toString();
         isGoogleUser = false;
     }

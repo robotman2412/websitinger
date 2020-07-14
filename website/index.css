@@ -253,10 +253,22 @@ button.wide:active {
 }
 
 .indented {
-	margin-left: 30px;
+	margin-left: 15px;
 }
 
 .news-img {
 	border: 2px solid black;
 	border-radius: 10px;
+}
+
+.fake-a {
+	cursor: pointer;
+	color: #007fff;
+	text-decoration: underline;
+}
+.fake-a:hover, .fake-a:focus {
+	text-decoration: underline;
+}
+.fake-a:active {
+	color: #005fcf;
 }

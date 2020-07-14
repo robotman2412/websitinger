@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This page is also the template page. -->
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>RobotMan2412's website</title>
+	<script src="/index.js"></script>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div class="top-o">
+	<?php require "incl/pages.php"; ?>
+</div>
+<div id="left_outer_content" class="content-l-o">
+	<div id="left_inner_content" class="content-l-i">
+		<center><h3>Sup.</h3></center>
+	</div>
+</div>
+<div id="outer_content_holder" class="content-o-h">
+	<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
+	<div id="outer_content" class="content-o">
+		<div id="inner_content" class="content-i">
+			<center>
+				<h2 id="errh">Error 400 - server error.</h2>
+			</center>
+			<p id="desc">
+				The server was unable to satisfy your request due to an internal error.
+			</p>
+		</div>
+		<script></script>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
