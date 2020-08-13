@@ -1,5 +1,7 @@
 package net.scheffers.robot.backend;
 
+import net.scheffers.robot.backend.job.JobType;
+
 public enum PrivilegeLevel {
 	/** Every guest. */
 	Everyone(0),
@@ -19,4 +21,15 @@ public enum PrivilegeLevel {
 	PrivilegeLevel(int level) {
 		this.level = level;
 	}
+	
+	public static PrivilegeLevel get(String name) {
+		for (PrivilegeLevel type : values()) {
+			if (type.name().equalsIgnoreCase(name)) {
+				return type;
+			}
+		}
+		return null;
+	}
+	
+	
 }

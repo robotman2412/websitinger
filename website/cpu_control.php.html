@@ -32,35 +32,30 @@
 	</div>
 	<div id="outer_content_holder" class="content-o-h">
 		<div class="pan select-bar">
-			<div class="select-desc"><span>SELECT CPU TO CONTROL</span></div>
-			<div id="sel_real_r2" value="real_r2" onclick="cpuc_sel(this)" class="select-optn on noselect"><span>GR8CPU Rev2.1 (real)</span></div>
-			<div id="sel_emu_r2" value="emu_r2" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev2.1 (emulated)</span></div>
-			<!--<div id="sel_real_r3" value="real_r3" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev3.1 (real)</span></div>
-			<div id="sel_emu_r3" value="emu_r3" onclick="cpuc_sel(this)" class="select-optn noselect"><span>GR8CPU Rev3.1 (emulated)</span></div>!-->
-			<div class="select-desc"><span>GR8CPU Rev3.1 is in the pipeline</span></div>
+			<!--<div class="select-desc"><span></span></div>!-->
 			<div class="signin-o">
-				<span class="w" onclick="loginInfo();">sign in for the queue <sup>info</sup><br>(login disabled for now)</span>
-				<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>!-->
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
 			</div>
 		</div>
 		<div class="panel-holder">
 			<div class="pan debugger" id="debugger_panel">
-				<center><h3>DEBUGGER</h3></center>
+				
 			</div>
 			<div class="pan cpuview" id="cpuview_panel" style="padding-left: 10px;">
-				<h3>CPU control is not available yet</h3><br>
+				<h2>Cameras will be here.</h2><br>
 				<p>
-					I'm working hard on getting this done, but it could take a while seen the things i need to set up.
-				</p><br><br>
+					Context menu:
+				</p>
 				<div class="contextmenu">
+					<span onclick="welcome()">welcome to CPU control</span><br>
 					<span onclick="closeAll()">close all tabs</span><br>
-					<span onclick="new_r2_asm()">new GR8CPU Rev2.1 assembly file</span><br>
-					<span onclick="new_r3_asm()">new GR8CPU Rev3.1 assembly file</span><br>
-					<span onclick="new_r3_c()">new GR8CPU Rev3.1 C / C++ file</span><br>
-					<span onclick="new_r3_py()">new GR8CPU Rev3.1 python file</span><br>
+					<span onclick="new_r2_asm()">new GR8CPU Rev2 assembly file</span><br>
+					<!--<span onclick="new_r3_asm()">new GR8CPU Rev3 assembly file</span><br>
+					<span onclick="new_r3_c()">new GR8CPU Rev3 C / C++ file</span><br>
+					<span onclick="new_r3_py()">new GR8CPU Rev3 python file</span><br>!-->
 					<span onclick="examples()">examples</span><br>
-					<span onclick="loginInfo()">why sign in?</span><br>
-					<span onclick="interact_r2()">interact with GR8CPU Rev2.1</span><br>
+					<!--<span onclick="loginInfo()">why sign in?</span><br>!-->
+					<span onclick="interact_r2()">interact with GR8CPU Rev2</span><br>
 					<!--<span onclick="interact_r3()">interact with GR8CPU Rev3.1</span><br>!-->
 				</div>
 			</div>

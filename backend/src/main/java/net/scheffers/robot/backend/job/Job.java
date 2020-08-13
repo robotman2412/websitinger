@@ -1,6 +1,6 @@
 package net.scheffers.robot.backend.job;
 
-import net.scheffers.robot.backend.ClientInfo;
+import net.scheffers.robot.backend.user.ClientInfo;
 
 public class Job implements UserOwnedObject {
 	
@@ -8,6 +8,8 @@ public class Job implements UserOwnedObject {
 	public JobType type;
 	/** Used for jobs that simply submit a program. */
 	public byte[] programData;
+	/** Indicates whether or not the program data was compressed to save on memory usage. */
+	public boolean isProgramCompressed;
 	/** Shows the milliseconds the job deserves to run, set to the promised time which was advertised when the job was made. */
 	public long deservedMillis;
 	/** Name of the job, specified by the user. Filtered to be up to 64 chars long and be HTML-safe. */

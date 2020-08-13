@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="backend">
+    <output-path>$PROJECT_DIR$/out/artifacts/backend</output-path>
+    <root id="archive" name="backend.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="backend" />
+      <element id="extracted-dir" path="C:/Program Files (x86)/processing-3.5.4/core/library/core.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/eclipse-workspace/JUtils.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.6/gson-2.8.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

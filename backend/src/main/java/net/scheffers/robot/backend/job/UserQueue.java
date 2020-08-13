@@ -1,6 +1,6 @@
 package net.scheffers.robot.backend.job;
 
-import net.scheffers.robot.backend.ClientInfo;
+import net.scheffers.robot.backend.user.ClientInfo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -79,6 +79,14 @@ public class UserQueue<Data extends UserOwnedObject> {
 			list.removeFirst();
 			return ret;
 		}
+	}
+	
+	public boolean isEmpty() {
+		return list.isEmpty();
+	}
+	
+	public int size() {
+		return list.size();
 	}
 	
 }

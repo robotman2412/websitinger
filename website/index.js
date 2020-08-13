@@ -11,6 +11,15 @@ var rightInnerContent;
 var leftEnabled = false;
 var templateBuilder;
 
+function escapeHtml(unsafe) {
+	return unsafe
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+ }
+ 
 function loaded() {
 	
 	outerContent = document.getElementById("outer_content");

@@ -1,6 +1,6 @@
 package net.scheffers.robot.backend.job;
 
-import net.scheffers.robot.backend.ClientInfo;
+import net.scheffers.robot.backend.user.ClientInfo;
 
 public interface UserOwnedObject {
 	

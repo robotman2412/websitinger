@@ -21,6 +21,7 @@ var cpuViewPanelElem;
 var debuggerPanelElem;
 
 var templateBuilder;
+var authId = null;
 
 function cpuc_start() {
 	templateBuilder = document.getElementById("template_builder");
@@ -37,9 +38,9 @@ function cpuc_start() {
 	displayHtmlElem = document.getElementById("display_html");
 	aceEditorElem = document.getElementById("ace_edit");
 	openTabId = -1;
-	examples();
+	welcome();
 	
-	webSoc = new WebSocket("wss://robot.scheffers.net/cpu_control_ws");
+	webSoc = new WebSocket("wss://robot.scheffers.net/cpu_control.ws/");
 	webSoc.onopen = ws_open;
 	webSoc.onclose = ws_close;
 	webSoc.onerror = ws_error;
@@ -60,11 +61,21 @@ function onSignIn(user) {
 //	console.log('Name: ' + profile.getName());
 //	console.log('Image URL: ' + profile.getImageUrl());
 //	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	var authId = user.getAuthResponse().id_token;
+	authId = user.getAuthResponse().id_token;
+	if (webSoc.readyState) {
+		msg = {
+			id_token: authId
+		}
+		webSoc.send(JSON.stringify(msg));
+	}
 }
 
 function loginInfo() {
 	openHtmlTab("/special/cpuc/login_info.html", "Why sign in?");
+}
+
+function welcome() {
+	openHtmlTab('/special/cpuc/welcome.html', 'Welcome to CPU control!');
 }
 
 function examples() {
@@ -263,13 +274,15 @@ function closeTab(id, event) {
 		}
 		delete tabIdByIndex[tabIndexById];
 		tabIdByIndex.length --;
-		openTabId = -1;
-		if (index == 0) {
-			focusTab(tabIdByIndex[0]);
-		}
-		else
-		{
-			focusTab(tabIdByIndex[index - 1]);
+		if (id == openTabId) {
+			openTabId = -1;
+			if (index == 0) {
+				focusTab(tabIdByIndex[0]);
+			}
+			else
+			{
+				focusTab(tabIdByIndex[index - 1]);
+			}
 		}
 	}
 }
@@ -333,8 +346,73 @@ function tabMenu(event) {
 	
 }
 
+function tx(obj) {
+	webSoc.send(JSON.stringify(obj));
+	console.log("-> " + JSON.stringify(obj));
+}
+
+var nextStuff;
+var submitPid;
+
+function submitJobTest() {
+	var respid = "i_job_0";
+	tx({
+		submit_job: {
+			type: "ShowMessage",
+			cpu: "GR8CPURev2Breadboard",
+			name: "Job tests!",
+			respid: respid
+		}
+	});
+	nextStuff = submitJobSupplyProgram;
+}
+
+function submitJobSupplyProgram(data) {
+	if (data.ack_job) {
+		if (data.ack_job.action === "ok") {
+			submitPid = data.ack_job.pid;
+			tx({
+				continue_job: {
+					action: "supply_program",
+					pid: submitPid,
+					program: "TestProgram0"
+				}
+			});
+			nextStuff = submitJobVerify;
+		}
+		else
+		{
+			console.error(data.error);
+			nextStuff = null;
+		}
+	}
+}
+
+function submitJobVerify(data) {
+	if (data.continue_job) {
+		if (data.continue_job.action === "await_verify") {
+			tx({
+				continue_job: {
+					action: "verify",
+					pid: submitPid
+				}
+			});
+			nextStuff = null;
+		}
+		else if (data.continue_job.action === "error") {
+			console.error(data.error);
+			nextStuff = null;
+		}
+	}
+}
+
 function ws_open() {
-	
+	if (authId != null) {
+		msg = {
+			id_token: authId
+		}
+		webSoc.send(JSON.stringify(msg));
+	}
 }
 
 function ws_error() {
@@ -345,6 +423,22 @@ function ws_close() {
 	
 }
 
-function ws_message() {
-	
+function ws_message(event) {
+	console.log("<- " + event.data);
+	if (nextStuff) {
+		nextStuff(JSON.parse(event.data));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

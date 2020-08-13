@@ -2,14 +2,14 @@ package net.scheffers.robot.backend.job;
 
 import com.google.gson.JsonObject;
 import net.scheffers.robot.backend.CPUType;
+import net.scheffers.robot.backend.user.ClientInfo;
+import net.scheffers.robot.backend.ServerBackend;
 import org.java_websocket.WebSocket;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 
 public class JobHandshake {
@@ -19,29 +19,45 @@ public class JobHandshake {
 	protected String name;
 	protected String pid;
 	protected ExecutorService executor;
-	protected String clientId;
+	protected ClientInfo info;
 	protected State state;
 	protected List<String> requestedFiles;
 	protected Map<String, String> recievedFiles;
 	protected WebSocket conn;
 	protected Future<?> currentTask;
+	protected byte[] compileOutput;
+	protected long deservedMillis;
 	
-	public JobHandshake(WebSocket conn, String clientId, CPUType cpu, JobType type, String name, String pid) {
+	protected List<Runnable> onSuccess;
+	protected List<Consumer<Throwable>> onError;
+	protected List<Runnable> onCancelled;
+	
+	protected long startTime;
+	
+	public static List<JobHandshake> runningJobs = new LinkedList<>();
+	
+	public JobHandshake(WebSocket conn, ClientInfo client, CPUType cpu, JobType type, String name, String pid, long deservedMillis) {
 		this.cpu = cpu;
 		this.type = type;
 		this.name = name;
 		this.pid = pid;
-		this.clientId = clientId;
+		this.info = client;
 		this.conn = conn;
+		this.deservedMillis = deservedMillis;
 		recievedFiles = new HashMap<>();
 		requestedFiles = new LinkedList<>();
 		state = State.WAITING_PROGRAM;
+		onSuccess = new LinkedList<>();
+		onError = new LinkedList<>();
+		onCancelled = new LinkedList<>();
 	}
 	
 	public void start(ExecutorService executor) {
 		if (executor != null) {
 			this.executor = executor;
 			state = State.WAITING_PROGRAM;
+			startTime = System.currentTimeMillis();
+			runningJobs.add(this);
 		}
 	}
 	
@@ -74,9 +90,9 @@ public class JobHandshake {
 		}
 		if (state == State.WAITING_PROGRAM) {
 			if (action != Action.SUPPLY_PROGRAM) {
-				sendError("unexpected_action", "expected supply_program");
+				sendError("unexpected_action", "expected: supply_program");
 				state = State.ERRORED;
-				reportError(new RuntimeException("unexpected action " + json.get("action").getAsString() + ", expected supply_program"));
+				reportError(new RuntimeException("unexpected action " + json.get("action").getAsString() + ", expected: supply_program"));
 				return;
 			}
 			else if (!json.has("program") || !json.get("program").isJsonPrimitive()) {
@@ -93,9 +109,31 @@ public class JobHandshake {
 				return;
 			}
 			state = State.COMPILING;
+			conn.send("{\"continue_job\":{\"action\":\"wait_compilation\",\"pid\":\"" + pid + "\"}}");
 			currentTask = executor.submit(() -> {
 				startCompilation(program);
 			});
+		}
+		else if (state == State.WAITING_VERIFY) {
+			if (action != Action.VERIFY) {
+				sendError("unexpected_action", "expected one of: verify, cancel");
+				state = State.ERRORED;
+				reportError(new RuntimeException("unexpected action " + json.get("action").getAsString() + ", expected one of: verify, cancel"));
+				return;
+			}
+			if (json.has("time_limit") && json.get("time_limit").isJsonPrimitive()) {
+				deservedMillis = Math.min(deservedMillis, json.get("time_limit").getAsLong());
+			}
+			Job job = new Job();
+			job.programData = compileOutput;
+			job.submitter = info;
+			job.pid = pid;
+			job.isProgramCompressed = false;
+			job.type = type;
+			job.deservedMillis = deservedMillis;
+			ServerBackend.newJobMade(cpu, job, conn);
+			reportSuccess();
+			state = State.SUCCESS;
 		}
 	}
 	
@@ -103,8 +141,10 @@ public class JobHandshake {
 		conn.send("{\"continue_job\":{\"action\":\"error\",\"errorcode\":\"" + code + "\",\"error\":\"" + message + "\",\"pid\":\"" + pid + "\"}}");
 	}
 	
+	//region compilation
 	protected void startCompilation(String source) {
 		try {
+			conn.send("{\"continue_job\":{\"action\":\"start_compilation\",\"pid\":\"" + pid + "\"}}");
 			switch (type) {
 				case ExecuteAsm:
 					startAsmCompilation(source);
@@ -119,8 +159,14 @@ public class JobHandshake {
 					startMsgCompilation(source);
 					break;
 			}
+			System.out.println("Client " + info + " gets confirmation request.");
+			state = State.WAITING_VERIFY;
+			conn.send("{\"continue_job\":{\"action\":\"await_verify\",\"pid\":\"" + pid + "\"}}");
 		} catch (Throwable err) {
+			sendError("internal_error", "internal error while compiling program");
 			reportError(err);
+			err.printStackTrace();
+			state = State.ERRORED;
 		}
 	}
 	
@@ -135,7 +181,9 @@ public class JobHandshake {
 	 * 3. generate appropriate decompression program
 	 */
 	protected void startMsgCompilation(String source) {
-		
+		//TODO: actually do something lol
+		compileOutput = new byte[1];
+		//TODO: make some sort of storage for compile output
 	}
 	
 	/**
@@ -173,30 +221,76 @@ public class JobHandshake {
 	protected void startAsmCompilation(String source) {
 		
 	}
+	//endregion compilation
 	
 	//region events
+	public void cancelByTimeout() {
+		sendError("timeout", "job handshake took too long");
+		state = State.ERRORED;
+		reportError(new TimeoutException("job handshake took too long"));
+		if (currentTask != null) {
+			currentTask.cancel(true);
+		}
+	}
+	
 	public void reportError(Throwable error) {
 		System.err.println("Job handshake " + pid + " aborted: " + error.getMessage());
-		
+		for (Consumer<Throwable> r : onError) {
+			try {
+				r.accept(error);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		synchronized (runningJobs) {
+			runningJobs.remove(this);
+		}
 	}
-	public void reportSuccess(JobHandshakeSuccess success) {
-		System.err.println("job handshake " + pid + " success");
-		
+	
+	public void reportSuccess() {
+		System.out.println("Job handshake " + pid + " success.");
+		for (Runnable r : onSuccess) {
+			try {
+				r.run();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		synchronized (runningJobs) {
+			runningJobs.remove(this);
+		}
 	}
+	
 	public void reportCancelled() {
-		System.out.println("job handshake " + pid + " cancelled by peer");
+		System.out.println("Job handshake " + pid + " cancelled by peer.");
+		for (Runnable r : onCancelled) {
+			try {
+				r.run();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		synchronized (runningJobs) {
+			runningJobs.remove(this);
+		}
 	}
 	
 	public void onError(Consumer<Throwable> onError) {
-		
+		if (onError != null) {
+			this.onError.add(onError);
+		}
 	}
 	
-	public void onSuccess(Consumer<JobHandshakeSuccess> onSuccess) {
-		
+	public void onSuccess(Runnable onSuccess) {
+		if (onSuccess != null) {
+			this.onSuccess.add(onSuccess);
+		}
 	}
 	
 	public void onCancelled(Runnable onCancelled) {
-		
+		if (onCancelled != null) {
+			this.onCancelled.add(onCancelled);
+		}
 	}
 	//endregion events
 	
@@ -217,8 +311,12 @@ public class JobHandshake {
 		return type;
 	}
 	
-	public String getClientId() {
-		return clientId;
+	public ClientInfo getClient() {
+		return info;
+	}
+	
+	public long getStartTime() {
+		return startTime;
 	}
 	//endregion getters
 	
@@ -235,6 +333,7 @@ public class JobHandshake {
 	public enum Action {
 		SUPPLY_PROGRAM,
 		SUPPLY_IMPORT,
+		SUPPLY_IMPORT_FAIL,
 		VERIFY,
 		CANCEL;
 		

@@ -1,0 +1,40 @@
+Notes related to MCH2021 :)
+
+
+I got these from the badge team meeting a attended.
+
+This will be cool.
+
+Badge displays may be color. (SPI/parralel, ESP/FPGA)
+-> ESP can program FPGA
+
+Sebastius wants to go towards the open badge like the SHA2017 badge.
+Games may be completely optional.
+
+We want to have a hatchery upload button.
+
+WebUSB
+-> STM32
+-> ESP32-S2?
+WebUSB gives browsers access to USB.
+This will make programming easier.
+
+FM-rx
+Villages can tx something locally.
+Not core component, probably.
+
+Navsystem
+This'd be great.
+HyperGPS / Wifi AP based triangulation.
+
+FPGA
+Additive, but could destroy budget.
+
+Badge <--> Campsite objects interaction
+
+Software upkeep.
+-> Adafruit circuitpython thingy
+  -> We can focus on features
+  -> ESP32-S2 is in dev at Adafruit
+
+

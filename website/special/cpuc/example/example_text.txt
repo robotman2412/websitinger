@@ -1,0 +1,6 @@
+
+Hello, world!
+
+Anything written here will be printed as is!
+
+Space is limited, your message can't be much longer than 250 characters.

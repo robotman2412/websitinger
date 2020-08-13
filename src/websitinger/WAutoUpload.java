@@ -44,6 +44,13 @@ public class WAutoUpload {
 			}
 		}
 		
+		for (Map.Entry<String, String> dirPair : localToSiteDirs.entrySet()) {
+			File file = new File(dirPair.getKey());
+			if (file.exists()) {
+				checkUpload(file, dirPair.getValue(), passwd, ssh, true, true);
+			}
+		}
+		
 		Object lock = 1;
 		while (true) {
 			try {
@@ -55,25 +62,27 @@ public class WAutoUpload {
 			}
 			for (Map.Entry<String, String> dirPair : localToSiteDirs.entrySet()) {
 				File file = new File(dirPair.getKey());
-				checkUpload(file, dirPair.getValue(), passwd, ssh, true);
+				if (file.exists()) {
+					checkUpload(file, dirPair.getValue(), passwd, ssh, true, false);
+				}
 			}
 		}
 	}
 	
-	private static void checkUpload(File file, String remoteDir, String passwd, JSch ssh, boolean ignoreDir) {
+	private static void checkUpload(File file, String remoteDir, String passwd, JSch ssh, boolean ignoreDir, boolean dryRun) {
 		if (file.getAbsolutePath().endsWith("~")) {
 			return; //ignore file because of reasons
 		}
 		if (file.isDirectory()) {
 			if (ignoreDir) {
 				for (File sub : file.listFiles()) {
-					checkUpload(sub, remoteDir, passwd, ssh, false);
+					checkUpload(sub, remoteDir, passwd, ssh, false, dryRun);
 				}
 			}
 			else
 			{
 				for (File sub : file.listFiles()) {
-					checkUpload(sub, remoteDir + file.getName() + "/", passwd, ssh, false);
+					checkUpload(sub, remoteDir + file.getName() + "/", passwd, ssh, false, dryRun);
 				}
 			}
 		}
@@ -82,14 +91,20 @@ public class WAutoUpload {
 			if (lastChangeMap.containsKey(file.getAbsolutePath())) {
 				long lastChange = lastChangeMap.get(file.getAbsolutePath());
 				if (lastChange < file.lastModified()) {
-					if (fupload(file, remoteDir, passwd, ssh)) {
+					if (dryRun) {
+						lastChangeMap.put(file.getAbsolutePath(), file.lastModified());
+					}
+					else if (fupload(file, remoteDir, passwd, ssh)) {
 						lastChangeMap.put(file.getAbsolutePath(), file.lastModified());
 					}
 				}
 			}
 			else
 			{
-				if (fupload(file, remoteDir, passwd, ssh)) {
+				if (dryRun) {
+					lastChangeMap.put(file.getAbsolutePath(), file.lastModified());
+				}
+				else if (fupload(file, remoteDir, passwd, ssh)) {
 					lastChangeMap.put(file.getAbsolutePath(), file.lastModified());
 				}
 			}

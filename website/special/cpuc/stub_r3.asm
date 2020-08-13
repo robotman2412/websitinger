@@ -1,5 +1,5 @@
 
-; Stub file for GR8CPU Rev2.1 assembly.
+; Stub file for GR8CPU Rev3.1 assembly.
 @attribute cpu GR8CPUr3
 
 * = $00
