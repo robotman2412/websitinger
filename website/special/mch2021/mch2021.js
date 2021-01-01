@@ -314,8 +314,38 @@ var mchLetters = {
 		"src": "_colon.png",
 		"slantIn": 3,
 		"slantOut": 0,
-		"width": 96,
+		"width": 48,
 		"x": 736, "y": 832
+	},
+	"/": {
+		"slantIn": 2,
+		"slantOut": 2,
+		"width": 144,
+		"x": 832, "y": 832
+	},
+	"\\": {
+		"slantIn": 3,
+		"slantOut": 3,
+		"width": 144,
+		"x": 992, "y": 832
+	},
+	"#": {
+		"slantIn": 1,
+		"slantOut": 1,
+		"width": 204,
+		"x": 1152, "y": 832
+	},
+	"$": {
+		"slantIn": 1,
+		"slantOut": 0,
+		"width": 112,
+		"x": 1376, "y": 832
+	},
+	"-": {
+		"slantIn": 2,
+		"slantOut": 1,
+		"width": 112,
+		"x": 1504, "y": 832
 	}
 };
 

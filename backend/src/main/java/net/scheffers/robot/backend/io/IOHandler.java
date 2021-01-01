@@ -4,6 +4,7 @@ import jutils.JUtils;
 import jutils.Table;
 import net.scheffers.robot.backend.PrivilegeLevel;
 import net.scheffers.robot.backend.ServerBackend;
+import net.scheffers.robot.backend.itf.BackendInterface;
 import net.scheffers.robot.backend.user.ClientInfo;
 import org.java_websocket.WebSocket;
 
@@ -46,6 +47,12 @@ public class IOHandler {
 		else
 		{
 			System.out.println("\n\nBackend exiting normally...");
+		}
+		try {
+			BackendInterface.endServer();
+		} catch (Exception e) {
+			e.printStackTrace();
+			numErrors ++;
 		}
 		try {
 			ServerBackend.webSocketer.stop(2000);

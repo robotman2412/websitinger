@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "/var/www/html/incl/utils.php"; require "/var/www/html/incl/project.php"; require "planomator/plan.old.php"; head(); ?>
+	<title>RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="planomator/plan.js"></script>
+	<link rel="stylesheet" href="planomator/plan.css" type="text/css">
+</head>
+<body onload="loaded();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "/var/www/html/incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<?php planBody(); ?>
+				<center>
+					<h2>LAN party planner!</h2>
+				</center>
+				<?php planContent(); ?>
+				
+				<form id="edit_form" style="display: none;" method="post" enctype="multipart/form-data">
+					<input type="text" name="edits" id="edits">
+				</form>
+				<!--<table class="date-table"> https://www.youtube.com/watch?v=dQw4w9WgXcQ
+					<tr id="people">
+						<th class="l"></th>
+						<th class="i">Robot</th>
+						<th class="i">Dave</th>
+						<th class="i">IGOR</th>
+						<th class="i">R24owan</th>
+						<th class="i">Maxx</th>
+					</tr>
+					<tr id="date0">
+						<th class="l">Date0</th>
+						<th><input type="checkbox" id="date0_robot"></th>
+						<th><input type="checkbox" id="date0_dave"></th>
+						<th><input type="checkbox" id="date0_igor"></th>
+						<th><input type="checkbox" id="date0_r24owan"></th>
+						<th><input type="checkbox" id="date0_max"></th>
+					</tr>
+				</table>!-->
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 $useragent=$_SERVER['HTTP_USER_AGENT'];
 $logStats = !isset($_COOKIE["no_stats"]);
 
-require_once "libs/Mobile_Detect.php";
+require_once "/var/www/html/libs/Mobile_Detect.php";
 $detect = new Mobile_Detect;
 $isusermobile = $detect->isMobile();
 
@@ -36,6 +36,28 @@ function footer() {
 	echo file_get_contents("/var/www/html/footer.html");
 }
 
+function ismobilescript() {
+	global $isusermobile;
+	if ($isusermobile) {
+		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = true;</script>";
+	}
+	else
+	{
+		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = false;</script>";
+	}
+}
+
+function ismobilestyle() {
+	global $isusermobile;
+	if ($isusermobile) {
+		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"/index_mobile.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/project_mobile.css\">";
+	}
+	else
+	{
+		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"/index.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"/project.css\">";
+	}
+}
+
 function head() {
 	global $isusermobile;
 	global $logStats;
@@ -53,15 +75,8 @@ function head() {
 		echo "\";";
 	}
 	echo "Object.freeze(templates);</script>";
-	if ($isusermobile) {
-		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = true;</script>";
-		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index_mobile.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project_mobile.css\">";
-	}
-	else
-	{
-		echo "<script id=\"server_side_mobile_detect\">const isUserMobile = false;</script>";
-		echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"index.css\"><link rel=\"stylesheet\" type=\"text/css\" href=\"project.css\">";
-	}
+	ismobilescript();
+	ismobilestyle();
 	if ($logStats) {
 		$stats = json_decode(file_get_contents("/home/pi/stats.json"), true);
 		if (!array_key_exists($_SERVER["PHP_SELF"], $stats)) {

@@ -21,7 +21,7 @@ function addHref0($proj, $idst) {
 		if ($projw['is_category']) {
 			$projw = addHref0($projw, $idst . $idw . ".");
 		}
-		$projw['href'] = "/project.php?proj=" . $idst . $idw;
+		$projw['href'] = "/project?proj=" . $idst . $idw;
 	}
 	return $proj;
 }

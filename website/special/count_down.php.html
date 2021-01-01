@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This page is also the template page. -->
+	<?php require "/var/www/html/incl/utils.php"; require "/var/www/html/incl/project.php"; head(); ?>
+	<title id="title">RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="/special/count_down/count_down.js"></script>
+	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body onload="loaded(); start_countdown();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "/var/www/html/incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<h1 id="mch_text" class="mch-text">$ Until MCH2021</h1>
+				<br><br><br>
+				<div class="fit-inline">
+					<center>
+						<canvas id="canvas" width="512" height="512"></canvas>
+					</center>
+				</div>
+				<h2 id="mch_time" class="mch-text-b"></h2>
+				<br><br>
+				<br><br>
+				<h1>MCH2021</h1>
+				<p>
+					MCH2021 is a hackercamp in the netherlands starting 6 August 2021.<br>
+					More about that <a class="w" href="/mch2021">here</a>.<br>
+					<a href="https://mch2021.org/"><img src="/data/mch2021/promo_1080p.png" class="fit-inline"></a>
+				</p>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

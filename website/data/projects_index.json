@@ -27,7 +27,7 @@
 					"is_category": false,
 					"is_ongoing": false,
 					"name": "the design, revision 2",
-					"quickdesc": "Designing GR8CPU, from Rev1 to Rev2 to Rev2.1",
+					"quickdesc": "Designing GR8CPU, from one revision to another.",
 					"href": "/project.php?proj=br_cpu.design_rev2",
 					"image_url": "/data/projects/images/gr8cpu_design_rev2_1.png",
 					"content_name": "/data/projects/gr8cpu_design.html"
@@ -45,7 +45,7 @@
 					"is_category": false,
 					"is_ongoing": true,
 					"name": "screening CPUs... wait...",
-					"quickdesc": "Making the screen required to play Tic-Tac-Toe and to use some other programs.",
+					"quickdesc": "Making the screen required to play Tic-Tac-Toe and to use some other programs, all on my breadboard CPU!",
 					"href": "/project.php?proj=br_cpu.screening_cpus",
 					"image_url": "/data/projects/images/ttyscreen_early.jpg",
 					"content_name": "/data/projects/ttyscreen.html"

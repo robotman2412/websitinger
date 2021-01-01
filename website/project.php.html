@@ -5,7 +5,7 @@
 	<title><?php windowTitle(); ?></title>
 	<script src="/index.js"></script>
 </head>
-<body onload="leftEnabled = true; loaded();">
+<body onload="leftEnabled = false; loaded();">
 	<div id="template_builder" style="display:none;"></div>
 	<div class="top-o">
 		<?php require "incl/pages.php"; ?>
@@ -16,7 +16,6 @@
 			<?php projHierarchy(); ?>
 		</div>
 	</div>
-	<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
 	<div id="outer_content_holder" class="content-o-h">
 		<div id="outer_content" class="content-o">
 			<div id="inner_content" class="content-i">

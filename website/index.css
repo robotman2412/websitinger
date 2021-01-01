@@ -4,7 +4,7 @@ body {
 }
 
 p, form, ul, li, div, body {
-	font-size: 14px;
+	font-size: 16px;
 }
 
 a.w, div.all-w a {
@@ -69,13 +69,16 @@ div.content-o {
 	bottom: 0;
 	left: 15%;
 	right: 15%;
-	overflow-x: shown;
+	background-color: #ffffff;
+	overflow-x: visible;
 }
 
 div.content-i {
 	position: absolute;
-	left: 80px;
-	right: 80px;
+	padding-left: 80px;
+	padding-right: 80px;
+	left: 0;
+	right: 0;
 	top: 0;
 }
 
@@ -209,8 +212,8 @@ div.footer-section {
 
 div.narrow-inline {
 	position: relative;
-	left: 15%;
-	width: 60%;
+	padding-left: 15%;
+	padding-right: 15%;
 	margin: 20px;
 }
 
@@ -266,9 +269,11 @@ button.wide:active {
 	color: #007fff;
 	text-decoration: underline;
 }
+
 .fake-a:hover, .fake-a:focus {
 	text-decoration: underline;
 }
+
 .fake-a:active {
 	color: #005fcf;
 }

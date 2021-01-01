@@ -79,7 +79,7 @@ div.proj-prev-i:hover img.proj-prev-img-i {
 
 p.proj-prev-read {
 	position: absolute;
-	left: -100px;
+	left: -120px;
 	bottom: 0;
 	transition: 0.3s ease-in-out;
 	color: white;

@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import jutils.JUtils;
 import net.scheffers.robot.backend.io.IOHandler;
 import net.scheffers.robot.backend.io.StorageHandler;
+import net.scheffers.robot.backend.itf.BackendInterface;
 import net.scheffers.robot.backend.job.*;
 import net.scheffers.robot.backend.user.ClientInfo;
 import org.java_websocket.WebSocket;
@@ -51,12 +52,20 @@ public class ServerBackend {
 		JUtils.getArgs(args);
 		if (!JUtils.getArg("help").equals("null") || !JUtils.getArg("h").equals("null")) {
 			System.out.println("Server backend options:\n" +
-					//"    -rc  Connect with an existing instance to execute commands.\n" + 
-					//"    -ro  Connect with an existing instance to see stdout.\n" + 
-					//"    -rd  Connect with an existing instance to see stdout and execute commands.\n" +
-					//"    -c \"some command\" Quickly send a command to the backend.\n" +
-					"    -workdir \"/path/to/working/dir/\"  Set the working directory.\n\n"
-					//"When connected to the backend, you can enter \"dis\" or \"disconnect\" to disconnect without stopping the backend."
+					"    SHORT               VERBOSE                   DESCRIPTION\n" +
+					"    -wp port            -websocport port          Change the port for websockets." +
+					"    -rp port            -remoteport port          Change the port for remote access, both for server and client." +
+					"    -a hostname:port    -address hostname:port    Change the address of the remote backend to connect to.\n" +
+					"    -r                  -remote                   Connect with an existing instance to see stdout and execute commands.\n" +
+					"    -c \"command\"                                  Quickly send a command to the backend.\n" +
+					"    -wd \"/path/\"        -workdir \"/path/\"         Set the working directory.\n\n" +
+					"Defaults:\n" +
+					"    SHORT               VERBOSE                   DESCRIPTION\n" +
+					"    -wp 8512            -websocport 8512          The default websocket port is 8512.\n" +
+					"    -rp 8511            -remoteport 8511          The default remote access port is 8511.\n" +
+					"    -a 127.0.0.1:8511   -address 127.0.0.1:8511   The default remote backend is at localhost:8511.\n" +
+					"    -wd \"$(pwd)\"        -workdir \"$(pwd)\"         The default working directory is the same as that of the shell (even for windows).\n\n" +
+					"When connected to the backend, you can enter \"dis\" or \"disconnect\" to disconnect without stopping the backend."
 			);
 			return;
 		}
@@ -91,6 +100,7 @@ public class ServerBackend {
 		statusRev3.reason = "Revision 3 is not built.";
 		System.out.println("Services...");
 		StorageHandler.start();
+		BackendInterface.startServer();
 		webSocketer = new WebSocketer(8512);
 		webSocketer.start();
 		IOHandler.start(8511);

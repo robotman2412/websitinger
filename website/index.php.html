@@ -2,14 +2,18 @@
 <html>
 <head>
 	<!-- This page is also the template page. -->
-	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<?php require "/var/www/html/incl/utils.php"; require "/var/www/html/incl/project.php"; head(); ?>
 	<title>RobotMan2412's website</title>
 	<script src="/index.js"></script>
+	
+	<script src="/special/count_down/count_down.js"></script>
+	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 </head>
-<body onload="loaded();">
+<body onload="loaded(); no_title = true; start_countdown();">
 	<div id="template_builder" style="display:none;"></div>
 	<div class="top-o">
-		<?php require "incl/pages.php"; ?>
+		<?php require "/var/www/html/incl/pages.php"; ?>
 	</div>
 	<div id="left_outer_content" class="content-l-o">
 		<div id="left_inner_content" class="content-l-i">
@@ -17,7 +21,6 @@
 		</div>
 	</div>
 	<div id="outer_content_holder" class="content-o-h">
-		<div id="content_background" class="content-o" style="position:fixed;background-color:#ffffff;"></div>
 		<div id="outer_content" class="content-o">
 			<div id="inner_content" class="content-i">
 				<center>
@@ -28,23 +31,30 @@
 					Here, you'll find things like my breadboard CPU,<br>
 					The making of this very website, and more.<br><br><br><br>
 				</p>
+				<a style="text-decoration:none;" href="/special/count_down" title="Countdown until MCH2021">
+					<h2 id="mch_text" style="padding-left:25%;" class="mch-text">$ Until MCH2021</h2>
+					<div class="narrow-inline">
+						<center>
+							<canvas id="canvas" style="width:60%;" width="512" height="512"></canvas>
+						</center>
+					</div>
+					<h4 id="mch_time" style="padding-left:25%;" class="mch-text-c"></h4>
+				</a>
+				
 				<h2>"NEWS"</h2>
-				<h3>So you want to program my CPU...</h3>
+				<h3>Now with lorem ipsum!</h3>
 				<p>
-					I've been working hard on getting this set up and it's almost here!<br>
-					If you want to program my CPU, either in emulation or on the <a href="/cpu_control">online CPU control (coming soon)</a>,
-					this is where you need to be!<br>
-					Simply click on the image below to continue!
+					The TTY screen can now show cohesive text, the only thing left to do is the printing logic!
 				</p>
-				<a href="/r2"><img class="news-img fit-inline" src="/data/assembly_teaser.png"></a>
+				<div class="narrow-inline">
+					<img style="border-radius: 10px; border: 2px solid black;" src="/data/projects/images/ttyscreen_demo1.jpg" class="may-big fit-inline">
+				</div>
 				<h2>FEATURED PROJECTS</h2>
-				<?php previewProjectByID("br_cpu"); previewProjectByID("website"); ?>
+				<?php previewProjectByID("br_cpu"); previewProjectByID("br_cpu.screening_cpus"); ?>
 				<br><br>
+				<h2>MCH2021</h2>
 				<p>
-					I like all things technical.<br>
-					That means CPU design, programming and this website!<br>
-					I'm excited for MCH2021, a hackercamp in the netherlands.<br>
-					I want to bring my CPU there.<br>
+					MCH2021 is a hackercamp in the netherlands starting 6 August 2021.<br>
 					More about that <a class="w" href="/mch2021">here</a>.<br>
 					<a href="https://mch2021.org/"><img src="/data/mch2021/promo_1080p.png" class="fit-inline"></a>
 				</p>

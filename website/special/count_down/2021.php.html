@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This page is also the template page. -->
+	<?php require "/var/www/html/incl/utils.php"; require "/var/www/html/incl/project.php"; head(); ?>
+	<title id="title">RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="/special/count_down/count_down.js"></script>
+	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body onload="loaded();texts=[nextText=currentText='Until 2021'];shortTexts=['Finally!','F00d time!','(please be good)'];targetMillis=1609455600000;targetDate=new Date(targetMillis);splashText='Happy new year!';start_countdown();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "/var/www/html/incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<h1 id="mch_text" class="mch-text">$ Until 2021</h1>
+				<br><br><br>
+				<div class="fit-inline">
+					<center>
+						<canvas id="canvas" width="512" height="512"></canvas>
+					</center>
+				</div>
+				<h2 id="mch_time" class="mch-text-b"></h2>
+				<h1>2021</h1>
+				<p>
+					Finally.
+				</p>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

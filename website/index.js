@@ -43,7 +43,9 @@ function loaded() {
 			else
 			{
 				footer.setAttribute("class", "footer-o");
-				footer.style.top = innerContent.getBoundingClientRect().height + 75 + "px";
+				var ht = innerContent.getBoundingClientRect().height + 75;
+				footer.style.top = ht + "px";
+				outerContent.style.height = (ht + 300) + "px";
 			}
 			var large = document.getElementById("enlarge_image");
 			if (large) {
@@ -61,16 +63,19 @@ function loaded() {
 	else
 	{
 		setInterval(function() {
-			var altfooter = innerContent.getBoundingClientRect().height < window.innerHeight - 260;
+			var altfooter = innerContent.getBoundingClientRect().height < window.innerHeight - (isUserMobile ? 335 : 260);
 			var footer = document.getElementById("footer_outer");
 			if (altfooter) {
 				footer.setAttribute("class", "footer-o alt");
 				footer.style.top = "";
+				outerContent.style.height = "";
 			}
 			else
 			{
 				footer.setAttribute("class", "footer-o");
-				footer.style.top = innerContent.getBoundingClientRect().height + 75 + "px";
+				var ht = innerContent.getBoundingClientRect().height + 75;
+				footer.style.top = ht + "px";
+				outerContent.style.height = (ht + 200) + "px";
 			}
 			var space = Math.max(0, window.innerWidth - maxPXWidth);
 			var altOffs = altfooter ? 0 : 20;
@@ -93,16 +98,16 @@ function loaded() {
 				}
 				outerContent.style.left = space / 2 + offs + "px";
 				outerContent.style.right = space / 2 - offs - altOffs + "px";
-				contentBackground.style.left = space / 2 + offs + "px";
-				contentBackground.style.right = space / 2 - offs + "px";
+				//contentBackground.style.left = space / 2 + offs + "px";
+				//contentBackground.style.right = space / 2 - offs + "px";
 			}
 			else
 			{
 				leftOuterContent.style.visibility = "hidden";
 				outerContent.style.left = space / 2 + "px";
 				outerContent.style.right = space / 2 - altOffs + "px";
-				contentBackground.style.left = space / 2 + "px";
-				contentBackground.style.right = space / 2 + "px";
+				//contentBackground.style.left = space / 2 + "px";
+				//contentBackground.style.right = space / 2 + "px";
 			}
 			var large = document.getElementById("enlarge_image");
 			if (large) {
