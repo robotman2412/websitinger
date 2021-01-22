@@ -11,13 +11,13 @@ body {
   font-family: 'Saira';
   font-style: normal;
   font-weight: 400;
-  src: url('/special/layouttest/saira/saira-v5-latin-regular.eot'); /* IE9 Compat Modes */
+  src: url('/s/font/saira/saira-v5-latin-regular.eot'); /* IE9 Compat Modes */
   src: local(''),
-       url('/special/layouttest/saira/saira-v5-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/special/layouttest/saira/saira-v5-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/special/layouttest/saira/saira-v5-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('/special/layouttest/saira/saira-v5-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('/special/layouttest/saira/saira-v5-latin-regular.svg#Saira') format('svg'); /* Legacy iOS */
+       url('/s/font/saira/saira-v5-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/s/font/saira/saira-v5-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/s/font/saira/saira-v5-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/s/font/saira/saira-v5-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/s/font/saira/saira-v5-latin-regular.svg#Saira') format('svg'); /* Legacy iOS */
 }
 
 /* Element styles. */
@@ -37,7 +37,7 @@ a:visited {
 
 /* Content layout. */
 div.content-o {
-	background-image: url("https://robot.scheffers.net/special/layouttest/background.png");
+	background-image: url("/i/background.png");
 	background-position: 50% 0px;
 	position: absolute;
 	top: 0;

@@ -1,9 +1,6 @@
 package websitinger;
 
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
+import com.jcraft.jsch.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,6 +19,7 @@ public class WAutoUpload {
 	public static void main(String[] args) throws JSchException {
 		extensionAliasses.put("php.html", "php");
 		localToSiteDirs.put("D:/!intellij/websitinger/website/", "/var/www/html/");
+		localToSiteDirs.put("D:/!intellij/websitinger/test/", "/var/www/test/");
 		
 		ssh = new JSch();
 		String passwd;
@@ -178,7 +176,12 @@ public class WAutoUpload {
 				sftp.connect(5000);
 				sftp.cd(remoteDir);
 				FileInputStream in = new FileInputStream(upload);
-				sftp.put(in, outName, ChannelSftp.OVERWRITE);
+				try {
+					sftp.put(in, outName, ChannelSftp.OVERWRITE);
+				} catch (SftpException e) {
+					sftp.mkdir(remoteDir);
+					sftp.put(in, outName, ChannelSftp.OVERWRITE);
+				}
 				in.close();
 				session.disconnect();
 				return true;

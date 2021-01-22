@@ -66,7 +66,7 @@ function enlargeImage(imageSrc, imageAlt) {
 		'<div id="large_image" class="img-large" onclick="clearEnlarge()">'+
 			'<div class="img-large-wrapper">'+
 				'<div class="img-large-clear" onclick="clearEnlarge();event.stopPropagation()">'+
-					'<img class="img-large-clear-ico" src="/special/layouttest/close.png">'+
+					'<img class="img-large-clear-ico" src="/i/close.png">'+
 				'</div>'+
 				'<img class="img-large-img" onclick="event.stopPropagation()" src="' + imageSrc + '" alt="' + imageAlt + '">'+
 				'<p style="margin:0;" onclick="event.stopPropagation()">' + imageAlt + '</p>'+

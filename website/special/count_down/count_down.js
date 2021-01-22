@@ -33,6 +33,8 @@ var targetDate;
 var hypeMillis = 10000;
 var preHypeMillis = 10590;
 var spinny = 0;
+var fillStyle = "#000000";
+var clearStyle = "#ffffff";
 
 function dayOfYear(date) {
 	var start = new Date(date.getFullYear(), 0, 0);
@@ -44,15 +46,18 @@ function dayOfYear(date) {
 
 function arcing(part, radius, fill = false, offset = 0) {
 	offset *= Math.PI * 2;
-	canvas.fillStyle = "#000000";
-	canvas.beginPath()
-	canvas.arc(256, 256, radius, offset + -0.5 * Math.PI, offset + -0.5 * Math.PI - part * 2 * Math.PI, true);
-	canvas.lineTo(256, 256);
-	canvas.fill();
-	if (!fill) {
-		canvas.fillStyle = "#ffffff";
+	canvas.fillStyle = fillStyle;
+	if (fill) {
 		canvas.beginPath()
-		canvas.arc(256, 256, radius - 32, 0, 2 * Math.PI);
+		canvas.arc(256, 256, radius, offset + -0.5 * Math.PI, offset + -0.5 * Math.PI - part * 2 * Math.PI, true);
+		canvas.lineTo(256, 256);
+		canvas.fill();
+	}
+	else
+	{
+		canvas.beginPath()
+		canvas.arc(256, 256, radius, offset + -0.5 * Math.PI, offset + -0.5 * Math.PI - part * 2 * Math.PI, true);
+		canvas.arc(256, 256, radius - 32, offset + -0.5 * Math.PI - part * 2 * Math.PI, offset + -0.5 * Math.PI, false);
 		canvas.fill();
 	}
 }
@@ -69,9 +74,9 @@ function arcingPlusPlus(part, radius, text, offset = 0) {
 	canvas.save();
 	canvas.clip();
 	// Draw filled part.
-	canvas.fillStyle = "#000000";
+	canvas.fillStyle = fillStyle;
 	canvas.fillRect(0, 0, 512, 512);
-	canvas.fillStyle = "#ffffff";
+	canvas.fillStyle = clearStyle;
 	canvas.fillText(text, 256, 330);
 	canvas.restore();
 	// Clip unfilled part.
@@ -81,7 +86,7 @@ function arcingPlusPlus(part, radius, text, offset = 0) {
 	canvas.save();
 	canvas.clip();
 	// Draw unfilled part.
-	canvas.fillStyle = "#000000";
+	canvas.fillStyle = fillStyle;
 	//canvas.fillRect(0, 0, 512, 512);
 	//canvas.fillStyle = "#ffffff";
 	canvas.fillText(text, 256, 330);
@@ -206,11 +211,11 @@ function countdownUpdate() {
 	daysSpinny = changeDelta + daysSpinny * changeGamma;
 	
 	canvas.fillStyle = "#ffffff";
-	canvas.fillRect(0, 0, 512, 512);
+	canvas.clearRect(0, 0, 512, 512);
 	if (itIsTime) {
 		canvas.font = "256px Source Code Pro";
 		canvas.textAlign = "center";
-		canvas.fillStyle = "#000000";
+		canvas.fillStyle = fillStyle;
 		canvas.fillText("0", 256, 330);
 	}
 	else if (delta < preHypeMillis) {

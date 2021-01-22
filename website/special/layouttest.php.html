@@ -1,34 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title id="title">Layout testing - RobotMan2412's website</title>
+	<title id="title">RobotMan2412's website</title>
 	<script src="/special/layouttest/script.js"></script>
 	<link rel="stylesheet" href="/special/layouttest/fresh.css" type="text/css">
+	<script src="/special/count_down/count_down.js"></script>
+	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="RobotMan2412's website">
+	<meta property="og:description" content="My website, where is post about my adventures in programming, CPU design, robots and all the projects.">
+	<meta property="og:image" content="/special/layouttest/preview.png">
+	<meta name="theme-color" content="#6942a2">
 </head>
-<body onload="leftEnabled = true; loaded();">
+<body onload="leftEnabled = true; loaded(); clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown();">
 	<div id="template_builder" style="display:none;"></div>
 	<div id="outer_content" class="content-o">
+		<div id="page_header_wrapper" class="page-header-wrapper">
+			<div id="page_header" class="page-header">
+				<a href="/"><div class="page-header-button"><p>home</p></div></a>
+				<a href="/project"><div class="page-header-button"><p>projects</p></div></a>
+				<a href="/special/testing"><div class="page-header-button"><p>testing</p></div></a>
+				<a href="/special/layouttest"><div class="page-header-button"><p>layout</p></div></a>
+			</div>
+		</div>
 		<div id="inner_content" class="content-i">
-			<div class="header"><h1>header</h1></div>
+			<div class="header"><h1>RobotMan2412's website</h1></div>
 			<div class="block-full">
-				<h3 class="p-header">paragraph header</h3>
-				<p>
-					This page is made to test the general layout and aesthetic of my website.<br>
-					Forced line break. Now comes a horizontal division.
-				</p>
-				<hr>
+				<h3 class="p-header">Welcome to my website!</h3>
 				<p class="justify">
-					This is a justified paragraph, so i will proceed to fill it with garbage text.
-					Note how this causes long "sensational" profits, because it will make revenue in a special way.
-					Justify this! -No, i wont! -Yes, you will! "Lorem ipsum" is a text made to sound latin, but has no
-					meaning as all the words are simple made up to sound like what "westeners" think latin sounds like.<br>
-					Forced line break. Now comes the same not justified.
+					This page is a test of the general layout for my website,
+					in my quest to make the best website i possibly can. On my website you'll find
+					<a href="/project?proj=br_cpu">my breadboard cpu project</a>, my experimenting with CPU design and
+					having fun building a functional computer on breadboards.
+					Personally, I'm into computers in all kinds of ways: designing CPU hardware, casual gaming from time to time,
+					and programming ranging from an operating system for my CPU to sketching something fun and graphical up.
 				</p>
-				<p>
-					This is a justified paragraph, so i will proceed to fill it with garbage text.
-					Note how this causes long "sensational" profits, because it will make revenue in a special way.
-					Justify this! -No, i wont! -Yes, you will! "Lorem ipsum" is a text made to sound latin, but has no
-					meaning as all the words are simple made up to sound like what "westeners" think latin sounds like.
+			</div>
+			<div class="block-full">
+				<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
+				<div class="fit-inline">
+					<center>
+						<canvas id="canvas" width="512" height="512"></canvas>
+					</center>
+				</div>
+				<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
+			</div>
+			<div class="block-full">
+				<h3 class="p-header">GR8CPU</h3>
+				<div class="right-image">
+					<img class="may-big" src="/data/projects/images/gr8cpur2_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
+					<p>
+						GR8CPU Rev2, an 8-bit breadboard computer.
+					</p>
+				</div>
+				<p class="justify">
+					GR8CPU is my project to build a fully functional computer on breadboards.
+					The first version i built, <span title="GR8CPU, design revision 2">GR8CPU revision 2</span>,
+					has easily over 600 wires, 74 integrated circuits and 79 LED lights. It is an 8-bit architecture with
+					simplicity and processing power in mind. The CPU has access to 256 bytes of RAM,
+					and i have written a fully functional <nobr>Tic-Tac-Toe</nobr> for it.<br><br>
+					
+					As of now, I'm working on building my second one, <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
+					The first CPU was loads of fun to work on, but my ambitions are higher: with 65536 bytes of memory,
+					improved arithmetic and a much higher speed by design,
+					this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
+					
+					Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
+					is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.
 				</p>
 			</div>
 			<div class="two-col">
@@ -57,16 +96,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="block-full">
-				<h3 class="p-header">paragraph header</h3>
-				<div class="right-image">
-					<img src="/data/projects/images/gr8cpur2_finished.jpg" alt="nice image">
-					<p>nice image</p>
-				</div>
-				<p>
-					This is a paragraph with an image, the image is very nice and also has "stuff" in it.
-				</p>
-			</div>
 			<div class="tri-col">
 				<div class="tri-col-left">
 					<div class="block-full">
@@ -74,6 +103,7 @@
 						<p>
 							<a href="https://twitter.com/RobotMan2412">@RobotMan2412</a><br>
 							<a href="https://www.youtube.com/channel/UCzTnf6HyVmTFxTNkDWj-D_A">RobotMan2412</a>
+							<a href="mailto:ikbenju@gmail.com">ikbenju@gmail.com</a>
 						</p>
 					</div>
 				</div>
@@ -82,7 +112,7 @@
 						<h3 class="p-header">cool stuff</h3>
 						<p>
 							<a href="/mch2021">MCH2021</a><br>
-							<a href="/projects?proj=br_cpu">Breadboard CPU</a>
+							<a href="/project?proj=br_cpu">Breadboard CPU</a>
 						</p>
 					</div>
 				</div>
