@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>RobotMan2412's website</title>
+	<script src="/index.js"></script>
+	<script src="/special/mch2021/mch2021.js"></script>
+	<link rel="stylesheet" href="/special/mch2021/mch2021.css" type="text/css">
+</head>
+<body onload="leftEnabled = true; loaded(); mchStart();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>overview</h3></center>
+			<div class="all-w">
+				<a href="#about">about MCH2021</a><br>
+				<a href="#cpu">bringing the CPU to MCH2021</a><br>
+				<a href="#name">MCH2021 name sticker maker</a><br>
+				<a href="#promo">MCH2021 promotional artwork</a><br>
+			</div>
+		</div>
+	</div>
+	<div style="height:0;overflow:hidden;">
+		<img id="sticker_nameless" src="/data/mch2021/promo_sticker_nameless.png">
+		<img id="name_font" src="/data/mch2021/promo_namefont.png">
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h2 style="margin-bottom:0;">WARNING: MAY CONTAIN HACKERS</h2>
+					<a class="w" href="https://mch2021.org/"><h3 style="margin-top:0;">2021</h3></a>
+				</center>
+				<p>
+					As of June 2020, i've begun to appreciate hacker camps more.<br>
+					The last one i had been to is SHA2017, and the next one we're going to will be MCH2021.<br>
+					I'm very excited about MCH2021, even tough it's still going to take a while.<br>
+					Many ideas were made.<br>
+					This page includes some ideas related to MCH2021 and some promotional items <i>for</i> MCH2021.
+				</p>
+				<a name="about" /><br><br><br><br>
+				<h3>about MCH2021</h3>
+				<p>
+					May Contain Hackers 2021 is a hacker camp that will start August 6, 2021.<br>
+					It is part of the <a href="https://en.wikipedia.org/wiki/Quadrennial_Dutch_hacker_convention" title="Wikipedia: Quadrennial Dutch hacker convention">
+					Quadrennial Dutch hacker convention</a>, which started with Galactic Hacker Party in 1989.
+					Every four years, there is another event in this series.<br><br>
+					At these events, you'll find things you simply can't expect, other than that there would always be wacky things.
+					You name it, it's there: giant flamethrower towers, tesla coils and so many blinking lights that the term
+					"light pollution" had to be redefined.<br><br>
+					But most importantly, you'll find many people, so many in fact it's simply not possible to meet them all.
+					You'll meet people who put steak in a slowcooker all day and then hit said steak with a blowtorch to get
+					the perfect rare steak.<br>
+					You'll meet people that enjoy <a href="https://en.wikipedia.org/wiki/Portal_(series)" title="Wikipedia: Portal">Portal</a>
+					so much that they build a functioning version of the sentries.<br>
+					You'll even find people who have somehow managed to make a 3D-printer large enough to print a human!<br><br>
+					There is a website for this convention: <a href="https://mch2021.org/">mch2021.org</a>
+				</p>
+				<a name="cpu" /><br><br><br><br>
+				<h3>bring home the <span style="text-decoration:line-through;">bacon</span> CPU!</h3>
+				<p>
+					Somewhere along the way with the <a class="w" href="/project.php?proj=br_cpu">CPU project</a>,
+					i realised it was a good idea to take it to a certain <a href="https://mch2021.org/" title="MCH2021 website">hacker camp</a>.<br>
+					I was originally fantasizing over talks about CPU design, but i know i couldn't handle the stage fright.<br>
+					It was an idea in the back of my head for a long time, mostly forgetting about it.<br>
+					And now, it's come up again!<br>
+					This has made me think of many things, but most importantly, How do i get it there and how do i keep it safe?
+					The idea might be a little over the top...<br>
+					You can see it down here, and you can
+					<?php if ($isusermobile) {echo "tap on a part";} else {echo "hover over a part";} ?>
+					for more info.
+				</p>
+				<div style="position: relative;">
+					<img class="fit-inline hint-img" src="/data/mch2021/cpu_box_design0.jpg">
+					<div class="hint-i noselect">
+						<div class="hint enlarge" onclick="enlargeImage('/data/mch2021/cpu_box_design0.jpg')">
+							<p>enlarge image</p>
+						</div>
+						<div class="hint control-enable">
+							<p style="left:5px;top:0;">
+								control enable<br>
+								If i do actually add control, i don't want everyone to be able to control it.
+								I'm unsure how i will implement this.
+							</p>
+						</div>
+						<div class="hint control-connect">
+							<p style="left:5px;top:0;">
+								connection to CPU<br>
+								Serial connection to a microcontroller in the CPU box which monitors the registers.
+								Writing to registers will likely be done with instruction injection.
+							</p>
+						</div>
+						<div class="hint info-status">
+							<p style="left:0;top:0;">
+								program / CPU status<br>
+								Information about the currently running instruction and
+								things like how long the program has been running.
+							</p>
+						</div>
+						<div class="hint adapt5v">
+							<p style="left:0;top:0;">
+								5V adapter directly connected<br>
+								Applying wrong voltage can easily fry my CPU, and i don't want that.
+								So i will directly connect the 5V adapter as such you cannot mess it up.
+							</p>
+						</div>
+						<div class="hint regdisp">
+							<p style="left:0;top:0;">
+								register display<br>
+								Shows the bits of the registers, with either lights,
+								or "toggle bit" buttons in case i do implement control.
+							</p>
+						</div>
+						<div class="hint hexdisp">
+							<p style="left:0;top:0;">
+								register hex display<br>
+								I may want to also make a hexadecimal display of the register values.
+							</p>
+						</div>
+						<div class="hint more8">
+							<p style="left:0;top:0;">
+								more 8- and 16-bit registers
+							</p>
+						</div>
+						<div class="hint control-opt">
+							<p style="left:0;top:0;">
+								I want to implement control, but i might not.
+							</p>
+						</div>
+						<div class="hint control-info">
+							<p style="top:0;left:0;">
+								control / info<br>
+								About the current state of the CPU.
+							</p>
+						</div>
+						<div class="hint ctl-ifo-top">
+							<p style="top:0;left:0;">
+								control / info<br>
+								top aspect
+							</p>
+						</div>
+						<div class="hint ctl-ifo-left">
+							<p style="top:0;left:10%;">
+								control / info<br>
+								left aspect
+							</p>
+						</div>
+						<div class="hint gr8cpur3-dim">
+							<p style="top:0;left:0;">
+								dimensions expected for GR8CPU Rev3.1:<br>
+								<nobr>24cm x 62cm<sup>+</sup></nobr><br><nobr>9.5" x 24.4"<sup>+</sup></nobr>
+							</p>
+						</div>
+						<div class="hint cpu-tty-box">
+							<p style="top:0;left:0;">
+								Box that will house the CPU and "graphics" card.
+							</p>
+						</div>
+						<div class="hint layout">
+							<p style="top:5px;left:5px;">
+								General layout of everything.
+							</p>
+						</div>
+						<div class="hint longwire">
+							<p style="top:0px;left:0px;">
+								Long wire so you can stand back with the controller.
+							</p>
+						</div>
+					</div>
+				</div>
+				<p>
+					MCH2021 being a hacker camp and this CPU being what it is, i start wondering...
+					You see, at <a href="https://sha2017.org/">SHA2017</a>, many things were "hacked", or as i like to call it, pwned.
+					The thing i was wondering was exactly that.
+					If i make everything envolved public info, will someone pwn it?
+					Good question! I certainly hope they do, even if it's very superficial.
+					So i made <a class="w" href="/isa_gr8cpur2">the GR8CPU Rev2 instruction set listing</a>.
+					It contains the entire instruction set and exactly how each instruction acts for GR8CPU Rev2.1.
+					Also, i made <a class="w" href="/techdesc_gr8cpur2">the GR8CPU Rev2 technical description</a> and
+					<a class="w" href="/guide_assembler">the guide to using my assembler</a>.
+				</p>
+				<a name="name" /><br><br><br><br>
+				<h3>MCH2021 name sticker maker</h3>
+				<input id="mch_name" type="text" class="wide" value="hackers">
+				<canvas style="box-sizing:border-box;border:1px solid #c0c0c0;margin-top:20px;"
+				        class="fit-inline may-big" id="mch_name_canvas" width="1492" height="660"></canvas>
+				<button class="wide" onclick="mchNameDownload();">download as PNG</button>
+				<a name="promo" /><br><br><br><br>
+				<h3>MCH2021 promotional artwork.</h3>
+				Some promotional artwork by me, for MCH2021.<br><br>
+				<img src="/data/mch2021/promo_1080p.png" class="fit-inline may-big"><br>
+				<span class="note">original 1080P promotional image made by me</span><br><br>
+				<img src="/data/mch2021/promo_namefont.png" class="fit-inline may-big"><br>
+				<span class="note">font for the name sticker maker</span><br><br>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker.png" class="fit-inline may-big"><br></div>
+				<span class="note">only the sticker of the promotional image</span><br><br>
+				<div class="narrow-inline"><img src="/data/mch2021/promo_sticker_nameless.png" class="fit-inline may-big"><br></div>
+				<span class="note">nasmeless sticker, used for the name maker</span><br><br>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

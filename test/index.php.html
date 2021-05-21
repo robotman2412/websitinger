@@ -2,31 +2,15 @@
 <html>
 <head>
 	<title id="title">RobotMan2412's website</title>
-	<script src="/s/js/index.js"></script>
-	<link rel="stylesheet" href="/s/css/index.css" type="text/css">
+	<?php require "/var/www/test/s/php/index.php"; ?>
 	<!-- MCH2021 countdown !-->
-	<script src="/special/count_down/count_down.js"></script>
-	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
-	<!-- Font faces !-->
-	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-	<!-- Metadata for third parties !-->
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="RobotMan2412's website">
-	<meta property="og:description" content="My website, where is post about my adventures in programming, CPU design, robots and all the projects.">
-	<meta property="og:image" content="/i/preview.png">
-	<meta name="theme-color" content="#6942a2">
+	<script src="/s/js/count_down.js"></script>
+	<link href='/s/css/count_down.css' rel='stylesheet' type='text/css'>
 </head>
-<body onload="leftEnabled = true; loaded(); clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown();">
+<body onload="loaded(); /* clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown(); */ ">
 <div id="template_builder" style="display:none;"></div>
 <div id="outer_content" class="content-o">
-	<div id="page_header_wrapper" class="page-header-wrapper">
-		<div id="page_header" class="page-header">
-			<a href="/test"><div class="page-header-button"><p>home</p></div></a>
-			<a href="/project"><div class="page-header-button"><p>projects</p></div></a>
-			<a href="/special/testing"><div class="page-header-button"><p>testing</p></div></a>
-			<a href="/special/layouttest"><div class="page-header-button"><p>layout</p></div></a>
-		</div>
-	</div>
+	<?php page_header(); ?>
 	<div id="inner_content" class="content-i">
 		<div class="header"><h1>RobotMan2412's website</h1></div>
 		<div class="block-full">
@@ -34,13 +18,13 @@
 			<p class="justify">
 				This page is a test of the general layout for my website,
 				in my quest to make the best website i possibly can. On my website you'll find
-				<a href="/project?proj=br_cpu">my breadboard cpu project</a>, my experimenting with CPU design and
+				<a href="/project/gr8cpu">my breadboard cpu project</a>, my experimenting with CPU design and
 				having fun building a functional computer on breadboards.
 				Personally, I'm into computers in all kinds of ways: designing CPU hardware, casual gaming from time to time,
 				and programming ranging from an operating system for my CPU to sketching something fun and graphical up.
 			</p>
 		</div>
-		<div class="block-full">
+		<!-- <div class="block-full">
 			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
 			<div class="fit-inline">
 				<center>
@@ -48,11 +32,11 @@
 				</center>
 			</div>
 			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
-		</div>
+		</div> !-->
 		<div class="block-full">
 			<h3 class="p-header">GR8CPU</h3>
 			<div class="right-image">
-				<img class="may-big" src="/data/projects/images/gr8cpur2_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
+				<img class="may-big" src="/i/gr8cpu/gr8cpur2_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
 				<p>
 					GR8CPU Rev2, an 8-bit breadboard computer.
 				</p>
@@ -70,38 +54,11 @@
 				this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
 				
 				Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
-				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.
+				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.<br><br>
+				<a href="/project/gr8cpu">Read more.</a>
 			</p>
 		</div>
-		<div class="tri-col">
-			<div class="tri-col-left">
-				<div class="block-full">
-					<h3 class="p-header">contact</h3>
-					<p>
-						<a href="https://twitter.com/RobotMan2412">@RobotMan2412</a><br>
-						<a href="https://www.youtube.com/channel/UCzTnf6HyVmTFxTNkDWj-D_A">RobotMan2412</a>
-						<a href="mailto:ikbenju@gmail.com">ikbenju@gmail.com</a>
-					</p>
-				</div>
-			</div>
-			<div class="tri-col-center">
-				<div class="block-full">
-					<h3 class="p-header">cool stuff</h3>
-					<p>
-						<a href="/mch2021">MCH2021</a><br>
-						<a href="/project?proj=br_cpu">Breadboard CPU</a>
-					</p>
-				</div>
-			</div>
-			<div class="tri-col-right">
-				<div class="block-full">
-					<h3 class="p-header">paragraph header</h3>
-					<p>
-						right
-					</p>
-				</div>
-			</div>
-		</div>
+		<?php footer(); ?>
 	</div>
 </div>
 </body>

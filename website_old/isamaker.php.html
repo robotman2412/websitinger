@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "incl/utils.php"; require "incl/project.php"; head(); ?>
+	<title>RobotMan2412's instruction set maker</title>
+	<script src="/index.js"></script>
+	<script src="/special/gr8cpu/isamaker.js"></script>
+	<link rel="stylesheet" href="/special/gr8cpu/isamaker.css" type="text/css">
+	<link rel="stylesheet" href="/special/gr8cpu/gr8asm.css" type="text/css">
+</head>
+<body onload="loaded();">
+	<div id="template_builder" style="display:none;"></div>
+	<div class="top-o">
+		<?php require "incl/pages.php"; ?>
+	</div>
+	<div id="left_outer_content" class="content-l-o">
+		<div id="left_inner_content" class="content-l-i">
+			<center><h3>Sup.</h3></center>
+		</div>
+	</div>
+	<div id="outer_content_holder" class="content-o-h">
+		
+		<div id="outer_content" class="content-o">
+			<div id="inner_content" class="content-i">
+				<center>
+					<h2>INSTRUCTION SET MAKER</h2>
+				</center>
+				<p>
+					If you find this page, it is a tool i use for creating the instruction sets for my CPUs.
+				</p>
+				Sorting:
+				<button class="isa-sort" onclick="sortHex()">by hex</button>
+				<button class="isa-sort" onclick="sortName()">by name</button>
+				<button class="isa-sort" onclick="sortMan()">manually</button>
+				<div id="insn_holder">
+					<div class="insn-def asm" id="insn_0">
+						<span class="hex val" id="insn_0_hex">$00</span> -
+						<span class="name insn" id="insn_0_name">nop</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="name insn" id="insn_0_verbose">nop</span><br>
+						Control signals:<br>
+						<div class="controls indented" id="insn_0_controls">STR</div><br>
+						Does nothing for one cycle.
+						<button class="edit" onclick="editInsn(0)">edit</button>
+					</div>
+					<div class="insn-def asm" id="insn_1">
+						Hex:<br>
+						<input type="text" class="hex-in" id="insn_1_hex" onkeypress="return checkHex(event)"><br>
+						Format:<br>
+						<input type="text" class="name-in" id="insn_1_name" onchange="checkParams(1)"><br>
+						Verbose:<br>
+						<input type="text" class="name-in" id="insn_1_verbose" onchange="checkParams(1)"><br>
+						Control signals:<br>
+						<textarea class="controls-in" id="insn_1_controls"></textarea><br>
+						Description:<br>
+						<textarea class="desx-in" id="insn_1_desx"></textarea>
+						<div class="args-edit" id="insn_1_args"></div>
+						<button class="delete" onclick="deleteInsn(1)">delete</button>
+						<button class="edit" onclick="endEdit(1)">save</button>
+					</div>
+				</div>
+				<button onclick="addInsn()">+ instruction</button><br><br><br>
+				Raw JSON:<br>
+				<textarea id="isa_def_json" style="width: 100%; height: 200px;"></textarea><br>
+				<button onclick="loadFromJson()">load from JSON</button>
+			</div>
+			<?php footer(); ?>
+		</div>
+	</div>
+</body>
+</html>

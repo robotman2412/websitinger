@@ -18,8 +18,10 @@ public class WAutoUpload {
 	
 	public static void main(String[] args) throws JSchException {
 		extensionAliasses.put("php.html", "php");
-		localToSiteDirs.put("D:/!intellij/websitinger/website/", "/var/www/html/");
-		localToSiteDirs.put("D:/!intellij/websitinger/test/", "/var/www/test/");
+		//localToSiteDirs.put("D:/!intellij/websitinger/website/", "/var/www/html/");
+		//localToSiteDirs.put("D:/!intellij/websitinger/test/", "/var/www/test/");
+		localToSiteDirs.put("/media/julian/Big boi drive/!intellij/websitinger/website/", "/var/www/html/");
+		localToSiteDirs.put("/media/julian/Big boi drive/!intellij/websitinger/test/", "/var/www/test/");
 		
 		ssh = new JSch();
 		String passwd;
@@ -174,12 +176,13 @@ public class WAutoUpload {
 			if (session.isConnected()) {
 				ChannelSftp sftp = (ChannelSftp) session.openChannel("sftp");
 				sftp.connect(5000);
-				sftp.cd(remoteDir);
 				FileInputStream in = new FileInputStream(upload);
 				try {
+					sftp.cd(remoteDir);
 					sftp.put(in, outName, ChannelSftp.OVERWRITE);
 				} catch (SftpException e) {
 					sftp.mkdir(remoteDir);
+					sftp.cd(remoteDir);
 					sftp.put(in, outName, ChannelSftp.OVERWRITE);
 				}
 				in.close();

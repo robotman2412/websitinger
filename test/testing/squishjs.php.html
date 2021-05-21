@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Testing - RobotMan2412's website</title>
+	<?php require "/var/www/test/s/php/index.php"; ?>
+	<script src="squishjs.js"></script>
+</head>
+<body onload="loaded(); squish_loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Squishy scripts</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Input stuffs</h3>
+			<textarea style="width: 100%; height: 150px; box-sizing: border-box;" id="squish_in"></textarea>
+			<h3 class="p-header">Output stuffs</h3>
+			<textarea style="width: 100%; height: 150px; box-sizing: border-box;" id="squish_out"></textarea>
+			<h3 class="p-header">Options</h3>
+			<table>
+				<tr>
+					<td>shorten names</td>
+					<td><input type="checkbox" id="squish_shorten_names"></td>
+				</tr>
+				<tr>
+					<td>function to lambda</td>
+					<td><input type="checkbox" id="squish_to_lambda"></td>
+				</tr>
+			</table>
+			<button onclick="squish_code()" class="wide">squish your code</button>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

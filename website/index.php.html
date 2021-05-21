@@ -1,66 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This page is also the template page. -->
-	<?php require "/var/www/html/incl/utils.php"; require "/var/www/html/incl/project.php"; head(); ?>
-	<title>RobotMan2412's website</title>
-	<script src="/index.js"></script>
-	
-	<script src="/special/count_down/count_down.js"></script>
-	<link href='/special/count_down/count_down.css' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+	<title id="title">RobotMan2412's website</title>
+	<?php require "s/php/index.php"; ?>
+	<!-- MCH2021 countdown !-->
+	<script src="/v6/js/count_down.js"></script>
+	<link href='/s/css/count_down.css' rel='stylesheet' type='text/css'>
 </head>
-<body onload="loaded(); no_title = true; start_countdown();">
-	<div id="template_builder" style="display:none;"></div>
-	<div class="top-o">
-		<?php require "/var/www/html/incl/pages.php"; ?>
-	</div>
-	<div id="left_outer_content" class="content-l-o">
-		<div id="left_inner_content" class="content-l-i">
-			<center><h3>Sup.</h3></center>
+<body onload="loaded(); /* clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown(); */ ">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>RobotMan2412's website</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Welcome to my website!</h3>
+			<p class="justify">
+				My website is a place where i make write-ups about all my projects and magical thingies.
+				On my website you'll find
+				<a href="/project/gr8cpu">my breadboard cpu project</a>, my experimenting with CPU design and
+				having fun building a functional computer on breadboards.
+				Personally, I'm into computers in all kinds of ways: designing CPU hardware, casual gaming from time to time,
+				and programming ranging from an operating system for my CPU to sketching something fun and graphical up.
+			</p>
 		</div>
-	</div>
-	<div id="outer_content_holder" class="content-o-h">
-		<div id="outer_content" class="content-o">
-			<div id="inner_content" class="content-i">
-				<center>
-					<h2>Welcome to RobotMan2412's website!</h2>
-				</center>
+		<div class="block-full">
+			<h3 class="p-header">Building once more</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/rev3_alu_build2.jpg" alt="The registers and ALU of GR8CPU Rev3.">
 				<p>
-					This is mainly a hobby, a because why not thing.<br>
-					Here, you'll find things like my breadboard CPU,<br>
-					The making of this very website, and more.<br><br><br><br>
-				</p>
-				<a style="text-decoration:none;" href="/special/count_down" title="Countdown until MCH2021">
-					<h2 id="mch_text" style="padding-left:25%;" class="mch-text">$ Until MCH2021</h2>
-					<div class="narrow-inline">
-						<center>
-							<canvas id="canvas" style="width:60%;" width="512" height="512"></canvas>
-						</center>
-					</div>
-					<h4 id="mch_time" style="padding-left:25%;" class="mch-text-c"></h4>
-				</a>
-				
-				<h2>"NEWS"</h2>
-				<h3>Now with lorem ipsum!</h3>
-				<p>
-					The TTY screen can now show cohesive text, the only thing left to do is the printing logic!
-				</p>
-				<div class="narrow-inline">
-					<img style="border-radius: 10px; border: 2px solid black;" src="/data/projects/images/ttyscreen_demo1.jpg" class="may-big fit-inline">
-				</div>
-				<h2>FEATURED PROJECTS</h2>
-				<?php previewProjectByID("br_cpu"); previewProjectByID("br_cpu.screening_cpus"); ?>
-				<br><br>
-				<h2>MCH2021</h2>
-				<p>
-					MCH2021 is a hackercamp in the netherlands starting 6 August 2021.<br>
-					More about that <a class="w" href="/mch2021">here</a>.<br>
-					<a href="https://mch2021.org/"><img src="/data/mch2021/promo_1080p.png" class="fit-inline"></a>
+					The registers and ALU of GR8CPU Rev3.
 				</p>
 			</div>
-			<?php footer(); ?>
+			<p class="justify">
+				It has come to my attention that <a href="https://twitter.com/arduino/status/1369286608302837763">Arduino</a>
+				has noticed my projects :)<br>
+				Seen here are the ALU and the registers in their current state.
+				I just added some black wires (top right, vertical), one step closer to connecting the registers to the ALU.
+				Another few green wires (bottom left, also vertical) are 2 out of 3 ALU busses: A operand and output.
+			</p>
+			<hr>
+			<p class="justify">
+				Check my website once in a while!<br>
+				I will change the homepage to reflect my progress :)
+			</p>
 		</div>
+		<!-- <a href="/countdown/" style="text-decoration: none;"><div class="block-full">
+			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
+			<div class="fit-inline">
+				<center>
+					<canvas id="canvas" width="512" height="512"></canvas>
+				</center>
+			</div>
+			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
+		</div></a> !-->
+		<div class="block-full">
+			<h3 class="p-header">GR8CPU</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8cpur2_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
+				<p>
+					GR8CPU Rev2, an 8-bit breadboard computer.
+				</p>
+			</div>
+			<p class="justify">
+				GR8CPU is my project to build a fully functional computer on breadboards.
+				The first version i built, <span title="GR8CPU, design revision 2">GR8CPU revision 2</span>,
+				has easily over 600 wires, 74 integrated circuits and 79 LED lights. It is an 8-bit architecture with
+				simplicity and processing power in mind. The CPU has access to 256 bytes of RAM,
+				and i have written a fully functional <nobr>Tic-Tac-Toe</nobr> for it.<br><br>
+				
+				As of now, I'm working on building my second one, <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
+				The first CPU was loads of fun to work on, but my ambitions are higher: with 65536 bytes of memory,
+				improved arithmetic and a much higher speed by design,
+				this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
+				
+				Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
+				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.<br><br>
+				<a href="/project/gr8cpu">Read more.</a>
+			</p>
+		</div>
+		<?php footer(); ?>
 	</div>
+</div>
 </body>
 </html>

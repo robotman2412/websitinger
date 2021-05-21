@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "/var/www/test/s/php/index.php"; ?>
+	<title>GR8CPU - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>GR8CPU</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">overview</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8_build_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
+				<p>
+					GR8CPU Rev2, an 8-bit breadboard computer.
+				</p>
+			</div>
+			<p class="justify">
+				GR8CPU is my project to build a fully functional computer on breadboards.
+				The first version i built, <span title="GR8CPU, design revision 2">GR8CPU revision 2</span>,
+				has easily over 600 wires, 74 integrated circuits and 79 LED lights. It is an 8-bit architecture with
+				simplicity and processing power in mind. The CPU has access to 256 bytes of RAM,
+				and i have written a fully functional <nobr>Tic-Tac-Toe</nobr> for it.<br><br>
+				
+				As of now, I'm working on building my second one, <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
+				The first CPU was loads of fun to work on, but my ambitions are higher: with 65536 bytes of memory,
+				improved arithmetic and a much higher speed by design,
+				this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
+				
+				Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
+				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.
+			</p>
+		</div>
+		
+		<!-- Designing GR8CPU Rev2 !-->
+		<!-- <div class="block-full">
+			<h3 class="p-header">the first designs</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8cpu_design_rev1.png" alt="The first revision of GR8CPU's design.">
+				<p>
+					The first revision of GR8CPU's design.
+				</p>
+			</div>
+		</div> !-->
+		
+		<!-- Building GR8CPU Rev2 !-->
+		<div class="block-full">
+			<a name="building-rev2">
+				<h3 class="p-header">building</h3>
+			</a>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8_build_ram_early.jpg" alt="One of the first photos made of the building of GR8CPU Rev2.">
+				<p>
+					One of the first photos made of the build.
+				</p>
+			</div>
+			<p class="justify">
+				The building of GR8CPU isn't just copying from the design to breadboards.
+				For practically all modules (except maybe the registers), I took the effort of transferring the design to
+				paper, with all the logic gates and combinations laid out. With my design and datasheets as my guide,
+				I start building. Here you see one of the first photos of the build i made, the RAM module.
+				The RAM module contains all of the memory for the CPU, both data and program. The blue lights indicate
+				the selected address and the yellow lights indicate the data at that address (here not hooked up yet).
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8_build_ram_done.jpg" alt="The RAM module, finished.">
+				<p>
+					The RAM module, finished.
+				</p>
+			</div>
+			<p class="justify">
+				Here you see the RAM module, finished. I added some batteries to keep the RAM's content when the CPU is off.
+				I also added an arduino used to load programs made on my computer into memory.
+				This arduino would turn out to be a great idea, given the complexity of some of my programs.<br>
+				Later, I would go to make a game of <nobr>Tic-Tac-Toe</nobr>, a prime calculator and the Fibonacci sequence,
+				among other programs. I even had ambitions to hook a simple TTY screen and a controller up to this very limited CPU.
+				After the making of the RAM, i would go to take a break from building on the CPU.
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8_build_alu_early.jpg" alt="The beginnings of the ALU.">
+				<p>
+					The beginnings of the ALU.
+				</p>
+			</div>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8_build_reg_c_early.jpg" alt="The ALU, finished and everything connected to the bus.">
+				<p>
+					The ALU, finished and connected to the bus.
+				</p>
+			</div>
+			<p class="justify">
+				The next thing i started work on is the ALU.
+				The Arithmetic and Logic Unit is the part of a CPU that does all the calculations.
+				The ALU has four basic operations:<br>
+				- Add / Subtract,<br>
+				- Shifting left / right,<br>
+				- XOR,<br>
+				- AND / OR.<br>
+				Add and subtract are what you expect, with the limit of 255 that an 8-bit number imposes.
+				AND, OR and XOR are bitwise operations, which means the operation is performed separately on every bit.
+				From here it's pretty obvious: AND turns the output on if both inputs are on, OR if at least one is on,
+				XOR when exactly one input is on (for two inputs).<br>
+				With all of these calculations and some optimisations, I was just barely able to fit a complete game of
+				<nobr>Tic-Tac-Toe</nobr> in memory. However, there was not enough memory to add an enemy AI, so you'll just
+				have to play a two-player game.
+			</p>
+		</div>
+		
+		<!-- Building the TTY !-->
+		<div class="block-full">
+			<h3 class="p-header">the screen</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/ttyscreen_build0_small.jpg" alt="The first photo of the video card.">
+				<p>
+					The first photo of the video card.
+				</p>
+			</div>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/ttyscreen_build1.jpg" alt="Finishing up the video generation circuitry.">
+				<p>
+					Finishing up the video generation circuitry.
+				</p>
+			</div>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/ttyscreen_build2.jpg" alt="Early work on the TTY functionality.">
+				<p>
+					Early work on the TTY functionality.
+				</p>
+			</div>
+		</div>
+		
+		<!-- Building GR8CPU Rev3 !-->
+		<div class="block-full">
+			<h3 class="p-header">where i'm now</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/rev3_regs_build0.jpg" alt="The first register of the new design.">
+				<p>
+					The first register of the new design.
+				</p>
+			</div>
+			<p class="justify">
+				Right now I'm building <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
+				It is also an 8-bit CPU, with a 16-bit address space, interrupts and position-independent execution.
+				It will likely have over twice the integrated circuits, and be approximately 50% bigger.
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/rev3_regs_build2.jpg" alt="Two of the four registers, finished.">
+				<p>
+					Two of the four registers, finished.
+				</p>
+			</div>
+		</div>
+		
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>

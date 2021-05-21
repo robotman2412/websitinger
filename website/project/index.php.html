@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "/var/www/html/s/php/index.php"; ?>
+	<title>My projects - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>My projects</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">GR8CPU</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/gr8cpur2_finished.jpg" alt="GR8CPU Rev2, an 8-bit breadboard computer.">
+				<p>
+					GR8CPU Rev2, an 8-bit breadboard computer.
+				</p>
+			</div>
+			<p class="justify">
+				GR8CPU is my project to build a fully functional computer on breadboards.
+				The first version i built, <span title="GR8CPU, design revision 2">GR8CPU revision 2</span>,
+				has easily over 600 wires, 74 integrated circuits and 79 LED lights. It is an 8-bit architecture with
+				simplicity and processing power in mind. The CPU has access to 256 bytes of RAM,
+				and i have written a fully functional <nobr>Tic-Tac-Toe</nobr> for it.<br><br>
+				
+				As of now, I'm working on building my second one, <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
+				The first CPU was loads of fun to work on, but my ambitions are higher: with 65536 bytes of memory,
+				improved arithmetic and a much higher speed by design,
+				this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
+				
+				Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
+				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.<br><br>
+				<a href="/project/gr8cpu">Read more.</a>
+			</p>
+		</div>
+		<div class="block-full">
+			<h3 class="p-header">GR8NIX, the breadboard operating system</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_helloworld.png" alt="GR8NIX, first time running a program.">
+				<p>
+					GR8NIX, first time running a program.
+				</p>
+			</div>
+			<p class="justify">
+				GR8NIX is an operating system inspired by <a href="https://en.wikipedia.org/wiki/Unix">Unix</a>,
+				a simple multi-user, multitasking operating system made in the 1970s.
+				Modern operating systems based on unix's ideas include <a href="https://en.wikipedia.org/wiki/Linux">Linux</a>,
+				<a href="https://en.wikipedia.org/wiki/MacOS">MacOS</a> and <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a>,
+				among others. <br>
+				GR8NIX is written in assembly, for <a href="/project/gr8cpu">GR8CPU Rev3</a>.
+				It is made of over 2000 lines of hand-written assembly, totalling over 5 kilobytes and counting.<br>
+				Technical details include:<br>
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>Multithreading supporting 32 concurrent threads.</li>
+				<li>A theoretically unlimited number of running programs, limited by number of threads.</li>
+				<li>Dynamic memory allocation, with a current size of up to 8 kilobytes.</li>
+				<li>True position-independent execution for programs.</li>
+			</ul>
+			<a href="/project/gr8nix">Read more.</a>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>

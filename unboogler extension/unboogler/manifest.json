@@ -1,0 +1,12 @@
+{
+	"name": "The ultimate youtube video title unboogler!",
+	"version": "1.0",
+	"description": "This extension does its best to fix punctuation and capitalisation of video titles on YouTube.",
+	"content_scripts": [
+		{
+			"matches": ["*://youtu.be/*", "*://*.youtube.com/*"],
+			"js": ["unboogle.js"]
+		}
+	],
+	"manifest_version": 2
+}

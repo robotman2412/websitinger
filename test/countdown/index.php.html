@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">RobotMan2412's website</title>
+	<?php require "/var/www/test/s/php/index.php"; ?>
+	<!-- countdown !-->
+	<script src="/s/js/count_down.js"></script>
+	<link href='/s/css/count_down.css' rel='stylesheet' type='text/css'>
+</head>
+<body onload="loaded(); clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1 id="ctd_header">Until MCH2021</h1></div>
+		<div class="block-full">
+			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
+			<div class="fit-inline">
+				<center>
+					<canvas id="canvas" width="512" height="512"></canvas>
+				</center>
+			</div>
+			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
+		</div>
+		<div class="block-full">
+			<h3 class="p-header">make your own countdown</h3>
+			<form method="post" enctype="multipart/form-data">
+				Date and time:<br>
+				<input type="datetime-local" id="ctd_date" name="until"><br>
+				Splash text:<br>
+				<input type="text" id="ctd_splash" name="splash"><br>
+				Texts (longer duration):<br>
+				<textarea style="width:300px;height:100px;" id="ctd_longtexts" name="longtexts">Wow!</textarea><br>
+				Texts (shorter duration):<br>
+				<textarea style="width:300px;height:100px;" id="ctd_shorttexts" name="shorttexts">Short text!</textarea><br>
+				<input type="submit">
+			</form>
+<?php
+
+
+require_once "/var/www/pgsql_connect.php";
+$sql = pgsql_connect();
+
+function sql_esc($raw) {
+	return pg_escape_string($raw);
+}
+
+if (!$sql) {
+	echo "Error: Could not connect to database.<br>";
+}
+else
+{
+	if (array_key_exists("until", $_POST)) {
+		$putq  = "insert into countdowns (until, splash, longtexts, shorttexts) values (" .
+		$putq .= "'" . sql_esc($_POST['until']) . "',";
+		$putq .= "'" . sql_esc($_POST['splash']) . "',";
+		$putq .= "'" . sql_esc($_POST['longtexts']) . "',";
+		$putq .= "'" . sql_esc($_POST['shorttexts']) . "',";
+		$putq .= "'" . sql_esc($_POST['pagetitle']) . "'";
+		$putq .= ") returning id;";
+		$putr = pg_query($putq);
+		if (!$putr) {
+			echo "Error: " . pg_last_error() . "<br>";
+		}
+		else
+		{
+			$line = pg_fetch_array($putr, null, PGSQL_ASSOC);
+			$id = $line["id"];
+			echo "<script>";
+			echo "document.location.search=\"?$id\";";
+			echo "setCountdown(".json_encode($_POST['until']).",".json_encode($_POST['splash']).",";
+			echo json_encode($_POST['longtexts']).",".json_encode($_POST['shorttexts']).",";
+			echo json_encode($_POST['pagetitle']).");";
+			echo "</script>";
+			pg_free_result($putr);
+		}
+	}
+	else
+	{
+		$num = intval($_SERVER["QUERY_STRING"]);
+		if ($num > 1) {
+			$getq = "select * from countdowns where id=$num;";
+			$getr = pg_query($getq);
+			$line = pg_fetch_array($getr, null, PGSQL_ASSOC);
+			echo "<script>";
+			echo "setCountdown(".json_encode($line['until']).",".json_encode($line['splash']).",";
+			echo "".json_encode($line['longtexts']).",".json_encode($line['shorttexts']).",";
+			echo json_encode($line['pagetitle']).");";
+			echo "</script>";
+			echo "<meta property=\"og:type\" content=\"website\">";
+			echo "<meta property=\"og:title\" content=\"".htmlspecialchars($line['pagetitle'])."\">";
+			echo "<meta property=\"og:description\" content=\"Custom countdown.\">";
+			echo "<meta property=\"og:image\" content=\"/i/preview.png\">";
+			echo "<meta name=\"theme-color\" content=\"#6942a2\">";
+			pg_free_result($getr);
+		}
+		else
+		{
+			echo "<meta property=\"og:type\" content=\"website\">";
+			echo "<meta property=\"og:title\" content=\"RobotMan2412's website\">";
+			echo "<meta property=\"og:description\" content=\"Countdown until MCH2021.\">";
+			echo "<meta property=\"og:image\" content=\"/i/preview.png\">";
+			echo "<meta name=\"theme-color\" content=\"#6942a2\">";
+		}
+	}
+	pg_close($sql);
+}
+
+?>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
