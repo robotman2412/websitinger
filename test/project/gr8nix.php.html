@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "../s/php/index.php"; ?>
+	<!-- Metadata for third parties !-->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="GR8NIX - RobotMan2412's website">
+	<meta property="og:description" content="GR8NIX, the breadboard operating system written in over 2000 lines of assembly, totaling an executable of 5 kilobytes and counting.">
+	<meta property="og:image" content="/i/preview.png">
+	<meta name="theme-color" content="#6942a2">
+	<title>GR8NIX - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>GR8NIX</h1></div>
+		<!-- GR8NIX, the breadboard operating system !-->
+		<div class="block-full">
+			<h3 class="p-header">GR8NIX, the breadboard operating system</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_helloworld.png" alt="GR8NIX, first time running a program.">
+				<p>
+					GR8NIX, first time running a program.
+				</p>
+			</div>
+			<p class="justify">
+				GR8NIX is an operating system inspired by <a href="https://en.wikipedia.org/wiki/Unix">Unix</a>,
+				a simple multi-user, multitasking operating system made in the 1970s.
+				Modern operating systems based on unix's ideas include <a href="https://en.wikipedia.org/wiki/Linux">Linux</a>,
+				<a href="https://en.wikipedia.org/wiki/MacOS">MacOS</a> and <a href="https://en.wikipedia.org/wiki/Android_(operating_system)">Android</a>,
+				among others. <br>
+				GR8NIX is written in assembly, for <a href="/project/gr8cpu#building-rev3">GR8CPU Rev3</a>.
+				It is made of over 2000 lines of hand-written assembly, totalling over 5 kilobytes and counting.<br>
+				Technical details include:<br>
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>Multithreading supporting 32 concurrent threads.</li>
+				<li>A theoretically unlimited number of running programs, limited by number of threads.</li>
+				<li>Dynamic memory allocation, with a current size of up to 8 kilobytes.</li>
+				<li>True position-independent execution for programs.</li>
+			</ul>
+			<p class="justify">
+				However, GR8NIX isn't perfect.<br>
+				Due to hardware constraints, GR8NIX cannot:
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>Protect memory from a process.</li>
+				<li>Recover from attempting to run an invalid instruction.</li>
+				<li>Reliably prevent memory leaks after a process exits.</li>
+			</ul>
+		</div>
+		<!-- initial development & memory management !-->
+		<div class="block-full">
+			<h3 class="p-header">initial development & memory management</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_malloc.png" alt="The first 37 lines of the memory allocation code for GR8NIX.">
+				<p>
+					37 of the 600+ lines of the code for memory allocation.
+				</p>
+			</div>
+			<p class="justify">
+				The initial development of GR8NIX was slow. Indeed, months after starting the project,
+				i just finished running programs.<br>
+				In the image, you see only 37 of the 600+ lines of memory allocation code.
+				Memory allocation is one of the first features is started work on,
+				due to it's importance in nearly everything else.
+				Everything from typing in a command to running scheduled tasks relies heavily on the ability to get memory on demand.<br>
+				This feature wasn't easy to make: not only was it the first that i started work on, but also it was relatively hard.
+				I took a look at how modern systems implement memory allocation: basically a linked list of free chunks of memory.
+				There is a problem with that approach in that pointers may be fast, but they're really hard to deal with.
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_malloc_impl.png" alt="How malloc uses a table to signify what memory is used.">
+				<p>
+					How malloc uses a table to signify what memory is used.
+				</p>
+			</div>
+			<p class="justify">
+				My implementation of malloc works by having a table of 256 bytes in size.
+				This table uses one byte to represent 32 byte "blocks" memory.
+				This then allows 8192 bytes (8 kilobytes) to be allocated in total, unless i make blocks bigger or add more of them.
+				A byte in the table corresponds directly to a fixed place in memory, and works as follows:
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>0x00 is free memory that may be allocated.</li>
+				<li>0x03 is the first "block" of allocated memory.</li>
+				<li>
+					0x01 is a number of blocks after 0x03, used to know the size of an allocated area.
+					There may be any given number of these, from none to filling up the entire table.
+				</li>
+				<li>0x02 is reserved memory that may never be allocated.</li>
+				<li>Any other combination will not be allocated either.</li>
+			</ul>
+			<p class="justify">
+				This way of implementing malloc allows me to easily test various things that need memory,
+				with a quick overview of what memory is and is not in use. I will likely make the area that can be allocated much larger in the future.
+			</p>
+		</div>
+		<!-- the filesystem !-->
+		<div class="block-full">
+			<h3 class="p-header">the filesystem</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_fs_test.png" alt="A file loading successfully from disk.">
+				<p>
+					A file loading successfully from disk.
+				</p>
+			</div>
+			<p class="justify">
+				After getting the memory management workable, it's on to filesystems.
+				The filesystem is essential to the Unix philosophy, as it states that everything is a file.
+				Even without that, the filesystem is required to run programs and store data more permanently than RAM.<br>
+				So, i had to think up <a href="https://github.com/robotman2412/SimplexFS">my own filesystem</a>.
+				This, too was no easy task. What i decided to do in the end was borrow an idea from the
+				<a href="https://en.wikipedia.org/wiki/File_Allocation_Table">FAT (ms-dos)</a> filesystem.
+				The FAT filesystem has a table describing all of the space on disk, as a sort of list where each block points to the next.
+				This filesystem can store up to 65535 blocks of 256 bytes, for a total just under 16 megabytes.
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_fs_impl.png" alt="An overview of how SimplexFS works.">
+				<p>
+					An overview of how SimplexFS works.
+				</p>
+			</div>
+			<p class="justify">
+				This image illustrates what i just said: just like with memory allocation, there is a table which describes what part of the disk is in use.
+				In this case, however, this also forms a chain of blocks, a linked list if you will.
+				This list is used when reading a file, allowing a file to be larger than 256 bytes.
+				An entry in the allocation table is one of the following:
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>0x0000 is free space on disk.</li>
+				<li>
+					0xffff is used space on disk, the last block of a file.
+					This is used as both the first and last block at once, given the file size does not exceed 256 bytes.
+				</li>
+				<li>
+					Any other number is a pointer to the next block, as well as used space on disk.
+					This part creates the linked list that is large files.
+				</li>
+			</ul>
+			<p class="justify">
+				Although not yet implemented, writing files is relatively simple:
+				All you do is write to disk, finding yourself a new free block to use every 256 bytes.
+			</p>
+		</div>
+		<!-- programs & exec !-->
+		<div class="block-full">
+			<h3 class="p-header">programs & exec</h3>
+			<video width="100%" src="/i/gr8nix/gr8nix_lives.mp4" controls></video>
+			<p class="justify">
+				In the video you can see gr8nix come to life: it successfully loads and runs a shell program,
+				which in turn loads and runs any other programs you wish.
+			</p>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_exec_impl.png" alt="How a program loads and runs.">
+				<p>
+					How a program loads and runs.
+				</p>
+			</div>
+			<p class="justify">
+				Now, it's time for real talk: how does a program get executed?<br>
+				First, exec is called: exec is the function responsible for loading programs and running them.
+				Exec first does some sanity checks: does the file exist? is it a program file? is it a valid one?
+				Next, exec goes to find the length of the executable by checking every section entry and adding it's offset to it's length.
+				The length found by exec is the highest of these calculated lengths.<br>
+				After this, exec calls thread_launch, a method used to prepare to start a thread.
+				Exec finishes by adding some metadata to the process: it's PID, it's user ID, a pointer to the memory allocated,
+				how long said memory is, the command line that was run, and the working directory among a number of other things.
+			</p>
+		</div>
+		<!-- where i am now !-->
+		<div class="block-full">
+			<h3 class="p-header">where i am now</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8nix/gr8nix_helloworld.png" alt="GR8NIX, first time running a program.">
+				<p>
+					GR8NIX, first time running a program.
+				</p>
+			</div>
+			<p class="justify">
+				From here, i need to make a list of other features to make programs more useful.
+				The most important features include:
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>Writing to the filesystem.</li>
+				<li>File descriptors.</li>
+				<li>Path to working directory.</li>
+				<li>Device drivers.</li>
+			</ul>
+		</div>
+		
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>

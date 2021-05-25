@@ -41,6 +41,7 @@ function setCountdown(date, splash, _texts, _shortTexts, pageTitle) {
 	texts = _texts.split(/\r\n|\n|\r/g);
 	shortTexts = _shortTexts.split(/\r\n|\n|\r/g);
 	waitingText = currentText = nextText = texts[0];
+	splashText = splash;
 	document.getElementById("ctd_header").innerHTML = escapeHtml(pageTitle);
 	document.getElementsByTagName("title")[0].innerHTML = escapeHtml(pageTitle);
 }
@@ -65,14 +66,14 @@ function arcing(part, radius, fill = false, offset = 0) {
 	offset *= Math.PI * 2;
 	canvas.fillStyle = fillStyle;
 	if (fill) {
-		canvas.beginPath()
+		canvas.beginPath();
 		canvas.arc(256, 256, radius, offset + -0.5 * Math.PI, offset + -0.5 * Math.PI - part * 2 * Math.PI, true);
 		canvas.lineTo(256, 256);
 		canvas.fill();
 	}
 	else
 	{
-		canvas.beginPath()
+		canvas.beginPath();
 		canvas.arc(256, 256, radius, offset + -0.5 * Math.PI, offset + -0.5 * Math.PI - part * 2 * Math.PI, true);
 		canvas.arc(256, 256, radius - 32, offset + -0.5 * Math.PI - part * 2 * Math.PI, offset + -0.5 * Math.PI, false);
 		canvas.fill();

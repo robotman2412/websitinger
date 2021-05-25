@@ -88,7 +88,7 @@ div.content-i {
 	margin: auto;
 	padding-left: 2em;
 	padding-right: 2em;
-	padding-top: 5.135em;
+	padding-top: 7.6875em;
 	padding-bottom: 0;
 }
 
@@ -101,6 +101,7 @@ div.page-header-wrapper {
 	position: fixed;
 	top: 1.34em;
 	width: 100%;
+	font-size: 150%;
 	text-align: center;
 	z-index: 1;
 }
@@ -177,7 +178,7 @@ div.block-full {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	
-	font-size: 13px;
+	font-size: 120%;
 }
 
 div.header, div.block-full {
@@ -214,10 +215,10 @@ div.block-full:after {
 }
 
 /* Right-aligned image in paragraph. */
-.right-image {
+.right-image, .center-image {
 	/*float: right;
 	max-width: 47%;*/
-	width: 1005;
+	max-width: 100%;
 	
 	border-radius: 5px;
 	text-align: center;
@@ -225,11 +226,12 @@ div.block-full:after {
 	padding-top: 0.5em;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-	margin-left: 0.5em;
 	margin-bottom: 0.5em;
+	
+	box-sizing: border-box;
 }
 
-.right-image img {
+.right-image img, .center-image img {
 	max-width: 100%;
 	border-radius: 5px;
 }
@@ -245,7 +247,7 @@ img.may-big:hover {
 	border-radius: 2px;
 }
 
-.right-image p {
+.right-image p, .center-image p {
 	margin: 0;
 }
 

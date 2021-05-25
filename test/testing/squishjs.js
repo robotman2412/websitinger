@@ -8,13 +8,8 @@ var doShorten = false;
 var doLambda = false;
 
 var rawInput;
-var streamInput;
-var streamOutput;
-
-var functionRegex = /^function\s+([_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*)\s*\(\s*((?:\s*[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*\s*)(?:,\s*[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*\s*)*)?\s*\)\s*(?={)/g;
-var argsRegex = /(?:\s*[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*\s*)/g;
-var nameRegex = /^[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*$/;
-var spaceRegex = /\s|\r\n|\r|\n/g;
+var rawOutput;
+var bitsOfCode;
 
 function squish_loaded() {
 	codeInput = document.getElementById("squish_in");
@@ -28,42 +23,49 @@ function squish_code() {
 	doLambda = lambdaInput.checked;
 	
 	rawInput = codeInput.value;
-	streamInput = rawInput;
-	streamOutput = "";
-}
-
-function fetchLine() {
-	var end;
-	var start;
+	bitsOfCode = getBits(rawInput);
 	
-	for (start = 0; start < streamInput.length; start++) {
-		if (streamInput[start] != ';' && streamInput[start] != ' ' && streamInput[start] != '\t')) {
-			break;
-		}
-	}
-	for (end = start; end < streamInput.length; end++) {
-		if (streamInput[end] == ';') {
-			break;
-		}
-	}
+	console.log(rawInput);
 	
-	var line = streamInput.substring(start, end);
-	streamInput = streamInput.substring(end);
-	return line;
+	// Remove line comments.
+	replace(/\/\/.*?(?:\r\n|\r|\n)+/gi, "");
+	console.log(rawInput);
+	// Remove newlines.
+	replace(/(?:\r\n|\r|\n)+/gi, " ");
+	console.log(rawOutput);
+	// Remove block comments.
+	replace(/\/\*.*?\*\/(?:)/gi, " ");
+	console.log(rawOutput);
+	// Remove unnecessary keywords.
+	replace(/let|var/gi, " ");
+	// Remove unnecessary spacing.
+	replace(/\s+/gi, " ");
+	console.log(rawOutput);
+	replace(/\s*([+\-=?;:\\,.<>''""1234567890!@#$%^&()~\[\]{}])\s*/gi, "$1");
+	console.log(rawOutput);
+	replace(/(?:([^\s\/])\s*)?\*(?:\s*([^\s\/]))?/gi, "$1*$2");
+	replace(/(?:([^\s*])\s*)?\/(?:\s*([^\s*]))?/gi, "$1/$2");
+	console.log(rawOutput);
+	if (doLambda) {
+		// Convert function to lambda.
+		replace(/function\s+(.+?)\((.*?)\){/gi, "$1=($2)=>{");
+		replace(/function\s*\((.*?)\){/gi, "($1)=>{");
+		console.log(rawOutput);
+	}
+	// Remove unnecessary semicolons.
+	replace(/;;+/gi, ";");
+	console.log(rawOutput);
+	
+	codeOutput.value = rawInput;
 }
 
-function generateLambda(fnName, fnArgs, funcContent) {
-	var out = "let " + fnName + "=(";
-	if (fnArgs.length > 0) {
-		out += fnArgs[0];
-	}
-	for (var i = 1; i < fnArgs.length; i++) {
-		out += "," + fnArgs[i];
-	}
-	out += ")=>{" + funcContent + "};";
-	return out;
+function getBits(input) {
+	
 }
 
+function replace(pattern, replacement) {
+	
+}
 
 
 

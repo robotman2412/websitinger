@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: *.hex
+Disallow: /special/*
+Disallow: /incl/*
+Disallow: /data/*
+Disallow: /anyone-but-robots/

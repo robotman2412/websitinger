@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php require "/var/www/test/s/php/index.php"; ?>
+	<?php require "../s/php/index.php"; ?>
 	<title>GR8CPU - RobotMan2412's website</title>
 </head>
 <body onload="loaded();">
@@ -31,7 +31,8 @@
 				this CPU is a contender for the most complex breadboard CPU ever made.<br><br>
 				
 				Whereas the flagship program for GR8CPU Rev2 is a game of <nobr>Tic-Tac-Toe</nobr>, the flagship program I'm working on now
-				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.
+				is a functional operating system inspired by the original unix, which is the grandfather of modern Linux, MacOS, BSD and android.<br>
+				<a href="/project/gr8nix">More about that here.</a>
 			</p>
 		</div>
 		
@@ -111,30 +112,58 @@
 		
 		<!-- Building the TTY !-->
 		<div class="block-full">
-			<h3 class="p-header">the screen</h3>
-			<div class="right-image">
-				<img class="may-big" src="/i/gr8cpu/ttyscreen_build0_small.jpg" alt="The first photo of the video card.">
-				<p>
-					The first photo of the video card.
+			<a name="tty-screen">
+				<h3 class="p-header">the screen</h3>
+			</a>
+			<div style="content: &quot;&quot;; display: table; clear: both;">
+				<!--<div class="right-image">
+					<img class="may-big" src="/i/gr8cpu/ttyscreen_build0_small.jpg" alt="The first photo of the video card.">
+					<p>
+						The first photo of the video card.
+					</p>
+				</div>!-->
+				<div class="right-image">
+					<img class="may-big" src="/i/gr8cpu/ttyscreen_build1.jpg" alt="Finishing up the video generation circuitry.">
+					<p>
+						Finishing up the video generation circuitry.
+					</p>
+				</div>
+				<p class="justify">
+					Now, i didn't build my CPU just to look at it, because it can do more than that!
+					The image shows the video card with the video generation circuitry working, the point at which a monitor recognises the signal.<br>
+					The screen is a character display, written one at a time, displaying up to 18 rows and 24 columns.
+					The screen can accept up to 37.680 characters per second, at a steady rate. This is one character per row of pixels on screen.<br>
+					The color of the character on screen can be set to Red, Green, Blue, Yellow, Purple, Light blue or white.
+					The background is always black.
+				</p>
+				<div class="right-image">
+					<img class="may-big" src="/i/gr8cpu/ttyscreen_build2.jpg" alt="Early work on the TTY functionality.">
+					<p>
+						Early work on the TTY functionality.
+					</p>
+				</div>
+				<p class="justify">
+					Over time, more circuitry gets added.
+					This image shows the video card with some testing circuitry, so i can figure out how i would like to write characters to video memory.
 				</p>
 			</div>
-			<div class="right-image">
-				<img class="may-big" src="/i/gr8cpu/ttyscreen_build1.jpg" alt="Finishing up the video generation circuitry.">
+			<div class="center-image">
+				<img class="may-big" src="/i/gr8cpu/ttyscreen_demo1.jpg" alt="Demonstration of the TTY screen in action.">
 				<p>
-					Finishing up the video generation circuitry.
+					Demonstration of the TTY screen in action.
 				</p>
 			</div>
-			<div class="right-image">
-				<img class="may-big" src="/i/gr8cpu/ttyscreen_build2.jpg" alt="Early work on the TTY functionality.">
-				<p>
-					Early work on the TTY functionality.
-				</p>
-			</div>
+			<p class="justify">
+				Just for fun, here is a picture created by the video card.
+				The font would later be changed.
+			</p>
 		</div>
 		
 		<!-- Building GR8CPU Rev3 !-->
 		<div class="block-full">
-			<h3 class="p-header">where i'm now</h3>
+			<a name="building-rev3">
+				<h3 class="p-header">GR8CPU Rev3</h3>
+			</a>
 			<div class="right-image">
 				<img class="may-big" src="/i/gr8cpu/rev3_regs_build0.jpg" alt="The first register of the new design.">
 				<p>
@@ -145,6 +174,10 @@
 				Right now I'm building <span title="GR8CPU, design revision 3">GR8CPU Rev3</span>.
 				It is also an 8-bit CPU, with a 16-bit address space, interrupts and position-independent execution.
 				It will likely have over twice the integrated circuits, and be approximately 50% bigger.
+				The improved architecture allows the new version to be much faster than the old one, sometimes as extreme as
+				increasing speed by over 300%.<br>
+				Shown here is one 8-bit register, finished and tested. It works.
+				I would go to build three additional registers right after this.
 			</p>
 			<div class="right-image">
 				<img class="may-big" src="/i/gr8cpu/rev3_regs_build2.jpg" alt="Two of the four registers, finished.">
@@ -152,6 +185,46 @@
 					Two of the four registers, finished.
 				</p>
 			</div>
+			<p class="justify">
+				Shown here is more progress on the registers.
+				The registers store values for calculations and moving data.
+				More specifically, the "A" register stores values and can have all operations performed with it.
+				This includes bitwise AND, OR and XOR, arithmetic addition of numbers, any number of bytes long and comparisons.
+				The X and Y registers take on a more utilitarian role. They function the same way in most cases: as an optional offset to memory addresses,
+				to store more data temporarily, and having an instruction to compare them to the A register.
+			</p>
+		</div>
+		<div class="block-full">
+			<h3 class="p-header">where i'm now</h3>
+			<div class="right-image">
+				<img class="may-big" src="/i/gr8cpu/rev3_alu_build1.jpg" alt="The ALU, with control logic already created.">
+				<p>
+					The ALU, with control logic already created.
+				</p>
+			</div>
+			<p class="justify">
+				As of now, i'm building the ALU.<br>
+				The ALU is the part of the CPU responsible for comparing numbers and performing various calculations.
+				As shown in the image, the ALU is placed below the four registers, and already has the control logic done.<br>
+				My next step is to finish the fourth register, the "B" register and then to connect the registers to the ALU's inputs.
+				From there, i will go to build the rest of the ALU.
+			</p>
+			<hr>
+			<h3 class="p-header">the future</h3>
+			<p class="justify">
+				As a general overview, after completing the ALU, i will:
+			</p>
+			<ul style="padding-left: 1.5em; margin: 1em 0;">
+				<li>Build the program counter, which keeps track of what part of the program is running.</li>
+				<li>Build the address post-processing unit, which makes the final calculations on which address to access.</li>
+				<li>Build the flags register, which stores the result of comparisons as well as the state of various things in the CPU.</li>
+				<li>Build the stack pointer, a 16-bit register. The stack is very useful in computer science.</li>
+				<li>Build the three 16-bit registers, used for configuring interrupts and to store addresses temporarily.</li>
+				<li>
+					Build the control unit, the master of the operation.
+					The control unit decodes instructions and figures out what the hardware must do to execute said instructions.
+				</li>
+			</ul>
 		</div>
 		
 		<?php footer(); ?>

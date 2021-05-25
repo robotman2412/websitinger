@@ -321,11 +321,21 @@ function insertInsn(elem, def, id) {
 	{
 		elem.innerHTML += "<span class=\"hex val\" id=\"insn_" + id + "_hex\">$" + escapeHtml(def.hex) + "</span> - "
 						+ "<span class=\"name insn\" id=\"insn_" + id + "_name\">" + nameStr + "</span><br>"
+						+ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
 						+ "<span class=\"name insn\" id=\"insn_" + id + "_verbose\">" + verbStr + "</span><br>"
 						+ argStr
 						+ descStr
 						+ "<button class=\"edit\" onclick=\"editInsn(" + id + ")\">edit</button>";
 	}
+}
+
+function sortHex() {
+	isaDef = JSON.parse(document.getElementById("isa_def_json").value);
+	isaDef.instructions.sort((a, b) => {
+		return parseInt(a.hex, 16) - parseInt(b.hex, 16);
+	});
+	document.getElementById("isa_def_json").value = JSON.stringify(isaDef, null, 4);
+	loadFromJson();
 }
 
 function loadFromJson() {

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title id="title">RobotMan2412's website</title>
-	<?php require "/var/www/test/s/php/index.php"; ?>
+	<?php require "../s/php/index.php"; ?>
 	<!-- countdown !-->
 	<script src="/s/js/count_down.js"></script>
 	<link href='/s/css/count_down.css' rel='stylesheet' type='text/css'>
@@ -25,6 +25,8 @@
 		<div class="block-full">
 			<h3 class="p-header">make your own countdown</h3>
 			<form method="post" enctype="multipart/form-data">
+				Page title:<br>
+				<input type="text" id="ctd_title" name="pagetitle"><br>
 				Date and time:<br>
 				<input type="datetime-local" id="ctd_date" name="until"><br>
 				Splash text:<br>
@@ -51,7 +53,7 @@ if (!$sql) {
 else
 {
 	if (array_key_exists("until", $_POST)) {
-		$putq  = "insert into countdowns (until, splash, longtexts, shorttexts) values (" .
+		$putq  = "insert into countdowns (until, splash, longtexts, shorttexts, pagetitle) values (" .
 		$putq .= "'" . sql_esc($_POST['until']) . "',";
 		$putq .= "'" . sql_esc($_POST['splash']) . "',";
 		$putq .= "'" . sql_esc($_POST['longtexts']) . "',";
@@ -82,17 +84,27 @@ else
 			$getq = "select * from countdowns where id=$num;";
 			$getr = pg_query($getq);
 			$line = pg_fetch_array($getr, null, PGSQL_ASSOC);
-			echo "<script>";
-			echo "setCountdown(".json_encode($line['until']).",".json_encode($line['splash']).",";
-			echo "".json_encode($line['longtexts']).",".json_encode($line['shorttexts']).",";
-			echo json_encode($line['pagetitle']).");";
-			echo "</script>";
-			echo "<meta property=\"og:type\" content=\"website\">";
-			echo "<meta property=\"og:title\" content=\"".htmlspecialchars($line['pagetitle'])."\">";
-			echo "<meta property=\"og:description\" content=\"Custom countdown.\">";
-			echo "<meta property=\"og:image\" content=\"/i/preview.png\">";
-			echo "<meta name=\"theme-color\" content=\"#6942a2\">";
-			pg_free_result($getr);
+			if (array_key_exists("until", $line)) {
+				echo "<script>";
+				echo "setCountdown(".json_encode($line['until']).",".json_encode($line['splash']).",";
+				echo "".json_encode($line['longtexts']).",".json_encode($line['shorttexts']).",";
+				echo json_encode($line['pagetitle']).");";
+				echo "</script>";
+				echo "<meta property=\"og:type\" content=\"website\">";
+				echo "<meta property=\"og:title\" content=\"".htmlspecialchars($line['pagetitle'])."\">";
+				echo "<meta property=\"og:description\" content=\"Custom countdown.\">";
+				echo "<meta property=\"og:image\" content=\"/i/preview.png\">";
+				echo "<meta name=\"theme-color\" content=\"#6942a2\">";
+				pg_free_result($getr);
+			}
+			else
+			{
+				echo "<meta property=\"og:type\" content=\"website\">";
+				echo "<meta property=\"og:title\" content=\"RobotMan2412's website\">";
+				echo "<meta property=\"og:description\" content=\"Countdown until MCH2021.\">";
+				echo "<meta property=\"og:image\" content=\"/i/preview.png\">";
+				echo "<meta name=\"theme-color\" content=\"#6942a2\">";
+			}
 		}
 		else
 		{
