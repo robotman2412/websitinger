@@ -45,7 +45,7 @@ public class WAutoUpload {
 		}
 		
 		for (Map.Entry<String, String> dirPair : localToSiteDirs.entrySet()) {
-			File file = new File(dirPair.getKey());
+			File file = new File(dirPair.getKey());//
 			if (file.exists()) {
 				checkUpload(file, dirPair.getValue(), passwd, ssh, true, true);
 			}
