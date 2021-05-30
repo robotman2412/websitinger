@@ -208,6 +208,9 @@ div.block-full:after {
 .center-image {
 	max-width: 100%;
 	
+	display: table;
+	clear: both;
+	
 	border-radius: 5px;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.2);

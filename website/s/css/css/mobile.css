@@ -4,6 +4,8 @@ body {
 	/*font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;*/
 	font-family: saira, sans-serif;
 	color: white;
+	background-image: url("/i/background.png");
+	background-position: 50% 0px;
 }
 
 /* saira-regular - latin */
@@ -41,11 +43,14 @@ a:not([name]):visited {
 
 input.wide, button.wide {
 	width: 100%;
-	font-size: 150%;
-	height: 1.5em;
-	border-radius: 5px;
+	font-size: 190%;
+	height: 2em;
+	border-radius: 10px;
 	box-sizing: border-box;
 	font-family: saira, sans-serif;
+	
+	padding-left: 0.3em;
+	padding-right: 0.3em;
 	
 	color: white;
 	background-color: rgba(0, 0, 0, 0.35);
@@ -70,13 +75,11 @@ button.wide:active {
 
 /* Content layout. */
 div.content-o {
-	background-image: url("/i/background.png");
-	background-position: 50% 0px;
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 	overflow: auto;
 }
 
@@ -85,7 +88,7 @@ div.content-i {
 	margin: auto;
 	padding-left: 2em;
 	padding-right: 2em;
-	padding-top: 5.135em;
+	padding-top: 7.6875em;
 	padding-bottom: 0;
 }
 
@@ -98,6 +101,7 @@ div.page-header-wrapper {
 	position: fixed;
 	top: 1.34em;
 	width: 100%;
+	font-size: 150%;
 	text-align: center;
 	z-index: 1;
 }
@@ -113,6 +117,7 @@ div.page-header {
 	background-color: rgba(127, 93, 175, 0.9);
 }
 
+/*
 @supports (-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px)) {
 	div.page-header {
 		-webkit-backdrop-filter: blur(5px);
@@ -120,6 +125,7 @@ div.page-header {
 		background-color: rgba(255, 255, 255, 0.14);
 	}
 }
+*/
 
 div.page-header:after {
 	content: "";
@@ -171,6 +177,8 @@ div.block-full {
 	padding-right: 10px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	
+	font-size: 120%;
 }
 
 div.header, div.block-full {
@@ -179,6 +187,7 @@ div.header, div.block-full {
 	background-color: rgba(127, 93, 175, 0.9);
 }
 
+/*
 @supports ((-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px))) {
 	div.header, div.block-full {
 		-webkit-backdrop-filter: blur(5px) !important;
@@ -186,6 +195,7 @@ div.header, div.block-full {
 		background-color: rgba(255, 255, 255, 0.14) !important;
 	}
 }
+*/
 
 div.block-full:after {
 	content: "";
@@ -204,12 +214,11 @@ div.block-full:after {
 	text-justify: inter-word;
 }
 
-/* Center-aligned image. */
-.center-image {
+/* Right-aligned image in paragraph. */
+.right-image, .center-image {
+	/*float: right;
+	max-width: 47%;*/
 	max-width: 100%;
-	
-	display: table;
-	clear: both;
 	
 	border-radius: 5px;
 	text-align: center;
@@ -220,20 +229,6 @@ div.block-full:after {
 	margin-bottom: 0.5em;
 	
 	box-sizing: border-box;
-}
-
-/* Right-aligned image in paragraph. */
-.right-image {
-	float: right;
-	max-width: 47%;
-	border-radius: 5px;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.2);
-	padding-top: 0.5em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	margin-left: 0.5em;
-	margin-bottom: 0.5em;
 }
 
 .right-image img, .center-image img {
@@ -316,6 +311,10 @@ div.img-large-clear:hover {
 	top: 0.625em;
 	left: 0.625em;
 	width: 1.25em;
+}
+
+p.img-large-alt {
+	font-size: 30px;
 }
 
 @keyframes img-large-fade-out {

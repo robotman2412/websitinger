@@ -5,7 +5,7 @@
 	<?php require "../s/php/index.php"; ?>
 	<script src="squishjs.js"></script>
 </head>
-<body onload="loaded(); squish_loaded(); squish_code();">
+<body onload="loaded(); squishLoaded(); squishCode();">
 <div id="template_builder" style="display:none;"></div>
 <div id="outer_content" class="content-o">
 	<?php page_header(); ?>
@@ -13,7 +13,7 @@
 		<div class="header"><h1>Squishy scripts</h1></div>
 		<div class="block-full">
 			<h3 class="p-header">Input stuffs</h3>
-			<textarea style="width: 100%; height: 150px; box-sizing: border-box;" id="squish_in" onchange="squish_code()" onkeydown="squish_code()" onkeyup="squish_code()">function exadeath(value) {
+			<textarea style="width: 100%; height: 150px; box-sizing: border-box;" id="squish_in" onchange="squishCode()" onkeydown="squishCode()" onkeyup="squishCode()">function exadeath(value) {
   return (function(what) {
     return value+1; // What's this shit?!?!?
   })(value);
@@ -24,14 +24,14 @@
 			<table>
 				<tr>
 					<td>shorten names</td>
-					<td><input onchange="squish_code()" type="checkbox" id="squish_shorten_names"></td>
+					<td><input onchange="squishCode()" type="checkbox" id="squish_shorten_names"></td>
 				</tr>
 				<tr>
 					<td>function to lambda</td>
-					<td><input onchange="squish_code()" type="checkbox" checked id="squish_to_lambda"></td>
+					<td><input onchange="squishCode()" type="checkbox" checked id="squish_to_lambda"></td>
 				</tr>
 			</table>
-			<!--<button onclick="squish_code()" class="wide">squish your code</button>!-->
+			<!--<button onclick="squishCode()" class="wide">squish your code</button>!-->
 		</div>
 		<?php footer(); ?>
 	</div>
