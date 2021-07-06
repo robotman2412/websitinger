@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Testing - RobotMan2412's website</title>
+	<?php require "../s/php/index.php"; ?>
+	<script src="brainfuckripoff.js"></script>
+</head>
+<body onload="loaded(); lolWhoCares();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Lol who cares</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Is esolang?</h3>
+			<ul>
+				<li>Memory is 59049 words consisting of 10 trits</li>
+				<li>Data pointer does a wrapping when overflow</li>
+				<li>Arithmetic is repeated by N times if a base-3 number follows the instruction</li>
+				<li>Arithmetic repeated 0 times does not do anything</li>
+				<li><span style="font-family:monospace">& </span>Inverse of next operation</li>
+			</ul><p>Non-inverted:</p><ul>
+				<li><span style="font-family:monospace">@</span> Branch past matching <span style="font-family:monospace">-</span> if cell is zero</li>
+				<li><span style="font-family:monospace">-</span> Jump back to matching <span style="font-family:monospace">@</span> and re-evaluate</li>
+				<li><span style="font-family:monospace">$</span> Decrement, then move <u>right</u></li>
+				<li><span style="font-family:monospace">^</span> Output, then move left</li>
+			</ul><p>Yes-inverted:</p><ul>
+				<li><span style="font-family:monospace">@</span> Branch past next matching <span style="font-family:monospace">-</span> unless cell is zero</li>
+				<li><span style="font-family:monospace">-</span> Jump back to matching <span style="font-family:monospace">@</span> and re-evaluate</li>
+				<li><span style="font-family:monospace">$</span> Increment, then move <u>left</u></li>
+				<li><span style="font-family:monospace">^</span> Input, then move right</li>
+			</ul>
+			<!-- <input onkeydown="edit()" onkeyup="edit()" onchange="edit()" style="width: 100%; box-sizing: border-box;" id="input"> !-->
+			<textarea onkeydown="edit()" onkeyup="edit()" onchange="edit()" style="width: 100%; height: 200px; box-sizing: border-box; resize: none;" id="code">$</textarea><br>
+			<textarea style="width: 100%; height: 100px; box-sizing: border-box; resize: none;" id="out"></textarea><br>
+			<table><tr><td>
+				<table style="font-family:monospace">
+					<tr><td>Brainfuck</td>	<td> -> </td>	<td>Lolwho.Cares</td></tr>
+					<tr><td>[</td>			<td></td>		<td>@</td></tr>
+					<tr><td>]</td>			<td></td>		<td>-</td></tr>
+					<tr><td>&lt;</td>		<td></td>		<td>&$0</td></tr>
+					<tr><td>&gt;</td>		<td></td>		<td>$0</td></tr>
+					<tr><td>.</td>			<td></td>		<td>^$0</td></tr>
+					<tr><td>,</td>			<td></td>		<td>&^&$0</td></tr>
+					<tr><td>+</td>			<td></td>		<td>&$$0</td></tr>
+					<tr><td>-</td>			<td></td>		<td>$&$0</td></tr>
+				</table></td><td>
+				<table style="font-family:monospace">
+					<tr><td>Lolwho.Cares</td>	<td> -> </td>	<td>Brainfuck</td></tr>
+					<tr><td> @</td>			<td></td>		<td>[    </td></tr>
+					<tr><td> -</td>			<td></td>		<td>]    </td></tr>
+					<tr><td> $</td>			<td></td>		<td>-&gt;</td></tr>
+					<tr><td> ^</td>			<td></td>		<td>.&lt;</td></tr>
+					<tr><td>&@</td>			<td></td>		<td>No translation</td></tr>
+					<tr><td>&-</td>			<td></td>		<td>]    </td></tr>
+					<tr><td>&$</td>			<td></td>		<td>+&lt;</td></tr>
+					<tr><td>&^</td>			<td></td>		<td>,&gt;</td></tr>
+				</table>
+			</td></tr></table>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

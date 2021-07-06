@@ -3,29 +3,46 @@ var codeInput;
 var codeOutput;
 var shortenInput;
 var lambdaInput;
+var windowInput;
 
 var doShorten = false;
 var doLambda = false;
+var doWindow = false;
 
+var prepend;
 var rawInput;
 var rawOutput;
 var bitsOfCode;
+
+function countMatches(str, expr) {
+	return (str.match(expr) || []).length;
+}
 
 function squishLoaded() {
 	codeInput = document.getElementById("squish_in");
 	codeOutput = document.getElementById("squish_out");
 	shortenInput = document.getElementById("squish_shorten_names");
 	lambdaInput = document.getElementById("squish_to_lambda");
+	windowInput = document.getElementById("squish_shorten_window");
 }
 
 function squishCode() {
 	doShorten = shortenInput.checked;
 	doLambda = lambdaInput.checked;
-	
+	doWindow = windowInput.checked;
+
+	prepend = "";
 	rawOutput = rawInput = codeInput.value;
 	
 	console.log(rawInput);
-	
+
+	var hasWindow = countMatches(rawInput, /([\W]|^)window(?=[\W]|$)/g) >= 2 && doWindow;
+	var hasDocument = countMatches(rawInput, /([\W]|^)document(?=[\W]|$)/g) >= 2 && doWindow;
+
+	if (hasWindow && hasDocument) prepend += "_a=window,_b=document;"
+	else if (hasWindow) prepend += "_a=window;";
+	else if (hasDocument) prepend += "_b=document;";
+
 	// Remove line comments.
 	rawInput = rawInput.replaceAll(/\/\/.*?(?:\r\n|\r|\n)+/gi, "");
 	console.log(rawInput);
@@ -59,6 +76,19 @@ function squishCode() {
 		// Shorten immediate usage.
 		//replaceCode("()=>", "", "$@");
 	}
+	// Shorten window and document.
+	if (hasWindow) replace(/([\W]|^)window(?=[\W]|$)/g, "$1_a");
+	if (hasDocument) replace(/([\W]|^)document(?=[\W]|$)/g, "$1_b");
+	console.log(rawOutput);
+	// Replace true and false.
+	replace(/true/gi, "!0");
+	replace(/false/gi, "!1");
+	console.log(rawOutput);
+	// Remove unnecessary logic.
+	replace(/!(?:!!)+/gi, "!");
+	replace(/==!/gi, "!=");
+	replace(/!=!/gi, "==");
+	console.log(rawOutput);
 	// Remove unnecessary semicolons.
 	replace(/;;+/gi, ";");
 	replace(/;}/gi, "}");
@@ -141,7 +171,7 @@ function getBits(input) {
 
 function replace(pattern, replacement) {
 	var dirty = false;
-	rawOutput = "";
+	rawOutput = prepend;
 	for (i in bitsOfCode) {
 		if (bitsOfCode[i].match(/[^''""\/]$/i)) {
 			var n = bitsOfCode[i].replace(pattern, replacement);
@@ -154,7 +184,7 @@ function replace(pattern, replacement) {
 }
 
 function replaceRaw(pattern, replacement) {
-	rawOutput = rawOutput.replaceAll(pattern, replacement);
+	rawOutput = prepend + rawOutput.substring(prepend.length).replaceAll(pattern, replacement);
 	bitsOfCode = getBits(rawOutput);
 }
 

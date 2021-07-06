@@ -4,6 +4,8 @@ let pageHeaderOffset = defaultFontSize * 1.34;
 var templateBuilderElem;
 var pageHeaderElem;
 var backgroundElem;
+var scrollBarElem;
+var scrollHolderElem
 var lastTop;
 var lastHeaderTop;
 var isEnlarged = false;
@@ -59,6 +61,14 @@ function srollHandler() {
 		lastHeaderTop = headerTop;
 		pageHeaderElem.style.top = headerTop + "px";
 	}
+}
+
+function hideScrollbar() {
+
+}
+
+function showScrollbar() {
+
 }
 
 function enlargeImage(imageSrc, imageAlt) {

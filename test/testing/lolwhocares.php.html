@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Lolwho.Cares - RobotMan2412's website</title>
+	<?php require "../s/php/index.php"; ?>
+	<script src="lolwhocares.js"></script>
+</head>
+<body onload="loaded(); lolWhoCares();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Lol who cares</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Is esolang?</h3>
+			Lolwho.Cares is a eighteen-trit, stack-based esoteric language with instructions on a 2D grid.<br>
+			Code in Lolwho.Cares may read and write it's own instructions (or data included in the program) at will.<br>
+			The biggest possible number (due to VM constraints) is 222222222222222222 (base 3), 387420488 (base 10)<br><br>
+			Operations:
+			<table style="font-family:monospace">
+				<tr><td>010</td>	<td>Swap top two values</td></tr>
+				<tr><td>012</td>	<td>Increment</td></tr>
+				<tr><td>020</td>	<td>Decrement</td></tr>
+				<tr><td>021</td>	<td>Duplicate</td></tr>
+				<tr><td>120</td>	<td>Discard</td></tr>
+				<tr><td>121</td>	<td>Add top two values</td></tr>
+				<tr><td>101</td>	<td>Sub top two values</td></tr>
+				<tr><td>102</td>	<td>Pop X, Y, value, then store</td></tr>
+				<tr><td>210</td>	<td>Pop X, Y, then load, push value</td></tr>
+				<tr><td>212</td>	<td>Input value</td></tr>
+				<tr><td>201</td>	<td>Output value</td></tr>
+			</table>
+			An operation may be shortened with the following rules:
+			<ul style="font-family:monospace">
+				<li>The last character of the instruction is duplicated if another instruction follows without non-trit characters preceding, this becomes the "base" for the next instruction.</li>
+				<li>The remaining characters are "rounded up" when the last explicit character is on an even square.</li>
+				<li>It is not required to add another instruction immediately following the shortened instruction, and if omitted, the duplicate character should also be omitted.</li>
+			</ul>
+			The "base character" is "0", unless an instruction was just shortened.
+			The meaning of "base character":
+			<table style="font-family:monospace">
+				<tr><td>Base character</td>	<td>Desired -> In code</td></tr>
+				<tr><td>0 (default)</td>	<td>0 -> 0, 1 -> 1, 2 -> 2</td></tr>
+				<tr><td>1</td>				<td>0 -> 1, 1 -> 2, 2 -> 0</td></tr>
+				<tr><td>2</td>				<td>0 -> 2, 1 -> 0, 2 -> 1</td></tr>
+			</table>
+			Rounding "up" or "down" means that the "highest" or "lowest" trit which does not match the previous character is picked.<br>
+			Flow control:
+			<table style="font-family:monospace">
+				<tr><td>^</td>		<td>Go up</td></tr>
+				<tr><td>v</td>		<td>Go down</td></tr>
+				<tr><td>&lt;</td>	<td>Go left</td></tr>
+				<tr><td>&gt;</td>	<td>Go right</td></tr>
+				<tr><td>`</td>		<td>Turn left if equal</td></tr>
+				<tr><td>,</td>		<td>Turn right if equal</td></tr>
+			</table>
+			<span style="font-family:monospace">Note: Equal in this context means that the top entry on the stack is zero.</span><br>
+			Data is inserted by trinary numbers between <span style="font-family:monospace">*</span> and <span style="font-family:monospace">+</span> (not required).
+			Data with a zero length is equal to zero.<br><br>
+			Program input:
+<!-- Do not format this textarea, the contents are sensitive to indent. !-->
+<textarea onkeydown="edit()" onkeyup="edit()" onchange="edit()" style="width: 100%; height: 200px; box-sizing: border-box; resize: none;" id="code">*2*2**>*1*+1022100020*1020+>v
+      ^120210012+*1*120021`1<
+Hello, World!</textarea><br>
+			Input:
+			<textarea style="width: 100%; height: 100px; box-sizing: border-box; resize: none;" id="in"></textarea><br>
+			Output:
+			<textarea style="width: 100%; height: 100px; box-sizing: border-box; resize: none;" id="out"></textarea><br>
+			<button class="wide" onclick="reset(); isRunning = true;">run</button>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

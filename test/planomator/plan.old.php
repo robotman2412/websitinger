@@ -10,15 +10,15 @@ $people = [
 ];
 
 $dates = [
-	"date0" => "Sat 1 May",
-	"date1" => "Sun 2 May",
-	"date2" => "Mon 3 May",
-	"date3" => "Tue 4 May",
-	"date4" => "Wed 5 May",
-	"date5" => "Thu 6 May",
-	"date6" => "Fri 7 May",
-	"date7" => "Sat 8 May",
-	"date8" => "Sun 9 May"
+	"date0" => "Fri 11 Jun",
+	"date1" => "Sat 12 Jun",
+	"date2" => "Sun 13 Jun",
+	"date3" => "Fri 18 Jun",
+	"date4" => "Sat 19 Jun",
+	"date5" => "Sun 20 Jun",
+	"date6" => "Fri 25 Jun",
+	"date7" => "Sat 26 Jun",
+	"date8" => "Sun 27 Jun"
 ];
 
 $items = [
@@ -41,9 +41,9 @@ $storage = "/var/www/data/plan.json";
 
 $data = json_decode(file_get_contents($storage), true);
 
-$food_title = "snacks";
+$food_title = "pizza";
 $att_title = "komen";
-$bring_title = "brengen";
+$bring_title = "snaxx";
 
 function planBody() {
 	global $data;

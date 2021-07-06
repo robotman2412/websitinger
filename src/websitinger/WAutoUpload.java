@@ -2,12 +2,12 @@ package websitinger;
 
 import com.jcraft.jsch.*;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class WAutoUpload {
 	
@@ -157,39 +157,36 @@ public class WAutoUpload {
 	public static boolean fupload(File upload, String remoteDir, String passwd, JSch ssh) {
 		String outName = upload.getName();
 		if (outName.matches("^.*?\\.(jpg|jpeg)$")) {
-			try {
-				Process p = Runtime.getRuntime().exec(new String[] {"bash"});
-				InputStream stdout = p.getInputStream();
-				InputStream stderr = p.getErrorStream();
-				OutputStream os = p.getOutputStream();
-//				os.write("neofetch\n".getBytes(StandardCharsets.UTF_8));
-//				os.write("echo $PATH\n".getBytes(StandardCharsets.UTF_8));
-				os.write("/bin/exiftool -gps:all= '".getBytes(StandardCharsets.UTF_8));
-				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
-				os.write("' ; rm '".getBytes(StandardCharsets.UTF_8));
-				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
-				os.write("_original' ; exit\n".getBytes(StandardCharsets.UTF_8));
-				os.flush();
-				while (p.isAlive()) {
-					if (stderr.available() > 0) {
-						byte[] fuck = new byte[stderr.available()];
-						stderr.read(fuck);
-						System.err.write(fuck);
-						System.err.flush();
-					}
-					if (stdout.available() > 0) {
-						byte[] fuck = new byte[stdout.available()];
-						stdout.read(fuck);
-						System.out.write(fuck);
-						System.out.flush();
-					}
-				}
-				p.waitFor(2000, TimeUnit.MILLISECONDS);
-				System.out.println("Ehhh___.ok,");
-			} catch (IOException | InterruptedException e) {
-				e.printStackTrace();
-				return false;
-			}
+//			try {
+//				Process p = Runtime.getRuntime().exec(new String[] {"bash"});
+//				InputStream stdout = p.getInputStream();
+//				InputStream stderr = p.getErrorStream();
+//				OutputStream os = p.getOutputStream();
+//				os.write("/usr/bin/exiftool -gps:all= '".getBytes(StandardCharsets.UTF_8));
+//				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
+//				os.write("' ; rm '".getBytes(StandardCharsets.UTF_8));
+//				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
+//				os.write("_original' ; exit\n".getBytes(StandardCharsets.UTF_8));
+//				os.flush();
+//				while (p.isAlive()) {
+//					if (stderr.available() > 0) {
+//						byte[] fuck = new byte[stderr.available()];
+//						stderr.read(fuck);
+//						System.err.write(fuck);
+//						System.err.flush();
+//					}
+//					if (stdout.available() > 0) {
+//						byte[] fuck = new byte[stdout.available()];
+//						stdout.read(fuck);
+//						System.out.write(fuck);
+//						System.out.flush();
+//					}
+//				}
+//				p.waitFor(2000, TimeUnit.MILLISECONDS);
+//			} catch (IOException | InterruptedException e) {
+//				e.printStackTrace();
+//				return false;
+//			}
 		}
 		for (Map.Entry<String, String> alias : extensionAliasses.entrySet()) {
 			if (outName.endsWith(alias.getKey())) {

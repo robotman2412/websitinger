@@ -52,7 +52,10 @@
 				<button onclick="addInsn()">+ instruction</button><br><br><br>
 				Raw JSON:<br>
 				<textarea id="isa_def_json" style="width: 100%; height: 200px;"></textarea><br>
-				<button onclick="loadFromJson()">load from JSON</button>
+				<button onclick="loadFromJson()">load from JSON</button><br><br><br>
+				Disassemble:<br>
+				<textarea id="disasm_in" style="width: 100%; height: 200px;" onchange="disasm(this)" onkeydown="disasm(this)" onkeyup="disasm(this)"></textarea><br>
+				<div class="insn-def asm" id="disasm_out"></div>
 			</div>
 			<?php footer(); ?>
 		</div>

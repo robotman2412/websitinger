@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Text Compression - RobotMan2412's website</title>
+	<?php require "../s/php/index.php"; ?>
+	<script src="txtcompress.js"></script>
+</head>
+<body onload="loaded(); lolWhoCompresses();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Lol who cares</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Compress?</h3>
+			Input:
+			<textarea onchange="edit()" onkeyup="edit()" style="width: 100%; height: 100px; box-sizing: border-box; resize: none;" id="in">this a is the this
+this a this is this this a this a
+</textarea><br>
+			Output:
+			<textarea style="width: 100%; height: 100px; box-sizing: border-box; resize: none;" id="out"></textarea><br>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
