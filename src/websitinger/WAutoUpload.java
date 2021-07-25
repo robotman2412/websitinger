@@ -18,10 +18,8 @@ public class WAutoUpload {
 	
 	public static void main(String[] args) throws JSchException {
 		extensionAliasses.put("php.html", "php");
-		//localToSiteDirs.put("D:/!intellij/websitinger/website/", "/var/www/html/");
-		//localToSiteDirs.put("D:/!intellij/websitinger/test/", "/var/www/test/");
-		localToSiteDirs.put("/media/julian/Big boi drive/!intellij/websitinger/website/", "/var/www/html/");
-		localToSiteDirs.put("/media/julian/Big boi drive/!intellij/websitinger/test/", "/var/www/test/");
+		localToSiteDirs.put("/media/julian/get me data/intellij/websitinger/website/", "/var/www/html/");
+		localToSiteDirs.put("/media/julian/get me data/intellij/websitinger/test/", "/var/www/test/");
 		
 		ssh = new JSch();
 		String passwd;
