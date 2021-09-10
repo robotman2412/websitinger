@@ -21,7 +21,13 @@
 			</form>
 <?php
 
-var_dump($_POST);
+if (array_key_exists("button", $_POST)) {
+    if ($_POST['button'] == "1") {
+        echo "Posted button 1.<br>";
+    } else if ($_POST['button'] == "2") {
+        echo "Posted button 2.<br>";
+    }
+}
 
 ?>
 		</div>
