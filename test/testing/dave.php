@@ -13,11 +13,11 @@
 		<div class="block-full">
 			<form method="post" enctype="multipart/form-data">
 			    <input type="hidden" name="button" value="1">
-				<input type="submit">
+				<input type="submit" value="Button 1">
 			</form>
 			<form method="post" enctype="multipart/form-data">
 			    <input type="hidden" name="button" value="2">
-				<input type="submit">
+				<input type="submit" value="Button 2">
 			</form>
 <?php
 
