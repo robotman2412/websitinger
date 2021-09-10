@@ -7,7 +7,7 @@
 	<script src="/v6/js/count_down.js"></script>
 	<link href='/s/css/count_down.css' rel='stylesheet' type='text/css'>
 </head>
-<body onload="loaded(); /* clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown(); */ ">
+<body onload="loaded(); clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown();">
 <div id="template_builder" style="display:none;"></div>
 <div id="outer_content" class="content-o">
 	<?php page_header(); ?>
@@ -40,6 +40,15 @@
 				<a href="/mch2021">read more.</a>
 			</p>
 		</div>
+		<a href="/countdown/" style="text-decoration: none;"><div class="block-full">
+			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
+			<div class="fit-inline">
+				<center>
+					<canvas id="canvas" width="512" height="512"></canvas>
+				</center>
+			</div>
+			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
+		</div></a>
 		<div class="block-full">
 			<h3 class="p-header">More ALU</h3>
 			<div class="right-image">
@@ -55,15 +64,6 @@
 				<a href="/project/gr8cpu#where-i-am-now">Read more.</a>
 			</p>
 		</div>
-		<!-- <a href="/countdown/" style="text-decoration: none;"><div class="block-full">
-			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
-			<div class="fit-inline">
-				<center>
-					<canvas id="canvas" width="512" height="512"></canvas>
-				</center>
-			</div>
-			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
-		</div></a> !-->
 		<div class="block-full">
 			<h3 class="p-header">GR8CPU</h3>
 			<div class="right-image">
