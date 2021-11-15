@@ -1,6 +1,0 @@
-
-# Contact for security
-Contact: mailto:ikbenju@gmail.com
-
-# Languages
-Preferred-Languages: en, en-us, nl
