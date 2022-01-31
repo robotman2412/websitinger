@@ -136,6 +136,7 @@ div.page-header-button {
 	margin-left: 0.335em;
 	margin-right: 0.335em;
 	text-align: center;
+	transition: 0.2s;
 }
 
 div.page-header-button p {
@@ -148,10 +149,10 @@ div.page-header a {
 	text-decoration: none;
 }
 
-/*div.page-header a:hover {
-	color: white !important;
+.page-header-button:hover {
+	transform: scale(1.1);
 	text-decoration: none;
-}*/
+}
 
 /* Content blocks. */
 div.header {
@@ -222,6 +223,12 @@ div.block-full:after {
 	box-sizing: border-box;
 }
 
+/* Video. */
+.video, video {
+	width: 100%;
+	border-radius: 5px;
+}
+
 /* Right-aligned image in paragraph. */
 .right-image {
 	float: right;
@@ -234,6 +241,10 @@ div.block-full:after {
 	padding-right: 0.5em;
 	margin-left: 0.5em;
 	margin-bottom: 0.5em;
+}
+
+.right-image.skinny {
+	max-width: 30%;
 }
 
 .right-image img, .center-image img {

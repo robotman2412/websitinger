@@ -8,85 +8,11 @@
 	<script src="/s/js/name_maker.js"></script>
 	<link href='/v9/css/count_down.css' rel='stylesheet' type='text/css'>
 </head>
-<body onload="loaded(); clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown(); mchStart(); ">
+<body onload="loaded(); /* clearStyle='rgb(127, 93, 175)'; fillStyle='#ffffff'; no_title = true; start_countdown(); */ mchStart(); ">
 <div id="template_builder" style="display:none;"></div>
 <div id="outer_content" class="content-o">
 	<?php page_header(); ?>
-	<div id="inner_content" class="content-i">
-		<div class="header"><h1>MCH<span class="mch-old-date">2021</span><span class="mch-new-date">2022</span></h1></div>
-		<div class="block-full">
-			<h1 style="color:#00fc00;" id="mch_text" class="mch-text">$ Until MCH2021</h1><br>
-			<div class="fit-inline">
-				<center>
-					<canvas id="canvas" width="512" height="512"></canvas>
-				</center>
-			</div>
-			<h2 id="mch_time" style="color:white;margin-bottom:-95px;" class="mch-text-b"></h2>
-		</div>
-		<div class="block-full">
-			<h3 class="p-header">MCH is now 2022</h3>
-			After a long wait, it has been decided: MCH2022 is now a thing!
-			The event will be mostly the same, now taking place in 2022.
-			Exact date is said to be determined later.
-		</div>
-		<div class="block-full">
-			<h3 class="p-header">About MCH2021 and my involvement</h3>
-			<div class="right-image">
-				<img class="may-big" alt="Entrance gate of SHA2017, the event preceding MCH2021. (Taken by Polyfloyd)" src="https://mch2021.org/images/gallery/thumbnails/SHA2017_ENTRANCE_GATE_BY_NIGHT_CC_BY_POLYFLOYD.jpeg">
-				<p>
-					Entrance gate of SHA2017.
-				</p>
-			</div>
-			<p class="justify">
-				<a href="https://mch2021.org/#/">MCH2021</a> is a hackercamp in the Netherlands,
-				<span class="mch-old-date">taking place on August 6 2021</span> <span class="mch-new-date">sometime in 2022</span>.
-				The event is organised by volunteers, and repeats once every four years.
-				Seen in the photo is the entrance gate of SHA2017, the event preceding MCH2022.
-				MCH2021 will take place on <a href="https://osm.org/go/0E65_AaQ?layers=HN&m=">Scoutinglangdoed Zeewolde</a> as
-				the successor to <a href="https://en.wikipedia.org/wiki/Observe._Hack._Make.">OHM2013</a>,
-				<a href="https://en.wikipedia.org/wiki/Still_Hacking_Anyway">SHA2017</a>, and six earlier events, from 1989 to 2017.
-			</p>
-			<div class="right-image">
-				<img class="may-big" alt="Countdown until MCH2021, running on the electronic badge from SHA2017." src="/i/badge_countdown.jpg">
-				<p>
-					Countdown until MCH2022.
-				</p>
-			</div>
-			<p class="justify">
-				In the summer of 2020, I began to rediscover hacker camps.
-				After not having had anything real to show at hacker camps, it had sunk to the back of my mind.
-				It did not take me long to realise that it would be an excellent idea to take
-				<a href="/project/gr8cpu">my breadboard cpu project</a> with me.
-			</p>
-			<p class="justify">
-				Recently, i've been involved with <a href="https://wiki.mch2021.org/Team:Badge">Badge.Team</a>,
-				the team behind the badge for SHA2017 and MCH2021. I wanted to contribute, but was not immediately sure what.
-				Eventually, after trying to make programs, I found that the graphics were very limited.
-				I decided to set up a demo of matrix multiplication in 2D. From that proof of concept,
-				I decided that I would tend to the graphics, 2D and maybe even 3D.
-			</p>
-		</div>
-		<div class="block-full">
-			<a name="name"><h3 class="p-header">MCH<span class="mch-old-date">2021</span><span class="mch-new-date">2022</span> name sticker maker</h3></a>
-			<input id="mch_name" type="text" class="wide" value="hackers">
-			<canvas style="box-sizing:border-box;border:none;margin-top:20px;max-width:100%;"
-			        class="fit-inline may-big" id="mch_name_canvas" width="1492" height="660"></canvas>
-			<button class="wide" onclick="mchNameDownload();">download as PNG</button>
-		</div>
-		<div class="block-full">
-			<h3 class="p-header">MCH<span class="mch-old-date">2021</span><span class="mch-new-date">2022</span> promotional artwork</h3>
-			Some promotional artwork by me, for MCH2022.<br><br>
-			<img src="/i/mch2021/promo_1080p.png" class="fit-inline may-big"><br>
-			<span class="note">original 1080P promotional image made by me</span><br><br>
-			<img src="/i/mch2021/promo_namefont.png" id="name_font" class="fit-inline may-big"><br>
-			<span class="note">font for the name sticker maker</span><br><br>
-			<div class="narrow-inline"><img src="/i/mch2021/promo_sticker.png" class="fit-inline may-big"><br></div>
-			<span class="note">only the sticker of the promotional image</span><br><br>
-			<div class="narrow-inline"><img src="/i/mch2021/promo_sticker_nameless.png" id="sticker_nameless" class="fit-inline may-big"><br></div>
-			<span class="note">nameless sticker, used for the name maker</span><br><br>
-		</div>
-		<?php footer(); ?>
-	</div>
+	<meta http-equiv="refresh" content="0;mch2021">
 </div>
 </body>
 </html>

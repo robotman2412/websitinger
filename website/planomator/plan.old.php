@@ -5,20 +5,20 @@ $people = [
 	"Dave",
 	"IGOR",
 	"R24owan",
-	"Maxx"
+	"Maxx",
+	"Cynep_"
 ];
 
 $dates = [
-	"date0" => "Fri 24 Dec",
-	"date1" => "Sat 25 Dec",
-	"date2" => "Sun 26 Dec",
-	"date3" => "Mon 27 Dec",
-	"date4" => "Tue 28 Dec",
-	"date5" => "Wed 29 Dec",
-	"date6" => "Thu 30 Dec",
-	"date7" => "Fri 31 Dec",
-	"date8" => "Sat 01 Jan",
-	"date9" => "Sun 02 Jan"
+	"date0" => "Fri 11 Feb",
+	"date1" => "Sat 12 Feb",
+	"date2" => "Sun 13 Feb",
+	"date3" => "Fri 18 Feb",
+	"date4" => "Sat 19 Feb",
+	"date5" => "Sun 20 Feb",
+	"date6" => "Fri 25 Feb",
+	"date7" => "Sat 26 Feb",
+	"date8" => "Sun 27 Feb"
 ];
 
 $items = [
@@ -26,8 +26,7 @@ $items = [
 	"item1" => "Doritosaus",
 	"item2" => "Pfeffernüßen",
 	"item3" => "Drinken",
-	"item4" => "TAART",
-	"item5" => "Overige"
+	"item4" => "Overige"
 ];
 
 $default_att = "cannot-go";
@@ -42,7 +41,7 @@ $storage = "/var/www/data/plan.json";
 
 $data = json_decode(file_get_contents($storage), true);
 
-$food_title = "etensvoorkeur";
+$food_title = "pizza";
 $att_title = "komen";
 $bring_title = "snaxx";
 

@@ -46,7 +46,7 @@ function setCountdown(date, splash, _texts, _shortTexts, pageTitle) {
 	document.getElementsByTagName("title")[0].innerHTML = escapeHtml(pageTitle);
 }
 
-var targetMillis = 1628244000000;
+var targetMillis = 1658484000000;
 var targetDate;
 var hypeMillis = 10000;
 var preHypeMillis = 10590;
@@ -258,9 +258,9 @@ function countdownUpdate() {
 }
 
 var texts = [
-	"Until MCH2021",
-	"Until MCH 0x7E5",
-	"Until MCH $7E5",
+	"Until MCH2022",
+	"Until MCH 0x7E6",
+	"Until MCH $7E6",
 	"00000000000 ms remain"
 //	"0.000000000 years remain"
 ];
@@ -269,13 +269,13 @@ var shortTexts = [
 	"Magical!",
 	"May contain hackers!",
 	"Hexadecimal!",
-	["badge.team!", "mch2021.org!"],
+	["badge.team!", "mch2022.org!"],
 	["ACCESS GRANTED", "ACCESS DENIED"],
 	["+RobotMan2412", "+You!"],
-	["SIGSEGV", "Segmentation fault in 0x07E507E5", "^C", "rm -rf /"]
+	["SIGSEGV", "Segmentation fault in 0x07E607E6", "^C", "rm -rf /"]
 ];
-var nextText = "Until MCH2021";
-var currentText = "Until MCH2021";
+var nextText = "Until MCH2022";
+var currentText = "Until MCH2022";
 var countyBoie = 0;
 var shortChance = 0.3; // 30% chance
 var shortTime = [1200, 2000]; //1.2s to 2s long

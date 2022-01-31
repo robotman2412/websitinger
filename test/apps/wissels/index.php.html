@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">RobotMan2412's website</title>
+	<?php require "../../s/php/index.php"; ?>
+	<!-- app !-->
+	<script src="wissels.js"></script>
+	<link href='wissels.css' rel='stylesheet' type='text/css'>
+	<link href='wissels_svg.css' rel='stylesheet' type='text/css'>
+</head>
+<body onload="startWissels();">
+	<div class="track-levers" id="track_levers">
+		<h2>Instellingen</h2>
+		<div class="nowrap">
+			<input checked type="checkbox" id="edit_mode"><label for="edit_mode">Bewerkingsmodus</label>
+		</div>
+		<div class="nowrap">
+			<input checked type="checkbox" id="switch_names"><label for="switch_names">Namen van wissels</label>
+		</div>
+		<div class="nowrap">
+			<input checked type="checkbox" id="block_names"><label for="block_names">Namen van sporen</label>
+		</div>
+		<div class="nowrap">
+			<input checked type="checkbox" id="signal_names"><label for="signal_names">Namen van seinen</label>
+		</div>
+		<div class="nowrap">
+			<input checked type="checkbox" id="switch_dir"><label for="switch_dir">Richting van wissels</label>
+		</div>
+		<div class="nowrap">
+			<input checked type="checkbox" id="track_stop"><label for="track_stop">Einde van spoor</label>
+		</div>
+		<h2>Hendels</h2>
+		<div id="switch_levers"></div>
+		<div id="signal_levers"></div>
+	</div>
+	<div class="track-layout">
+		<h2>Onderdelen</h2>
+		<table id="part_table" class="part-table" cellspacing="10px" cellpadding="0"><tr>
+			<td id="part_engelsman"></td>
+			<td id="part_switch"></td>
+			<td id="part_straight"></td>
+			<td id="part_curve"></td>
+			<td id="flip_h"></td>
+			<td id="flip_v"></td>
+			<td id="rotate">Draaien</td>
+		</tr></table>
+		<h2>Spoor</h2>
+		<table id="track_table" class="track-table" cellspacing="0" cellpadding="0"></table>
+	</div>
+</body>
+</html>

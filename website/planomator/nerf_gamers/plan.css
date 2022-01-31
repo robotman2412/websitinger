@@ -1,0 +1,80 @@
+
+table.att-table {
+	table-layout: fixed;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+}
+
+td, th {
+	text-align: left;
+}
+
+table.att-table td, table.att-table th {
+	text-align: left;
+	padding: 8px;
+}
+
+th.i {
+	
+}
+
+th.l {
+	width: 120px;
+}
+
+th.bring {
+	padding: 2px !important;
+}
+
+th.bring input {
+	width: 100%;
+}
+
+table.att-table th.i, table.att-table th.l {
+	/*background-color: #f8f8f8;*/
+}
+
+th.optn {
+	padding: 0 !important;
+	transition: 0.25s ease-in-out;
+	border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+table.food-table {
+	font-weight: normal;
+}
+
+select.date-select {
+	border: none;
+	width: 100%;
+	height: 100%;
+	transition: 0.25s ease-in-out;
+	font-size: 20px;
+	outline: none;
+}
+
+div.atte {
+	font-size: 20px;
+	font-weight: normal;
+	text-align: center;
+}
+
+select.can-go, div.atte.can-go, th.optn.can-go {
+	background-color: #1fdf0f;
+	color: white;
+}
+
+select.cannot-go, div.atte.cannot.go, th.optn.cannot-go {
+	background-color: #ff4f4f;
+	color: white;
+}
+
+select.unknown, div.atte.unknown, th.optn.unknown {
+	background-color: #f09000;
+	color: white;
+}
+
+input.item-input {
+	min-width: 0;
+	max-width: 95px;
+}

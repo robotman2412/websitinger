@@ -372,12 +372,13 @@ function disasm(elem) {
 	var byteStr = elem.value.trim().split(/[\s\r\n]+/gi);
 	var out = "";
 	var pc = 0;
+	tha_loop:
 	for (var i = 0; i < byteStr.length; i++) {
 		if (byteStr[i].match(/^.+:$/)) {
-			pc = Number(pc).toString(16);
-			pc = "0x" + "0".repeat(4 - pc.length) + pc;
-			out += escapeHtml(byteStr[i]) + "<span class=\"comment\">\t; " + pc + "</span><br>";
-			continue;
+			var loc_hex = Number(pc).toString(16);
+			var loc = "0x" + "0".repeat(4 - loc_hex.length) + pc;
+			out += escapeHtml(byteStr[i]) + "<span class=\"comment\">\t; " + loc + "</span><br>";
+			continue tha_loop;
 		}
 		var num = Number.parseInt(byteStr[i], 16);
 		var insn = findByNum(num & 0x7f);
@@ -399,8 +400,9 @@ function disasm(elem) {
 					}
 					i += bytes;
 					pc += bytes;
-					val += pie * i;
-					if (pie) val &= 0xffff;
+					if (bytes > 1) val += pie * pc;
+					if (bytes > 1) val &= 0xffff;
+					else val &= 0xff;
 					val = Number(val).toString(16);
 					val = "0x" + "0".repeat(bytes * 2 - val.length) + val;
 				} else {

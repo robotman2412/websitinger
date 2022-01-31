@@ -6,19 +6,19 @@ $people = [
 	"IGOR",
 	"R24owan",
 	"Maxx",
-	"Bart"
+	"Cynep_"
 ];
 
 $dates = [
-	"date0" => "Fri 11 Jun",
-	"date1" => "Sat 12 Jun",
-	"date2" => "Sun 13 Jun",
-	"date3" => "Fri 18 Jun",
-	"date4" => "Sat 19 Jun",
-	"date5" => "Sun 20 Jun",
-	"date6" => "Fri 25 Jun",
-	"date7" => "Sat 26 Jun",
-	"date8" => "Sun 27 Jun"
+	"date0" => "Fri 11 Feb",
+	"date1" => "Sat 12 Feb",
+	"date2" => "Sun 13 Feb",
+	"date3" => "Fri 18 Feb",
+	"date4" => "Sat 19 Feb",
+	"date5" => "Sun 20 Feb",
+	"date6" => "Fri 25 Feb",
+	"date7" => "Sat 26 Feb",
+	"date8" => "Sun 27 Feb"
 ];
 
 $items = [

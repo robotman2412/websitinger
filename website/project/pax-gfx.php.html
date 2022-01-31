@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require "../s/php/index_a.php"; ?>
+    <!-- Metadata for third parties !-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PAX graphics - RobotMan2412's website">
+    <meta property="og:description" content="PAX graphics, the graphics stack for the MCH2022 badge.">
+    <meta property="og:image" content="/i/preview.png">
+    <meta name="theme-color" content="#6942a2">
+    <title>PAX graphics - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+    <?php page_header(); ?>
+    <div id="inner_content" class="content-i">
+        <div class="header"><h1>PAX graphics</h1></div>
+        <div class="block-full">
+            <h3 class="p-header">Joining Badge.Team</h3>
+            <div class="right-image">
+                <img class="may-big" src="/i/mch2021/badge_proto.jpg" alt="A badge prototype.">
+                <p>
+                    A badge prototype.
+                </p>
+            </div>
+            <p class="justify">
+                In summer 2020, I started volunteering for the MCH2022 <nobr>Badge.Team</nobr>.
+                I really wanted to contribute, but at first I didn't know where to start.
+                So, I tried making an app for <a rel="external" target="_blank" href="https://wiki.sha2017.org/w/Projects:Badge">the SH2017 badge</a>.<br><br>
+
+                That is when I realised. There is no way to perform transformations.
+                There isn't even a way to draw a triangle!<br><br>
+
+                So, I got to work creating some better graphics for them.
+                And now, for the <a rel="external" target="_blank" href="">MCH2022 badge</a>, I was asked to write the graphics stack.<br><br>
+                
+                The graphics stack I'm writing is called <a rel="external" target="_blank" href="https://github.com/robotman2412/pax-graphics">PAX graphics</a>,
+                an improved version of what I learned by making graphics for the earlier <nobr>Badge.Team</nobr> firmware.
+            </p>
+        </div>
+        <div class="block-full">
+            <h3 class="p-header">About PAX graphics</h3>
+            <div class="right-image">
+                <img class="may-big" src="/i/mch2021/pax_demo0.jpg" alt="A frame of the graphics demo.">
+                <p>
+                    A frame of the <a href="#demo">graphics demo</a>.
+                </p>
+            </div>
+            <p class="justify">
+                By necessity, PAX graphics is licensed <a rel="external" target="_blank" href="https://mit-license.org/">MIT</a>.
+                This permissive license means you can use and modify it all you want,
+                which is required for <nobr>Badge.Team</nobr> and MCH2022 as there's been problems with licensing in the past.<br><br>
+                
+                PAX is a feature rich 2D drawing library, written for the ESP32 (esp-idf v4).
+                With the goal being allowing the uninitiated to draw some cool graphics, optimisation is key:
+                There a few internal optimisations, some small gains and some big gains.<br>
+                Other features include:
+            </p>
+            <ul>
+                <li>New color blending functions,</li>
+                <li>Support for HSV colors (HSV to RGB),</li>
+                <li>Triangle drawing,</li>
+                <li>2D transformations like scale, rotate and translate (like moving the canvas),</li>
+                <li>Many color modes picked on a buffer-by-buffer basis, to conserve RAM and to support displays,</li>
+                <li>And the ability to not compile features you don't use.</li>
+            </ul>
+            <p class="justify">
+                For those of you who want to use it, check out
+                <a rel="external" target="_blank" href="https://github.com/robotman2412/pax-graphics/tree/main/docs">the documentation</a>.
+                Contributions are welcome.
+            </p>
+        </div>
+        <div class="block-full">
+            <h3 class="p-header">The demo</h3>
+            <a name="demo">
+                <video width="100%" src="/i/mch2021/pax_demo0.mp4" controls></video>
+            </a>
+            <p class="justify">
+                In the video above, you can see a small demo of the library so far.
+                The framerate is calculated based on the time between writes to display,
+                which includes the fairly long display update time.
+                Theoretical maxima of performance is in the 20FPS range.
+            </p>
+        </div>
+
+        <?php footer(); ?>
+    </div>
+</div>
+</body>
+</html>

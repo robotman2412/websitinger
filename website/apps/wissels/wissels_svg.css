@@ -1,0 +1,30 @@
+
+
+/* Shapes */
+
+svg.track {
+    overflow: visible;
+}
+
+/* Colors */
+
+svg.track:hover path {
+	stroke: rgb(167, 255, 251);
+}
+
+svg.track.selected path {
+	stroke: rgb(112, 219, 135);
+}
+
+svg.track path {
+	stroke: rgba(255, 255, 255, 1);
+	stroke-width: 3px;
+	stroke-linecap: round;
+	fill: none;
+    transition: 0.1s;
+}
+
+svg.track path.inactive {
+	/* stroke: rgba(255, 255, 255, 0.25); */
+	stroke: rgba(128, 128, 128, 1);
+}
