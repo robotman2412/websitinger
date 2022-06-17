@@ -10,15 +10,18 @@ $people = [
 ];
 
 $dates = [
-	"date0" => "Fri 11 Feb",
-	"date1" => "Sat 12 Feb",
-	"date2" => "Sun 13 Feb",
-	"date3" => "Fri 18 Feb",
-	"date4" => "Sat 19 Feb",
-	"date5" => "Sun 20 Feb",
-	"date6" => "Fri 25 Feb",
-	"date7" => "Sat 26 Feb",
-	"date8" => "Sun 27 Feb"
+	"date0"  => "Fri 24 June",
+	"date1"  => "Sat 25 June",
+	"date2"  => "Sun 26 June",
+	"date3"  => "Fri 01 July",
+	"date4"  => "Sat 02 July",
+	"date5"  => "Sun 03 July",
+	"date6"  => "Fri 08 July",
+	"date7"  => "Sat 09 July",
+	"date8"  => "Sun 10 July",
+	"date9"  => "Fri 15 July",
+	"date10" => "Sat 16 July",
+	"date11" => "Sun 17 July"
 ];
 
 $items = [
