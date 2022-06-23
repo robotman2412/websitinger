@@ -1,10 +1,8 @@
 package websitinger;
 
 import com.jcraft.jsch.*;
+import javaxt.io.Image;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -207,15 +205,51 @@ public class WAutoUpload {
 		}
 	}
 
+//	public static void processJpeg(String path) throws IOException {
+//		// Load the image file.
+//		File          file   = new File(path);
+//		Image         image  = ImageIO.read(file); //Toolkit.getDefaultToolkit().createImage(path);
+//		
+////		waitForThemImage(image);
+//		int           width  = image.getWidth(null);
+//		int           height = image.getHeight(null);
+//		// Pass if it's small enough.
+//		if (width <= 1000 && height <= 1000) return;
+//		
+//		// Start scaling down.
+//		System.out.printf("Read jpeg (%dx%d) from %s\n", width, height, path);
+//		// Calculate new size.
+//		int newWidth, newHeight;
+//		if (width > height) {
+//			newWidth  = 1000;
+//			newHeight = height * newWidth / width;
+//		} else {
+//			newHeight = 1000;
+//			newWidth  = height * newHeight / width;
+//		}
+//		// Perform scale and save.
+//		Image         scaled = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+//		BufferedImage output;
+//		if (scaled instanceof BufferedImage) {
+//			output = (BufferedImage) scaled;
+//		} else {
+//			output = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_3BYTE_BGR);
+//			output.getGraphics().drawImage(scaled, 0, 0, null);
+//		}
+//		ImageIO.write(output, "jpeg", file);
+//		System.out.printf("Scaled to (%dx%d)\n", newWidth, newHeight);
+//	}
+	
 	public static void processJpeg(String path) throws IOException {
 		// Load the image file.
 		File          file   = new File(path);
-		Image         image  = Toolkit.getDefaultToolkit().createImage(path);//ImageIO.read(file);
-		int           width  = image.getWidth(null);
-		int           height = image.getHeight(null);
+		Image         image  = new Image(file);
+		image.rotate();
+		int           width  = image.getWidth();
+		int           height = image.getHeight();
 		// Pass if it's small enough.
 		if (width <= 1000 && height <= 1000) return;
-		
+
 		// Start scaling down.
 		System.out.printf("Read jpeg (%dx%d) from %s\n", width, height, path);
 		// Calculate new size.
@@ -225,18 +259,11 @@ public class WAutoUpload {
 			newHeight = height * newWidth / width;
 		} else {
 			newHeight = 1000;
-			newWidth  = height * newHeight / width;
+			newWidth  = width * newHeight / height;
 		}
 		// Perform scale and save.
-		Image         scaled = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-		BufferedImage output;
-		if (scaled instanceof BufferedImage) {
-			output = (BufferedImage) scaled;
-		} else {
-			output = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_3BYTE_BGR);
-			output.getGraphics().drawImage(scaled, 0, 0, null);
-		}
-		ImageIO.write(output, "jpeg", file);
+		image.resize(newWidth, newHeight);
+		image.saveAs(file);
 		System.out.printf("Scaled to (%dx%d)\n", newWidth, newHeight);
 	}
 
