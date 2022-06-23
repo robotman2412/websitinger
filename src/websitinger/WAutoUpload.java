@@ -2,6 +2,9 @@ package websitinger;
 
 import com.jcraft.jsch.*;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -155,37 +158,14 @@ public class WAutoUpload {
 	
 	public static boolean fupload(File upload, String remoteDir, String passwd, JSch ssh) {
 		String outName = upload.getName();
-		if (outName.matches("^.*?\\.(jpg|jpeg)$")) {
-//			try {
-//				Process p = Runtime.getRuntime().exec(new String[] {"bash"});
-//				InputStream stdout = p.getInputStream();
-//				InputStream stderr = p.getErrorStream();
-//				OutputStream os = p.getOutputStream();
-//				os.write("/usr/bin/exiftool -gps:all= '".getBytes(StandardCharsets.UTF_8));
-//				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
-//				os.write("' ; rm '".getBytes(StandardCharsets.UTF_8));
-//				os.write(upload.getAbsolutePath().replace("'", "'\"''\"'").getBytes(StandardCharsets.UTF_8));
-//				os.write("_original' ; exit\n".getBytes(StandardCharsets.UTF_8));
-//				os.flush();
-//				while (p.isAlive()) {
-//					if (stderr.available() > 0) {
-//						byte[] fuck = new byte[stderr.available()];
-//						stderr.read(fuck);
-//						System.err.write(fuck);
-//						System.err.flush();
-//					}
-//					if (stdout.available() > 0) {
-//						byte[] fuck = new byte[stdout.available()];
-//						stdout.read(fuck);
-//						System.out.write(fuck);
-//						System.out.flush();
-//					}
-//				}
-//				p.waitFor(2000, TimeUnit.MILLISECONDS);
-//			} catch (IOException | InterruptedException e) {
-//				e.printStackTrace();
-//				return false;
-//			}
+		if (outName.matches("^.*?\\.jpe?g$")) {
+			// Downscale JPEG images.
+			try {
+				processJpeg(upload.getCanonicalPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
 		for (Map.Entry<String, String> alias : extensionAliasses.entrySet()) {
 			if (outName.endsWith(alias.getKey())) {
@@ -194,9 +174,6 @@ public class WAutoUpload {
 			}
 		}
 		System.out.println("Uploading " + upload.getAbsolutePath() + "\nTo " + remoteDir + outName);
-//		if (true) {
-//			return true;
-//		}
 		try {
 			Session session = ssh.getSession("pi", "robot.scheffers.net", 2224);
 			session.setPassword(passwd);
@@ -229,5 +206,38 @@ public class WAutoUpload {
 			return false;
 		}
 	}
-	
+
+	public static void processJpeg(String path) throws IOException {
+		// Load the image file.
+		File          file   = new File(path);
+		Image         image  = Toolkit.getDefaultToolkit().createImage(path);//ImageIO.read(file);
+		int           width  = image.getWidth(null);
+		int           height = image.getHeight(null);
+		// Pass if it's small enough.
+		if (width <= 1000 && height <= 1000) return;
+		
+		// Start scaling down.
+		System.out.printf("Read jpeg (%dx%d) from %s\n", width, height, path);
+		// Calculate new size.
+		int newWidth, newHeight;
+		if (width > height) {
+			newWidth  = 1000;
+			newHeight = height * newWidth / width;
+		} else {
+			newHeight = 1000;
+			newWidth  = height * newHeight / width;
+		}
+		// Perform scale and save.
+		Image         scaled = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+		BufferedImage output;
+		if (scaled instanceof BufferedImage) {
+			output = (BufferedImage) scaled;
+		} else {
+			output = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_3BYTE_BGR);
+			output.getGraphics().drawImage(scaled, 0, 0, null);
+		}
+		ImageIO.write(output, "jpeg", file);
+		System.out.printf("Scaled to (%dx%d)\n", newWidth, newHeight);
+	}
+
 }
