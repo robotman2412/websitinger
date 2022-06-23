@@ -176,7 +176,7 @@ public class WAutoUpload {
 			Session session = ssh.getSession("pi", "robot.scheffers.net", 2224);
 			session.setPassword(passwd);
 			Properties config = new Properties();
-			config.put("StrictHostKeyChecking", "no");
+//			config.put("StrictHostKeyChecking", "no");
 			session.setConfig(config);
 			session.connect(5000);
 			if (session.isConnected()) {
@@ -205,41 +205,6 @@ public class WAutoUpload {
 		}
 	}
 
-//	public static void processJpeg(String path) throws IOException {
-//		// Load the image file.
-//		File          file   = new File(path);
-//		Image         image  = ImageIO.read(file); //Toolkit.getDefaultToolkit().createImage(path);
-//		
-////		waitForThemImage(image);
-//		int           width  = image.getWidth(null);
-//		int           height = image.getHeight(null);
-//		// Pass if it's small enough.
-//		if (width <= 1000 && height <= 1000) return;
-//		
-//		// Start scaling down.
-//		System.out.printf("Read jpeg (%dx%d) from %s\n", width, height, path);
-//		// Calculate new size.
-//		int newWidth, newHeight;
-//		if (width > height) {
-//			newWidth  = 1000;
-//			newHeight = height * newWidth / width;
-//		} else {
-//			newHeight = 1000;
-//			newWidth  = height * newHeight / width;
-//		}
-//		// Perform scale and save.
-//		Image         scaled = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-//		BufferedImage output;
-//		if (scaled instanceof BufferedImage) {
-//			output = (BufferedImage) scaled;
-//		} else {
-//			output = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_3BYTE_BGR);
-//			output.getGraphics().drawImage(scaled, 0, 0, null);
-//		}
-//		ImageIO.write(output, "jpeg", file);
-//		System.out.printf("Scaled to (%dx%d)\n", newWidth, newHeight);
-//	}
-	
 	public static void processJpeg(String path) throws IOException {
 		// Load the image file.
 		File          file   = new File(path);
