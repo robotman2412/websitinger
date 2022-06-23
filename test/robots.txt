@@ -1,6 +1,8 @@
 User-agent: *
 Disallow: *.hex
 Disallow: /special/*
-Disallow: /incl/*
+Disallow: /s/*
+Disallow: /i/*
+Disallow: /err/*
 Disallow: /data/*
-Disallow: /anyone-but-robots/
+Disallow: /humans/

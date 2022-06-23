@@ -20,6 +20,7 @@ public class WAutoUpload {
 		extensionAliasses.put("php.html", "php");
 		localToSiteDirs.put("/media/julian/get me data/intellij/websitinger/website/", "/var/www/html/");
 		localToSiteDirs.put("/media/julian/get me data/intellij/websitinger/test/", "/var/www/test/");
+		localToSiteDirs.put("/media/julian/get me data/intellij/websitinger/scripts/", "/home/pi/scripts/");
 		
 		ssh = new JSch();
 		String passwd;

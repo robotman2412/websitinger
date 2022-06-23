@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "../s/php/index.php"; ?>
+	<title>Blog - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Blog</h1></div>
+		<div class="block-full">
+			<h2 class="p-header">Mailing list sign-up</h2>
+			<p class="justify">
+				If you'd like to receive an email when I make a blog post, you can fill out the form below.
+			</p>
+			<form name="mailinglist" enctype="multipart/form-data" method="get" action="mail-submit">
+				<input id="mail_blog" name="mail_blog" type="checkbox"><label for="mail_blog">Receive mail for blog posts</label>
+				<br>
+				<input name="mail_addr" placeholder="email@example.com"><button type="submit">Submit</button>
+			</form>
+		</div>
+		<div class="block-full">
+			<a href="/blog/jun-2022/0-welcome"><h3 class="p-header">June 23 2022: Welcome!</h3></a>
+			<p class="justify">
+				I've decided to make a blog because it better suits the way I want to publish.
+			</p>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
