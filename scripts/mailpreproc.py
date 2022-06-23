@@ -188,7 +188,7 @@ def showhelp():
 
 
 if __name__ == '__main__':
-    modes = ["blog", "event", "all"]
+    modes = ["blog", "event", "test", "all"]
     # Check for number of args.
     if len(sys.argv) != 4:
         showhelp()

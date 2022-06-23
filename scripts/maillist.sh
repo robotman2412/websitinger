@@ -21,7 +21,7 @@ for i in $*; do
 		# Parameters.
 		-h|--help|-help|help)
 			echo "$0 -- Collect mailinglist"
-			echo "Parameters specify which lists to use."
+			echo "Parameters specify which lists to use (blog/event/test)."
 			echo "If 'all' is specified, all addresses are selected."
 			echo
 			echo "Valid lists: $VALID"
@@ -32,6 +32,11 @@ for i in $*; do
 			echo "Use '--help' for more info."
 			exit 3
 			;;
+	  # Mail to test list.
+	  test)
+	    echo " julian@scheffers.net "
+	    exit 0
+	    ;;
 		# Mail to all lists.
 		all)
 			LISTS="$VALID"
