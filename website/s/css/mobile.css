@@ -215,7 +215,7 @@ div.block-full:after {
 }
 
 /* Right-aligned image in paragraph. */
-.right-image, .center-image {
+.left-image, .right-image, .center-image {
 	/*float: right;
 	max-width: 47%;*/
 	max-width: 100%;
@@ -231,7 +231,7 @@ div.block-full:after {
 	box-sizing: border-box;
 }
 
-.right-image img, .center-image img {
+.left-image img, .right-image img, .center-image img {
 	max-width: 100%;
 	border-radius: 5px;
 }
@@ -247,7 +247,7 @@ img.may-big:hover {
 	border-radius: 2px;
 }
 
-.right-image p, .center-image p {
+.left-image p, .right-image p, .center-image p {
 	margin: 0;
 }
 
