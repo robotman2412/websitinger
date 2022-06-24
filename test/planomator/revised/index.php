@@ -12,9 +12,6 @@
 		<?php page_header(); ?>
 		<div id="inner_content" class="content-i">
 			<?php planBody(); ?>
-			<div class="header">
-				<h1>PLANOMATOR</h1>
-			</div>
 			<div class="block-full">
 				<center><p>NOTE: This is a WIP planner.</p></center>
 				<?php planContent(); ?>
