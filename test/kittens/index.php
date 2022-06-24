@@ -57,20 +57,28 @@ function show_kitten_age() {
 			</div>
 		</div> !-->
 		<div class="block-full">
-			<!-- &#x2640; Male   &#x2642; Female !-->
-			<h3 class="p-header">Vier kittens uit Valthe</h3>
+			<h3 class="p-header">Contact</h3>
+			<ul>
+				<li>Email: <a href="mailto:maja@kuilman.net">maja@kuilman.net</a></li>
+				<li>Telefoon en Whatsapp: <a href="https://wa.me/31615445714">06 15 44 57 14</a></li>
+			</ul>
+		</div>
+		<div class="block-full">
+			<!-- &#x2640; Female   &#x2642; Male !-->
+			<h3 class="p-header">Lieve kittens uit Valthe</h3>
 			<div class="right-image">
-				<img class="may-big" alt="NaamVanKitten in een slof" src="0.jpg">
-				NaamVanKitten in een slof
+				<img class="may-big" alt="Die slof is toch veel te groot voor je!" src="0.jpg">
+				&#x2642; Die slof is toch veel te groot voor je!
 			</div>
 			<p class="justify">
-				Wij hebben vier lieve kittens te koop, geboren op 15 mei (1 mannetje en 3 vrouwtjes).
-				Ze zijn nu <?php show_kitten_age(); ?> oud en zindelijk.
+				Wij hebben hele schattige kittens te koop, geboren op 15 mei
+				(1 mannetje&#x2642; en 3 vrouwtjes&#x2640;).
+				Ze zijn nu <?php show_kitten_age(); ?> oud, en ze zijn zindelijk.
 				Ze groeien op in een huiselijke sfeer bij een lieve zorgzame mama-poes.
 			</p>
 			<div class="left-image">
-				<img class="may-big" alt="NaamVanKitten &#x2642;" src="1.jpg">
-				NaamVanKitten &#x2642;
+				<img class="may-big" alt="&#x2640; Op avontuur uit" src="1.jpg">
+				&#x2640; Op avontuur uit
 			</div>
 			<p class="justify">
                 De kittens zijn op zoek naar een eigen baasje en kunnen tussen 18 en 31 juli worden opgehaald (dan zijn ze tussen 9 en 10 weken).
@@ -78,7 +86,7 @@ function show_kitten_age() {
 			</p>
 			<div class="right-image">
 				<img class="may-big" alt="NaamVanKitten is aan het spelen" src="2.jpg">
-				NaamVanKitten is aan het spelen
+				&#x2640; Aan het spelen
 			</div>
 			<p class="justify">
                 Kom gerust kennismaken!
@@ -86,11 +94,11 @@ function show_kitten_age() {
 			</p>
 			<div class="left-image">
 				<img class="may-big" alt="NaamVanKitten &#x2642; en NaamVanKitten" src="3.jpg">
-				NaamVanKitten &#x2642; en NaamVanKitten
+				? (links) &#x2640; (rechts) In de tunnel
 			</div>
 			<div class="right-image">
 				<img class="may-big" alt="NaamVanKitten &#x2642; valt NaamVanKitten aan" src="4.jpg">
-				NaamVanKitten &#x2642; valt NaamVanKitten aan
+				&#x2640; (links) &#x2642; (rechts) Wel lief zijn h&#x00e9;?
 			</div>
 			<div class="left-image">
 				<img class="may-big" alt="Even eten bij mama" src="5.jpg">
