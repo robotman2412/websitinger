@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require "../s/php/index_a.php"; ?>
+	<title>Kittens in Valthe</title>
+	<!-- Metadata for third parties !-->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Kittens in Valthe">
+	<meta property="og:description" content="Er zijn kittens te koop!">
+	<meta property="og:image" content="/kittens/preview.png">
+	<meta name="theme-color" content="#6942a2">
+	<!-- Style I guess !-->
+	<style>
+		div.yt-embed {
+			position:    relative;
+			overflow:    hidden;
+			width:       100%;
+			padding-top: 56.25%;
+		}
+		.yt-embed iframe {
+			display:       block;
+			position:      absolute;
+			left:          0;
+			top:           0;
+			width:         100%;
+			height:        100%;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+	<?php page_header(); ?>
+	<div id="inner_content" class="content-i">
+		<div class="header"><h1>Kittens!</h1></div>
+		<div class="block-full">
+			<h3 class="p-header">Filmpje van de kittens</h3>
+			<div class="yt-embed">
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="block-full">
+			<h3 class="p-header">__PLACEHOLDER__</h3>
+			<p class="justify">
+				__PLACEHOLDER__
+			</p>
+		</div>
+		<?php footer(); ?>
+	</div>
+</div>
+</body>
+</html>
