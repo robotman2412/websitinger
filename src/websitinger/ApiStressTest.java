@@ -59,7 +59,7 @@ public class ApiStressTest {
     }
 
     public static boolean apiCallRegister() {
-        String id = "id"+new Random().nextLong(1<<30);
+        String id = "id"+new Random().nextInt(1<<30);
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);
         params.put("register", "TheNickName");

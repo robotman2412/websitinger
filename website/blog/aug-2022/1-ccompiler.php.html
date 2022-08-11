@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require "../../s/php/index.php"; ?>
+    <title>Blog - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+    <?php page_header(); ?>
+    <div id="inner_content" class="content-i">
+        <div class="header"><h1>August 9 2022: A C compiler.</h1></div>
+        <div class="block-full">
+            <h3 class="p-header">A very big project</h3>
+            <div class="right-image">
+                <img class="may-big" src="/i/px16/teaser_small.png" alt="The teaser video thumbnail">
+                <p>The teaser video thumbnail</p>
+            </div>
+            <p class="justify">
+                <i>(Finally it's here in a demonstrable capacity!)</i><br><br>
+                
+                Today, I finished <a href="https://github.com/robotman2412/lily-cc"><nobr>Lily-CC</nobr></a>
+                (my C compiler) just barely enough to complete a function call.
+                There is <a href="https://youtu.be/Bho5XKOtkCE">a video demo</a> of what it can compile so far, but to sum it up:
+            </p>
+            <ul>
+                <li>It compiled two functions,</li>
+                <li>It made function position-independent code,</li>
+                <li>It compiled a while loop,</li>
+                <li>And it does string constants.</li>
+            </ul>
+            <p class="justify">
+                For the most part, that is all it can do.
+                There are still many things (like for loops) that need to be made before C can be written.<br><br>
+                
+                Also shown in the video was a very small part of
+                <a href="https://github.com/robotman2412/px16"><nobr>Pixie<sup>16</sup></nobr></a>
+                (PX16 for short), the current target for Lily.
+                It is much more finished than <nobr>Lily-CC</nobr> is, and is being held back by Lily's development.
+                Why is a CPU being held back by a C compiler you may ask?
+                Simple: I want to run programs written mostly in C.<br><br>
+                
+                However, with today's success this changes.
+                There are only a handful of things that need to work before software testing on PX16 can begin.
+                After all, the compiler doesn't need to be 100% finished before compiling code with it is viable.
+            </p>
+        </div>
+        <div class="block-full">
+            <h3 class="p-header">About Pixie<sup>16</sup></h3>
+            <div class="right-image">
+                <img class="may-big" src="/i/px16/stitch_small.png" alt="PX16 in its full glory">
+                <p>PX16 in its full glory</p>
+            </div>
+            <p class="justify">
+                <nobr>Pixie<sup>16</sup></nobr> is my latest CPU design, incorporating every lesson I have learned.
+                <span title="Short for Pixie 16">PX16</span> is a 16-bit RISC CPU with 4 general-purpose registers,
+                3 special registers and 4 instructions.<br><br>
+                
+                I want to (and maybe it's not practical) have more users than just myself.
+                The original goal was to make a little gameboy-sized computer with PX16,
+                but I'm not sure that people will want to have one.
+                Though my goals include low-power operation and simple enough to produce on a PCB,
+                I'm not entirely sure what else I'd use for, so any suggestions are welcome.<br><br>
+                
+                Being made to contain no instruction set ROM, it could theoretically reach higher clock speeds.
+                It also has an almost 100% IPC (Instructions Per Clock) uplift compared to GR8CPU Rev3.2,
+                so it would actually perform even better compared to my previous design.<br><br>
+                
+                Specs for CPU nerds:
+            </p>
+            <ul>
+                <li>16-bit only von Neumann architecture</li>
+                <li>4 general-purpose registers</li>
+                <li>Position-Independent Code</li>
+                <li>One- and two-input math instructions</li>
+                <li>Optional carry continuity between math operations</li>
+                <li>Add, Subtract, Shift, And, Or, Xor and Compare</li>
+                <li>Signed number support (signed carry flag and carry extend MOV)</li>
+                <li>Conditional MOV instructions</li>
+                <li>Two interrupt channels, though both maskable</li>
+                <li>All memory operations for all instructions</li>
+                <li>Stack integrated into memory model</li>
+            </ul>
+        </div>
+        <?php blog_footer(); footer(); ?>
+    </div>
+</div>
+</body>
+</html>
