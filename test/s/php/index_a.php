@@ -26,4 +26,7 @@ function page_header() {
 	echo file_get_contents("/var/www/test/s/html/page_header.html");
 }
 
+// Create statistics.
+require_once "/var/www/test/s/php/stats.php";
+
 ?>

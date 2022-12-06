@@ -232,13 +232,13 @@ div.block-full:after {
 /* Left-aligned image in paragraph. */
 .left-image {
 	float: left;
-	margin-right: 0.5em;
+	margin-right: 0.49em;
 }
 
 /* Right-aligned image in paragraph. */
 .right-image {
 	float: right;
-	margin-left: 0.5em;
+	margin-left: 0.51em;
 }
 
 .right-image, .left-image {

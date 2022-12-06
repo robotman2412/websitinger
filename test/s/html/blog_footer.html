@@ -1,7 +1,11 @@
 <div class="block-full">
 	<h3 class="p-header">Like the blog?</h3>
 	<p class="justify">
-		You can <a href="/blog">sign up to the mailing list.</a>
-		Every subscription makes my day.
+		If you'd like to receive an email when I make a blog post, you can fill out the form below.
 	</p>
+	<form name="mailinglist" enctype="multipart/form-data" method="get" action="mail-submit">
+		<input id="mail_blog" name="mail_blog" type="checkbox"><label for="mail_blog">Receive mail for blog posts</label>
+		<br>
+		<input name="mail_addr" placeholder="email@example.com"><button type="submit">Submit</button>
+	</form>
 </div>
