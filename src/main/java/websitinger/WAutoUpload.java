@@ -24,14 +24,13 @@ public class WAutoUpload {
 		localToSiteDirs.put(pwd + "website/", "/var/www/html/");
 		localToSiteDirs.put(pwd + "test/", "/var/www/test/");
 		localToSiteDirs.put(pwd + "scripts/", "/home/pi/scripts/");
-		localToSiteDirs.put(pwd + "images/", "/var/www/image/");
 		
 		ssh = new JSch();
-		String passwd = "/home/julian/.ssh/id_rsa";
-		ssh.addIdentity(passwd);
+		String passwd = "";
 		while (true) {
 //			System.out.print("Enter SSH password: ");
 //			passwd = readPasswd();
+			ssh.addIdentity("/home/julian/.ssh/id_rsa");
 			Session session = ssh.getSession("pi", "robot.scheffers.net", 2224);
 //			session.setPassword(passwd);
 			Properties config = new Properties();
@@ -213,17 +212,9 @@ public class WAutoUpload {
 		// Load the image file.
 		File          file   = new File(path);
 		Image         image  = new Image(file);
-		int width, height;
-		try {
-			image.rotate();
-			width = image.getWidth();
-			height = image.getHeight();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println("Image may be broken or missing.");
-			return;
-		}
-		
+		image.rotate();
+		int           width  = image.getWidth();
+		int           height = image.getHeight();
 		// Pass if it's small enough.
 		if (width <= 1000 && height <= 1000) return;
 
