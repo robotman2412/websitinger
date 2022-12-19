@@ -24,6 +24,7 @@ public class WAutoUpload {
 		localToSiteDirs.put(pwd + "website/", "/var/www/html/");
 		localToSiteDirs.put(pwd + "test/", "/var/www/test/");
 		localToSiteDirs.put(pwd + "scripts/", "/home/pi/scripts/");
+		localToSiteDirs.put(pwd + "images/", "/var/www/image/");
 		
 		ssh = new JSch();
 		String passwd = "";

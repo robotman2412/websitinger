@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php require "../../s/php/index.php"; ?>
+    <title>Blog - RobotMan2412's website</title>
+</head>
+<body onload="loaded();">
+<div id="template_builder" style="display:none;"></div>
+<div id="outer_content" class="content-o">
+    <?php page_header(); ?>
+    <div id="inner_content" class="content-i">
+        <div class="header"><h1>Dec 00 2022: Small updates</h1></div>
+        <div class="block-full">
+            <h3 class="p-header">Pixie 16 is in production</h3>
+            <div class="right-image">
+                <img class="may-big" src="/i/px16/the_pcbening.png" alt="Preview of the PCB">
+                <p>Preview of the PCB</p>
+            </div>
+            <p class="justify">
+                I'm starting design and production of Pixie 16 PCBs.
+                The core won't have any more changes, the instruction set is final.
+                And so I've decided to start with the register file.<br><br>
+                
+                The register file is arguably the simplest component of a CPU - It is the short term data storage.
+                This register file contains general registers (R0, R1, R2, R3), which are used by the programmer.
+                The remainder are special registers: ST is the stack pointer, which is used by subroutines and interrupts, but it's counting is done with the ALU.
+                PF is smaller at 7 bits, and stores flags about math operations as well as interrupt enable and status.
+                Finally, PC is the program counter, simply pointing at the next instruction to run, this is the only counter register.<br><br>
+                
+                Then there is the magic "Imm" register. This register, the eighth in the file, is in reality two registers.
+                They, "Imm0" and "Imm1" store the A and B operands when using another register is not applicable.
+                This happens in two ways:
+            </p>
+            <ul>
+                <li>
+                    An instruction uses a constant instead of a register for A, B or both.<br>
+                    Example: <span style="color:#77f">MOV</span> R0, <span style="color:#f77">1234</span><br>
+                    <span style="color:#77f">MOV</span> is the "move" operation; copy B into A.<br>
+                    R0 is the A parameter; the destination.<br>
+                    <span style="color:#f77">1234</span> is the B parameter and the constant in question.
+                </li>
+                <li>An instruction accesses memory.<br>
+                    Example: <span style="color:#77f">ADD</span> [<span style="color:#f77">1234</span>], R3<br>
+                    <span style="color:#77f">ADD</span> is the "addition" operation; add B to A, store to A.<br>
+                    [<span style="color:#f77">1234</span>] is the A parameter, and it's address is the constant <span style="color:#f77">1234</span>.<br>
+                    R3 is the B parameter.
+                </li>
+            </ul>
+            <p class="justify">
+                Note that only one parameter can be memory access but both may have a constant.<br><br>
+                
+                As for the actual production, the next step is to double-check the entire schematic and to order the PCB.
+                Because this uses SMD components, I won't actually be able to re-use my existing stockpile, which is DIP.
+                I'll also need to source some 8-led bar graphs but those aren't too hard to find.<br><br>
+                
+                Of course, Pixie is tied up with Lily-CC a bit in that the idea was to make the OS mainly in C.<br>
+                That brings me to the next topic:
+            </p>
+        </div>
+        <div class="block-full">
+            <h3 class="p-header">Lily-CC is slowly progressing</h3>
+            <p class="justify">
+                Lily-CC now mostly supports pointers, and arrays are work in progress.
+                Next on the timeline is to take out the current (broken) array system and replace it.
+                The problem is that it doesn't cast the array into a pointer,
+                an implicit and sometimes overlooked feature (or at least I overlooked it).<br><br>
+                
+                Further in the future are structs and unions, which are probably equally difficult to implement.
+                They will present new challenges in the form of handling non-number return types,
+                and will be the first types capable of exceeding the 4-word limit on register based return values in Pixie.
+                This would require polishing function calls a bit, which currently won't run properly when the limit is exceeded.<br><br>
+                
+                Finally, in the far future is support for ELF files, both read and write.
+                This would allow for more than one source file to be used at once,
+                and is also the standard way to store parts of programs being compiled.<br><br>
+                
+                It's a fun project, but don't expect fully standard C compatibility any time soon.<br>
+                P.S.: Want C++? I hope using <a href="https://en.wikipedia.org/wiki/Cfront">cfront</a>
+                (or another method of translation) is enough for you - I don't intend on supporting it.
+            </p>
+        </div>
+        <?php blog_footer(); footer(); ?>
+    </div>
+</div>
+</body>
+</html>
