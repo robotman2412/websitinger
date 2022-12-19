@@ -1,0 +1,14 @@
+
+table.k-diagram {
+	text-align:  right;
+	font-family: "source code pro";
+	border-collapse: collapse;
+}
+
+.k-diagram td.col-inputs {
+	border-bottom: 1px solid #ffffff;
+}
+
+.k-diagram td.row-inputs {
+	border-right: 1px solid #ffffff;
+}
