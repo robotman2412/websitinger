@@ -2,27 +2,30 @@
 
 $people = [
 	"Robot",
-	"Dave",
 	"IGOR",
-	"R24owan",
 	"Maxx",
 	"Cynep_"
 ];
 
 $dates = [
-	"date0"  => "Tue 27 Dec",
-	"date1"  => "Wed 28 Dec",
-	"date2"  => "Thu 29 Dec",
-	"date3"  => "Fri 30 Dec",
-	"date4"  => "Sat 31 Dec",
-	"date5"  => "Sun 01 Jan",
-	"date6"  => "Mon 02 Jan",
-	"date7"  => "Tue 03 Jan",
-	"date8"  => "Wed 04 Jan",
-	"date9"  => "Thu 05 Jan",
-	"date10" => "Fri 06 Jan",
-	"date11" => "Sat 07 Jan",
-	"dat12"  => "Sun 08 Jan"
+	"date0"  => "Fri 17 Nov",
+	"date1"  => "Sat 18 Nov",
+	"date2"  => "Sun 19 Nov",
+	"date3"  => "Fri 01 Dec",
+	"date4"  => "Sat 02 Dec",
+	"date5"  => "Sun 03 Dec",
+	"date6"  => "Fri 08 Dec",
+	"date7"  => "Sat 09 Dec",
+	"date8"  => "Sun 10 Dec",
+	"date9"  => "Fri 15 Dec",
+	"date10" => "Sat 16 Dec",
+	"date11" => "Sun 17 Dec",
+	"date12" => "Fri 22 Dec",
+	"date13" => "Sat 23 Dec",
+	"date14" => "Sun 24 Dec",
+	"date15" => "Fri 29 Dec",
+	"date16" => "Sat 30 Dec",
+	"date17" => "Sun 31 Dec"
 ];
 
 $items = [
